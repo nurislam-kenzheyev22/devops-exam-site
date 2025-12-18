@@ -832,7 +832,26 @@
 <p>- <strong>System Gradle</strong> = Gradle, установленный в системе</p>
 <p>- <strong>Wrapper Gradle</strong> = Gradle из wrapper (версия из проекта)</p>
 <p><strong>Разница:</strong></p>
-| Команда | Что использует | Версия | Проблема | |---------|---------------|--------|----------| | `gradle build` | Gradle из системы | Какая установлена | У всех разная | | `./gradlew build` | Gradle из wrapper | Из проекта | У всех одинаковая |
+<table>
+<tr>
+<th>Команда</th>
+<th>Что использует</th>
+<th>Версия</th>
+<th>Проблема</th>
+</tr>
+<tr>
+<td><code>gradle build</code></td>
+<td>Gradle из системы</td>
+<td>Какая установлена</td>
+<td>У всех разная</td>
+</tr>
+<tr>
+<td><code>./gradlew build</code></td>
+<td>Gradle из wrapper</td>
+<td>Из проекта</td>
+<td>У всех одинаковая</td>
+</tr>
+</table>
 <p><strong>Пример:</strong></p>
 <p># gradle build (плохо) gradle build # Использует Gradle 8.0 (если установлен) # У коллеги может быть 7.0 → разные результаты!</p>
 <p># ./gradlew build (хорошо) ./gradlew build # Использует Gradle 8.10.2 (из gradle-wrapper.properties) # У всех одинаковая версия → одинаковые результаты!</p>
@@ -847,7 +866,26 @@
 <p>- <strong>System Gradle</strong> = Gradle, установленный в системе</p>
 <p>- <strong>Wrapper Gradle</strong> = Gradle из wrapper (версия из проекта)</p>
 <p><strong>Разница:</strong></p>
-| Команда | Что использует | Версия | Проблема | |---------|---------------|--------|----------| | `gradle build` | Gradle из системы | Какая установлена | У всех разная | | `./gradlew build` | Gradle из wrapper | Из проекта | У всех одинаковая |
+<table>
+<tr>
+<th>Команда</th>
+<th>Что использует</th>
+<th>Версия</th>
+<th>Проблема</th>
+</tr>
+<tr>
+<td><code>gradle build</code></td>
+<td>Gradle из системы</td>
+<td>Какая установлена</td>
+<td>У всех разная</td>
+</tr>
+<tr>
+<td><code>./gradlew build</code></td>
+<td>Gradle из wrapper</td>
+<td>Из проекта</td>
+<td>У всех одинаковая</td>
+</tr>
+</table>
 <p><strong>Пример:</strong></p>
 <p># gradle build (плохо) gradle build # Использует Gradle 8.0 (если установлен) # У коллеги может быть 7.0 → разные результаты!</p>
 <p># ./gradlew build (хорошо) ./gradlew build # Использует Gradle 8.10.2 (из gradle-wrapper.properties) # У всех одинаковая версия → одинаковые результаты!</p>

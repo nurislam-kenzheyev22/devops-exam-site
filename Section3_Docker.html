@@ -443,11 +443,63 @@
             <div class="question-content" id="content17">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>Containerization provides isolation, portability, consistency across environments, resource efficiency, and faster deployments. Containers package applications with dependencies, ensuring they run the same way in development, testing, and production. | Почему важна контейнеризация в DevOps? Термины: Containerization = контейнеризация (упаковка приложения в контейнер) Isolation = изоляция (приложения не мешают друг другу) Portability = переносимость (работает везде одинаково) Consistency = согласова...</p>
+                    <p>containers provides apps separated, works everywhere, same everywhere across environments, resource efficiency, and faster deployments. Containers package applications with libraries, ensuring they run the same way in development, testing, and production.</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p>Объяснение будет добавлено позже.</p>
+                    <p><p><strong>Почему важна контейнеризация в DevOps?</strong></p>
+<p><strong>Термины:</strong></p>
+<p>- <strong>Containerization</strong> = контейнеризация (упаковка приложения в контейнер)</p>
+<p>- <strong>Isolation</strong> = изоляция (приложения не мешают друг другу)</p>
+<p>- <strong>Portability</strong> = переносимость (работает везде одинаково)</p>
+<p>- <strong>Consistency</strong> = согласованность (одинаковое поведение)</p>
+<p><strong>Проблемы БЕЗ контейнеров:</strong></p>
+<p>1. <strong>"У меня работает"</strong> → На твоём компьютере Java 17, на сервере Java 11 → не работает 2. <strong>Конфликты</strong> → Два приложения требуют разные версии библиотек 3. <strong>Медленный деплой</strong> → Нужно устанавливать зависимости на сервере</p>
+<p><strong>Что решают контейнеры:</strong></p>
+<p>1. <strong>Изоляция</strong> → Каждое приложение в своём контейнере, не мешают друг другу 2. <strong>Переносимость</strong> → Работает одинаково на твоём компьютере, в Jenkins, в Kubernetes 3. <strong>Быстрый деплой</strong> → Контейнер уже содержит всё необходимое</p>
+<p><strong>Пример:</strong></p>
+<p># Без контейнеров (плохо) Твой компьютер: Java 17, PostgreSQL 15 → работает Сервер: Java 11, PostgreSQL 13 → не работает (несовместимость)</p>
+<p># С контейнерами (хорошо) Dockerfile: FROM eclipse-temurin:17-jre-alpine Везде одинаково → работает везде!</p>
+<p><strong>Почему это важно в DevOps?</strong></p>
+<p>DevOps = автоматизация. Контейнеры позволяют автоматизировать деплой: собрал один раз → работает везде.</p></p>
+<p><strong>Термины:</strong></p>
+<p>- <strong>Containerization</strong> = контейнеризация (упаковка приложения в контейнер)</p>
+<p>- <strong>Isolation</strong> = изоляция (приложения не мешают друг другу)</p>
+<p>- <strong>Portability</strong> = переносимость (работает везде одинаково)</p>
+<p>- <strong>Consistency</strong> = согласованность (одинаковое поведение)</p>
+<p><strong>Проблемы БЕЗ контейнеров:</strong></p>
+<p>1. <strong>"У меня работает"</strong> → На твоём компьютере Java 17, на сервере Java 11 → не работает 2. <strong>Конфликты</strong> → Два приложения требуют разные версии библиотек 3. <strong>Медленный деплой</strong> → Нужно устанавливать зависимости на сервере</p>
+<p><strong>Что решают контейнеры:</strong></p>
+<p>1. <strong>Изоляция</strong> → Каждое приложение в своём контейнере, не мешают друг другу 2. <strong>Переносимость</strong> → Работает одинаково на твоём компьютере, в Jenkins, в Kubernetes 3. <strong>Быстрый деплой</strong> → Контейнер уже содержит всё необходимое</p>
+<p><strong>Пример:</strong></p>
+<p># Без контейнеров (плохо) Твой компьютер: Java 17, PostgreSQL 15 → работает Сервер: Java 11, PostgreSQL 13 → не работает (несовместимость)</p>
+<p># С контейнерами (хорошо) Dockerfile: FROM eclipse-temurin:17-jre-alpine Везде одинаково → работает везде!</p>
+<p><strong>Почему это важно в DevOps?</strong></p>
+<p>DevOps = автоматизация. Контейнеры позволяют автоматизировать деплой: собрал один раз → работает везде.</p></p>
+<p><strong>Термины:</strong></p>
+<p>- <strong>Containerization</strong> = контейнеризация (упаковка приложения в контейнер)</p>
+<p>- <strong>Isolation</strong> = изоляция (приложения не мешают друг другу)</p>
+<p>- <strong>Portability</strong> = переносимость (работает везде одинаково)</p>
+<p>- <strong>Consistency</strong> = согласованность (одинаковое поведение)</p>
+<p><strong>Проблемы БЕЗ контейнеров:</strong></p>
+<p>1. <strong>"У меня работает"</strong> → На твоём компьютере Java 17, на сервере Java 11 → не работает</p>
+<p>2. <strong>Конфликты</strong> → Два приложения требуют разные версии библиотек</p>
+<p>3. <strong>Медленный деплой</strong> → Нужно устанавливать зависимости на сервере</p>
+<p><strong>Что решают контейнеры:</strong></p>
+<p>1. <strong>Изоляция</strong> → Каждое приложение в своём контейнере, не мешают друг другу</p>
+<p>2. <strong>Переносимость</strong> → Работает одинаково на твоём компьютере, в Jenkins, в Kubernetes</p>
+<p>3. <strong>Быстрый деплой</strong> → Контейнер уже содержит всё необходимое</p>
+<p><strong>Пример:</strong></p>
+<p>```bash</p>
+<p># Без контейнеров (плохо)</p>
+<p>Твой компьютер: Java 17, PostgreSQL 15 → работает</p>
+<p>Сервер: Java 11, PostgreSQL 13 → не работает (несовместимость)</p>
+<p># С контейнерами (хорошо)</p>
+<p>Dockerfile: FROM eclipse-temurin:17-jre-alpine</p>
+<p>Везде одинаково → работает везде!</p>
+<p>```</p>
+<p><strong>Почему это важно в DevOps?</strong></p>
+<p>DevOps = автоматизация. Контейнеры позволяют автоматизировать деплой: собрал один раз → работает везде.</p></p>
                 </div>
             </div>
         </div>
@@ -461,11 +513,93 @@
             <div class="question-content" id="content18">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>Multi-stage builds reduce final image size by excluding build tools and intermediate files from the runtime image. The build stage compiles the application, and the runtime stage only contains the compiled JAR and runtime dependencies, resulting in smaller, faster, and more secure images. | Почему используем multi-stage Docker builds? Термины: Multi-stage build = многоэтапная сборка (несколько этапов в Dockerfile) Build stage = этап сборки (компиляция) Runtime stage = этап выполнения (только готовое приложение) Image size = размер образ...</p>
+                    <p>build in steps reduce final image size by excluding build tools and intermediate files from the runtime image. The build stage compiles the application, and the runtime stage only contains the compiled JAR and runtime libraries, resulting in smaller, faster, and more secure images.</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p>Объяснение будет добавлено позже.</p>
+                    <p><p><strong>Почему используем multi-stage Docker builds?</strong></p>
+<p><strong>Термины:</strong></p>
+<p>- <strong>Multi-stage build</strong> = многоэтапная сборка (несколько этапов в Dockerfile)</p>
+<p>- <strong>Build stage</strong> = этап сборки (компиляция)</p>
+<p>- <strong>Runtime stage</strong> = этап выполнения (только готовое приложение)</p>
+<p>- <strong>Image size</strong> = размер образа</p>
+<p><strong>Проблема БЕЗ multi-stage:</strong></p>
+<p># Плохо: всё в одном образе FROM gradle:8.10.2-jdk17-alpine WORKDIR /app COPY . . RUN ./gradlew build CMD ["java", "-jar", "build/libs/app.jar"]</p>
+<p># Размер: ~500MB (Gradle + JDK + исходники + JAR)</p>
+<p><strong>Решение С multi-stage:</strong></p>
+<p># Этап 1: Сборка FROM gradle:8.10.2-jdk17-alpine AS build WORKDIR /app COPY . . RUN ./gradlew build</p>
+<p># Этап 2: Runtime (только JAR) FROM eclipse-temurin:17-jre-alpine WORKDIR /app COPY --from=build /app/build/libs/app.jar app.jar CMD ["java", "-jar", "app.jar"]</p>
+<p># Размер: ~150MB (только JRE + JAR)</p>
+<p><strong>Преимущества:</strong></p>
+<p>1. <strong>Меньший размер</strong> → Быстрее скачивается, меньше места 2. <strong>Безопасность</strong> → Нет инструментов сборки (меньше уязвимостей) 3. <strong>Скорость</strong> → Меньший образ = быстрее запускается</p>
+<p><strong>Пример:</strong></p>
+<p># Без multi-stage docker images # app:latest    500MB</p>
+<p># С multi-stage docker images # app:latest    150MB  ← В 3 раза меньше!</p>
+<p><strong>Почему это важно?</strong></p>
+<p>В Kubernetes нужно скачивать образы на каждый узел. Меньший размер = быстрее деплой, меньше трафика.</p></p>
+<p><strong>Термины:</strong></p>
+<p>- <strong>Multi-stage build</strong> = многоэтапная сборка (несколько этапов в Dockerfile)</p>
+<p>- <strong>Build stage</strong> = этап сборки (компиляция)</p>
+<p>- <strong>Runtime stage</strong> = этап выполнения (только готовое приложение)</p>
+<p>- <strong>Image size</strong> = размер образа</p>
+<p><strong>Проблема БЕЗ multi-stage:</strong></p>
+<p># Плохо: всё в одном образе FROM gradle:8.10.2-jdk17-alpine WORKDIR /app COPY . . RUN ./gradlew build CMD ["java", "-jar", "build/libs/app.jar"]</p>
+<p># Размер: ~500MB (Gradle + JDK + исходники + JAR)</p>
+<p><strong>Решение С multi-stage:</strong></p>
+<p># Этап 1: Сборка FROM gradle:8.10.2-jdk17-alpine AS build WORKDIR /app COPY . . RUN ./gradlew build</p>
+<p># Этап 2: Runtime (только JAR) FROM eclipse-temurin:17-jre-alpine WORKDIR /app COPY --from=build /app/build/libs/app.jar app.jar CMD ["java", "-jar", "app.jar"]</p>
+<p># Размер: ~150MB (только JRE + JAR)</p>
+<p><strong>Преимущества:</strong></p>
+<p>1. <strong>Меньший размер</strong> → Быстрее скачивается, меньше места 2. <strong>Безопасность</strong> → Нет инструментов сборки (меньше уязвимостей) 3. <strong>Скорость</strong> → Меньший образ = быстрее запускается</p>
+<p><strong>Пример:</strong></p>
+<p># Без multi-stage docker images # app:latest    500MB</p>
+<p># С multi-stage docker images # app:latest    150MB  ← В 3 раза меньше!</p>
+<p><strong>Почему это важно?</strong></p>
+<p>В Kubernetes нужно скачивать образы на каждый узел. Меньший размер = быстрее деплой, меньше трафика.</p></p>
+<p><strong>Термины:</strong></p>
+<p>- <strong>Multi-stage build</strong> = многоэтапная сборка (несколько этапов в Dockerfile)</p>
+<p>- <strong>Build stage</strong> = этап сборки (компиляция)</p>
+<p>- <strong>Runtime stage</strong> = этап выполнения (только готовое приложение)</p>
+<p>- <strong>Image size</strong> = размер образа</p>
+<p><strong>Проблема БЕЗ multi-stage:</strong></p>
+<p>```dockerfile</p>
+<p># Плохо: всё в одном образе</p>
+<p>FROM gradle:8.10.2-jdk17-alpine</p>
+<p>WORKDIR /app</p>
+<p>COPY . .</p>
+<p>RUN ./gradlew build</p>
+<p>CMD ["java", "-jar", "build/libs/app.jar"]</p>
+<p># Размер: ~500MB (Gradle + JDK + исходники + JAR)</p>
+<p>```</p>
+<p><strong>Решение С multi-stage:</strong></p>
+<p>```dockerfile</p>
+<p># Этап 1: Сборка</p>
+<p>FROM gradle:8.10.2-jdk17-alpine AS build</p>
+<p>WORKDIR /app</p>
+<p>COPY . .</p>
+<p>RUN ./gradlew build</p>
+<p># Этап 2: Runtime (только JAR)</p>
+<p>FROM eclipse-temurin:17-jre-alpine</p>
+<p>WORKDIR /app</p>
+<p>COPY --from=build /app/build/libs/app.jar app.jar</p>
+<p>CMD ["java", "-jar", "app.jar"]</p>
+<p># Размер: ~150MB (только JRE + JAR)</p>
+<p>```</p>
+<p><strong>Преимущества:</strong></p>
+<p>1. <strong>Меньший размер</strong> → Быстрее скачивается, меньше места</p>
+<p>2. <strong>Безопасность</strong> → Нет инструментов сборки (меньше уязвимостей)</p>
+<p>3. <strong>Скорость</strong> → Меньший образ = быстрее запускается</p>
+<p><strong>Пример:</strong></p>
+<p>```bash</p>
+<p># Без multi-stage</p>
+<p>docker images</p>
+<p># app:latest    500MB</p>
+<p># С multi-stage</p>
+<p>docker images</p>
+<p># app:latest    150MB  ← В 3 раза меньше!</p>
+<p>```</p>
+<p><strong>Почему это важно?</strong></p>
+<p>В Kubernetes нужно скачивать образы на каждый узел. Меньший размер = быстрее деплой, меньше трафика.</p></p>
                 </div>
             </div>
         </div>
@@ -479,11 +613,83 @@
             <div class="question-content" id="content19">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>Running containers as non-root users follows the principle of least privilege, reducing security risks. If a container is compromised, the attacker has limited permissions and cannot damage the host system or access sensitive files. | Почему контейнеры должны работать не от root? Термины: Non-root user = непривилегированный пользователь (не администратор) Principle of least privilege = принцип минимальных привилегий Container escape = побег из контейнера (доступ к хосту) Compromis...</p>
+                    <p>Running containers as regular users follows the give only needed rights, reducing security risks. If a container is compromised, the attacker has limited permissions and cannot damage the host system or access sensitive files.</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p>Объяснение будет добавлено позже.</p>
+                    <p><p><strong>Почему контейнеры должны работать не от root?</strong></p>
+<p><strong>Термины:</strong></p>
+<p>- <strong>Non-root user</strong> = непривилегированный пользователь (не администратор)</p>
+<p>- <strong>Principle of least privilege</strong> = принцип минимальных привилегий</p>
+<p>- <strong>Container escape</strong> = побег из контейнера (доступ к хосту)</p>
+<p>- <strong>Compromised</strong> = скомпрометирован (взломан)</p>
+<p><strong>Проблема с root:</strong></p>
+<p># Плохо: контейнер работает от root FROM alpine CMD ["java", "-jar", "app.jar"] # Если хакер взломает → получит root права в контейнере</p>
+<p><strong>Решение:</strong></p>
+<p># Хорошо: контейнер работает от обычного пользователя FROM eclipse-temurin:17-jre-alpine RUN addgroup -S spring && adduser -S spring -G spring USER spring CMD ["java", "-jar", "app.jar"] # Если хакер взломает → получит только права пользователя spring</p>
+<p><strong>Почему это важно?</strong></p>
+<p>| Root пользователь | Non-root пользователь | |-------------------|----------------------| | Может удалить файлы системы | Может удалить только свои файлы | | Может изменить системные настройки | Не может изменить системные настройки | | Если контейнер скомпрометирован → опасность для хоста | Если контейнер скомпрометирован → ограниченный ущерб |</p>
+<p><strong>Пример атаки:</strong></p>
+<p># Если контейнер работает от root Хакер взламывает приложение → получает root в контейнере → Может попытаться выйти из контейнера (container escape) → Может получить доступ к хосту</p>
+<p># Если контейнер работает от non-root Хакер взламывает приложение → получает права пользователя spring → Не может выйти из контейнера (нет прав) → Ущерб ограничен контейнером</p>
+<p><strong>Почему это важно в DevOps?</strong></p>
+<p>Безопасность — один из ключевых принципов DevOps. Non-root контейнеры = меньше рисков.</p></p>
+<p><strong>Термины:</strong></p>
+<p>- <strong>Non-root user</strong> = непривилегированный пользователь (не администратор)</p>
+<p>- <strong>Principle of least privilege</strong> = принцип минимальных привилегий</p>
+<p>- <strong>Container escape</strong> = побег из контейнера (доступ к хосту)</p>
+<p>- <strong>Compromised</strong> = скомпрометирован (взломан)</p>
+<p><strong>Проблема с root:</strong></p>
+<p># Плохо: контейнер работает от root FROM alpine CMD ["java", "-jar", "app.jar"] # Если хакер взломает → получит root права в контейнере</p>
+<p><strong>Решение:</strong></p>
+<p># Хорошо: контейнер работает от обычного пользователя FROM eclipse-temurin:17-jre-alpine RUN addgroup -S spring && adduser -S spring -G spring USER spring CMD ["java", "-jar", "app.jar"] # Если хакер взломает → получит только права пользователя spring</p>
+<p><strong>Почему это важно?</strong></p>
+<p>| Root пользователь | Non-root пользователь | |-------------------|----------------------| | Может удалить файлы системы | Может удалить только свои файлы | | Может изменить системные настройки | Не может изменить системные настройки | | Если контейнер скомпрометирован → опасность для хоста | Если контейнер скомпрометирован → ограниченный ущерб |</p>
+<p><strong>Пример атаки:</strong></p>
+<p># Если контейнер работает от root Хакер взламывает приложение → получает root в контейнере → Может попытаться выйти из контейнера (container escape) → Может получить доступ к хосту</p>
+<p># Если контейнер работает от non-root Хакер взламывает приложение → получает права пользователя spring → Не может выйти из контейнера (нет прав) → Ущерб ограничен контейнером</p>
+<p><strong>Почему это важно в DevOps?</strong></p>
+<p>Безопасность — один из ключевых принципов DevOps. Non-root контейнеры = меньше рисков.</p></p>
+<p><strong>Термины:</strong></p>
+<p>- <strong>Non-root user</strong> = непривилегированный пользователь (не администратор)</p>
+<p>- <strong>Principle of least privilege</strong> = принцип минимальных привилегий</p>
+<p>- <strong>Container escape</strong> = побег из контейнера (доступ к хосту)</p>
+<p>- <strong>Compromised</strong> = скомпрометирован (взломан)</p>
+<p><strong>Проблема с root:</strong></p>
+<p>```dockerfile</p>
+<p># Плохо: контейнер работает от root</p>
+<p>FROM alpine</p>
+<p>CMD ["java", "-jar", "app.jar"]</p>
+<p># Если хакер взломает → получит root права в контейнере</p>
+<p>```</p>
+<p><strong>Решение:</strong></p>
+<p>```dockerfile</p>
+<p># Хорошо: контейнер работает от обычного пользователя</p>
+<p>FROM eclipse-temurin:17-jre-alpine</p>
+<p>RUN addgroup -S spring && adduser -S spring -G spring</p>
+<p>USER spring</p>
+<p>CMD ["java", "-jar", "app.jar"]</p>
+<p># Если хакер взломает → получит только права пользователя spring</p>
+<p>```</p>
+<p><strong>Почему это важно?</strong></p>
+<p>| Root пользователь | Non-root пользователь |</p>
+<p>|-------------------|----------------------|</p>
+<p>| Может удалить файлы системы | Может удалить только свои файлы |</p>
+<p>| Может изменить системные настройки | Не может изменить системные настройки |</p>
+<p>| Если контейнер скомпрометирован → опасность для хоста | Если контейнер скомпрометирован → ограниченный ущерб |</p>
+<p><strong>Пример атаки:</strong></p>
+<p>```bash</p>
+<p># Если контейнер работает от root</p>
+<p>Хакер взламывает приложение → получает root в контейнере</p>
+<p>→ Может попытаться выйти из контейнера (container escape)</p>
+<p>→ Может получить доступ к хосту</p>
+<p># Если контейнер работает от non-root</p>
+<p>Хакер взламывает приложение → получает права пользователя spring</p>
+<p>→ Не может выйти из контейнера (нет прав)</p>
+<p>→ Ущерб ограничен контейнером</p>
+<p>```</p>
+<p><strong>Почему это важно в DevOps?</strong></p>
+<p>Безопасность — один из ключевых принципов DevOps. Non-root контейнеры = меньше рисков.</p></p>
                 </div>
             </div>
         </div>
@@ -497,11 +703,96 @@
             <div class="question-content" id="content20">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>Docker layers are read-only filesystem snapshots created by each instruction in a Dockerfile. Layers are cached and reused, making subsequent builds faster. If a layer hasn't changed, Docker reuses the cached version instead of rebuilding it. | Что такое Docker layers и зачем они нужны? Термины: Layer = слой (снимок файловой системы) Caching = кэширование (сохранение для повторного использования) Read-only = только для чтения (нельзя изменить) Union filesystem = объединённая файловая систем...</p>
+                    <p>Docker steps are read-only filesystem snapshots created by each instruction in a Dockerfile. steps are saved and reused, making subsequent builds faster. If a layer hasn't changed, Docker reuses the saved version instead of rebuilding it.</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p>Объяснение будет добавлено позже.</p>
+                    <p><p><strong>Что такое Docker layers и зачем они нужны?</strong></p>
+<p><strong>Термины:</strong></p>
+<p>- <strong>Layer</strong> = слой (снимок файловой системы)</p>
+<p>- <strong>Caching</strong> = кэширование (сохранение для повторного использования)</p>
+<p>- <strong>Read-only</strong> = только для чтения (нельзя изменить)</p>
+<p>- <strong>Union filesystem</strong> = объединённая файловая система (слои накладываются друг на друга)</p>
+<p><strong>Как работают слои:</strong></p>
+<p>FROM alpine                    # Слой 1: базовый образ RUN apk add java              # Слой 2: установка Java COPY app.jar app.jar          # Слой 3: копирование JAR CMD ["java", "-jar", "app.jar"] # Слой 4: команда запуска</p>
+<p><strong>Каждая команда = новый слой:</strong> Слой 4: CMD Слой 3: COPY app.jar Слой 2: RUN apk add java Слой 1: FROM alpine</p>
+<p><strong>Почему это важно?</strong></p>
+<p>1. <strong>Кэширование</strong> → Если слой не изменился, Docker использует кэш 2. <strong>Скорость</strong> → Не нужно пересобирать всё заново 3. <strong>Эффективность</strong> → Общие слои используются несколькими образами</p>
+<p><strong>Пример:</strong></p>
+<p># Первая сборка docker build -t app:1.0 . # Собирает все слои: 2 минуты</p>
+<p># Вторая сборка (изменили только app.jar) docker build -t app:1.1 . # Слой 1-2: использует кэш (0 секунд) # Слой 3: пересобирает (копирует новый JAR) - 5 секунд # Слой 4: использует кэш (0 секунд) # Итого: 5 секунд вместо 2 минут!</p>
+<p><strong>Оптимизация:</strong></p>
+<p># Плохо: часто меняющиеся файлы в начале COPY src src              # Меняется часто → слой пересобирается RUN ./gradlew build      # Зависит от COPY → тоже пересобирается</p>
+<p># Хорошо: редко меняющиеся файлы в начале COPY build.gradle .      # Меняется редко → кэшируется RUN ./gradlew dependencies # Зависит от build.gradle → кэшируется COPY src src             # Меняется часто, но в конце RUN ./gradlew build      # Только этот слой пересобирается</p>
+<p><strong>Почему это важно в DevOps?</strong></p>
+<p>В CI/CD pipeline каждый коммит запускает сборку. Кэширование слоёв = экономия времени и ресурсов.</p></p>
+<p><strong>Термины:</strong></p>
+<p>- <strong>Layer</strong> = слой (снимок файловой системы)</p>
+<p>- <strong>Caching</strong> = кэширование (сохранение для повторного использования)</p>
+<p>- <strong>Read-only</strong> = только для чтения (нельзя изменить)</p>
+<p>- <strong>Union filesystem</strong> = объединённая файловая система (слои накладываются друг на друга)</p>
+<p><strong>Как работают слои:</strong></p>
+<p>FROM alpine                    # Слой 1: базовый образ RUN apk add java              # Слой 2: установка Java COPY app.jar app.jar          # Слой 3: копирование JAR CMD ["java", "-jar", "app.jar"] # Слой 4: команда запуска</p>
+<p><strong>Каждая команда = новый слой:</strong></p>
+<p>Слой 4: CMD Слой 3: COPY app.jar Слой 2: RUN apk add java Слой 1: FROM alpine</p>
+<p><strong>Почему это важно?</strong></p>
+<p>1. <strong>Кэширование</strong> → Если слой не изменился, Docker использует кэш 2. <strong>Скорость</strong> → Не нужно пересобирать всё заново 3. <strong>Эффективность</strong> → Общие слои используются несколькими образами</p>
+<p><strong>Пример:</strong></p>
+<p># Первая сборка docker build -t app:1.0 . # Собирает все слои: 2 минуты</p>
+<p># Вторая сборка (изменили только app.jar) docker build -t app:1.1 . # Слой 1-2: использует кэш (0 секунд) # Слой 3: пересобирает (копирует новый JAR) - 5 секунд # Слой 4: использует кэш (0 секунд) # Итого: 5 секунд вместо 2 минут!</p>
+<p><strong>Оптимизация:</strong></p>
+<p># Плохо: часто меняющиеся файлы в начале COPY src src              # Меняется часто → слой пересобирается RUN ./gradlew build      # Зависит от COPY → тоже пересобирается</p>
+<p># Хорошо: редко меняющиеся файлы в начале COPY build.gradle .      # Меняется редко → кэшируется RUN ./gradlew dependencies # Зависит от build.gradle → кэшируется COPY src src             # Меняется часто, но в конце RUN ./gradlew build      # Только этот слой пересобирается</p>
+<p><strong>Почему это важно в DevOps?</strong></p>
+<p>В CI/CD pipeline каждый коммит запускает сборку. Кэширование слоёв = экономия времени и ресурсов.</p></p>
+<p><strong>Термины:</strong></p>
+<p>- <strong>Layer</strong> = слой (снимок файловой системы)</p>
+<p>- <strong>Caching</strong> = кэширование (сохранение для повторного использования)</p>
+<p>- <strong>Read-only</strong> = только для чтения (нельзя изменить)</p>
+<p>- <strong>Union filesystem</strong> = объединённая файловая система (слои накладываются друг на друга)</p>
+<p><strong>Как работают слои:</strong></p>
+<p>```dockerfile</p>
+<p>FROM alpine                    # Слой 1: базовый образ</p>
+<p>RUN apk add java              # Слой 2: установка Java</p>
+<p>COPY app.jar app.jar          # Слой 3: копирование JAR</p>
+<p>CMD ["java", "-jar", "app.jar"] # Слой 4: команда запуска</p>
+<p>```</p>
+<p><strong>Каждая команда = новый слой:</strong></p>
+<p>```</p>
+<p>Слой 4: CMD</p>
+<p>Слой 3: COPY app.jar</p>
+<p>Слой 2: RUN apk add java</p>
+<p>Слой 1: FROM alpine</p>
+<p>```</p>
+<p><strong>Почему это важно?</strong></p>
+<p>1. <strong>Кэширование</strong> → Если слой не изменился, Docker использует кэш</p>
+<p>2. <strong>Скорость</strong> → Не нужно пересобирать всё заново</p>
+<p>3. <strong>Эффективность</strong> → Общие слои используются несколькими образами</p>
+<p><strong>Пример:</strong></p>
+<p>```bash</p>
+<p># Первая сборка</p>
+<p>docker build -t app:1.0 .</p>
+<p># Собирает все слои: 2 минуты</p>
+<p># Вторая сборка (изменили только app.jar)</p>
+<p>docker build -t app:1.1 .</p>
+<p># Слой 1-2: использует кэш (0 секунд)</p>
+<p># Слой 3: пересобирает (копирует новый JAR) - 5 секунд</p>
+<p># Слой 4: использует кэш (0 секунд)</p>
+<p># Итого: 5 секунд вместо 2 минут!</p>
+<p>```</p>
+<p><strong>Оптимизация:</strong></p>
+<p>```dockerfile</p>
+<p># Плохо: часто меняющиеся файлы в начале</p>
+<p>COPY src src              # Меняется часто → слой пересобирается</p>
+<p>RUN ./gradlew build      # Зависит от COPY → тоже пересобирается</p>
+<p># Хорошо: редко меняющиеся файлы в начале</p>
+<p>COPY build.gradle .      # Меняется редко → кэшируется</p>
+<p>RUN ./gradlew dependencies # Зависит от build.gradle → кэшируется</p>
+<p>COPY src src             # Меняется часто, но в конце</p>
+<p>RUN ./gradlew build      # Только этот слой пересобирается</p>
+<p>```</p>
+<p><strong>Почему это важно в DevOps?</strong></p>
+<p>В CI/CD pipeline каждый коммит запускает сборку. Кэширование слоёв = экономия времени и ресурсов.</p></p>
                 </div>
             </div>
         </div>
@@ -515,11 +806,91 @@
             <div class="question-content" id="content21">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>A Dockerfile defines how to build a single container image. Docker Compose orchestrates multiple containers (application, database, etc.) as a single application stack, defining networks, volumes, and dependencies between services. | Разница между Dockerfile и Docker Compose Термины: Dockerfile = инструкция для сборки одного образа Docker Compose = оркестрация нескольких контейнеров Orchestration = оркестрация (управление несколькими контейнерами) Stack = стек (группа связанных с...</p>
+                    <p>A Dockerfile defines how to build a single container image. Docker Compose manages multiple containers (application, database, etc.) as a single application stack, defining networks, volumes, and libraries between services.</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p>Объяснение будет добавлено позже.</p>
+                    <p><p><strong>Разница между Dockerfile и Docker Compose</strong></p>
+<p><strong>Термины:</strong></p>
+<p>- <strong>Dockerfile</strong> = инструкция для сборки одного образа</p>
+<p>- <strong>Docker Compose</strong> = оркестрация нескольких контейнеров</p>
+<p>- <strong>Orchestration</strong> = оркестрация (управление несколькими контейнерами)</p>
+<p>- <strong>Stack</strong> = стек (группа связанных сервисов)</p>
+<p><strong>Dockerfile:</strong></p>
+<p># Собирает ОДИН образ FROM eclipse-temurin:17-jre-alpine COPY app.jar app.jar CMD ["java", "-jar", "app.jar"]</p>
+<p><strong>Docker Compose:</strong></p>
+<p># Управляет НЕСКОЛЬКИМИ контейнерами services: app: build: . ports:</p>
+<p>- "8080:8080"</p>
+<p>db: image: postgres:15 volumes:</p>
+<p>- db-data:/var/lib/postgresql/data</p>
+<p><strong>Сравнение:</strong></p>
+<p>| Параметр | Dockerfile | Docker Compose | |----------|------------|----------------| | <strong>Что делает</strong> | Собирает образ | Запускает несколько контейнеров | | <strong>Команда</strong> | `docker build` | `docker-compose up` | | <strong>Использование</strong> | Один контейнер | Несколько связанных контейнеров |</p>
+<p><strong>Пример:</strong></p>
+<p># Dockerfile: собрать образ docker build -t myapp . docker run -p 8080:8080 myapp</p>
+<p># Docker Compose: запустить всё вместе docker-compose up # Запускает: app + database + network + volumes</p>
+<p><strong>Почему это важно?</strong></p>
+<p>В реальных приложениях нужно несколько сервисов (приложение + база данных + кэш). Docker Compose упрощает управление ими.</p></p>
+<p><strong>Термины:</strong></p>
+<p>- <strong>Dockerfile</strong> = инструкция для сборки одного образа</p>
+<p>- <strong>Docker Compose</strong> = оркестрация нескольких контейнеров</p>
+<p>- <strong>Orchestration</strong> = оркестрация (управление несколькими контейнерами)</p>
+<p>- <strong>Stack</strong> = стек (группа связанных сервисов)</p>
+<p><strong>Dockerfile:</strong></p>
+<p># Собирает ОДИН образ FROM eclipse-temurin:17-jre-alpine COPY app.jar app.jar CMD ["java", "-jar", "app.jar"]</p>
+<p><strong>Docker Compose:</strong></p>
+<p># Управляет НЕСКОЛЬКИМИ контейнерами services: app: build: . ports:</p>
+<p>- "8080:8080"</p>
+<p>db: image: postgres:15 volumes:</p>
+<p>- db-data:/var/lib/postgresql/data</p>
+<p><strong>Сравнение:</strong></p>
+<p>| Параметр | Dockerfile | Docker Compose | |----------|------------|----------------| | <strong>Что делает</strong> | Собирает образ | Запускает несколько контейнеров | | <strong>Команда</strong> | `docker build` | `docker-compose up` | | <strong>Использование</strong> | Один контейнер | Несколько связанных контейнеров |</p>
+<p><strong>Пример:</strong></p>
+<p># Dockerfile: собрать образ docker build -t myapp . docker run -p 8080:8080 myapp</p>
+<p># Docker Compose: запустить всё вместе docker-compose up # Запускает: app + database + network + volumes</p>
+<p><strong>Почему это важно?</strong></p>
+<p>В реальных приложениях нужно несколько сервисов (приложение + база данных + кэш). Docker Compose упрощает управление ими.</p></p>
+<p><strong>Термины:</strong></p>
+<p>- <strong>Dockerfile</strong> = инструкция для сборки одного образа</p>
+<p>- <strong>Docker Compose</strong> = оркестрация нескольких контейнеров</p>
+<p>- <strong>Orchestration</strong> = оркестрация (управление несколькими контейнерами)</p>
+<p>- <strong>Stack</strong> = стек (группа связанных сервисов)</p>
+<p><strong>Dockerfile:</strong></p>
+<p>```dockerfile</p>
+<p># Собирает ОДИН образ</p>
+<p>FROM eclipse-temurin:17-jre-alpine</p>
+<p>COPY app.jar app.jar</p>
+<p>CMD ["java", "-jar", "app.jar"]</p>
+<p>```</p>
+<p><strong>Docker Compose:</strong></p>
+<p>```yaml</p>
+<p># Управляет НЕСКОЛЬКИМИ контейнерами</p>
+<p>services:</p>
+<p>app:</p>
+<p>build: .</p>
+<p>ports:</p>
+<p>- "8080:8080"</p>
+<p>db:</p>
+<p>image: postgres:15</p>
+<p>volumes:</p>
+<p>- db-data:/var/lib/postgresql/data</p>
+<p>```</p>
+<p><strong>Сравнение:</strong></p>
+<p>| Параметр | Dockerfile | Docker Compose |</p>
+<p>|----------|------------|----------------|</p>
+<p>| <strong>Что делает</strong> | Собирает образ | Запускает несколько контейнеров |</p>
+<p>| <strong>Команда</strong> | `docker build` | `docker-compose up` |</p>
+<p>| <strong>Использование</strong> | Один контейнер | Несколько связанных контейнеров |</p>
+<p><strong>Пример:</strong></p>
+<p>```bash</p>
+<p># Dockerfile: собрать образ</p>
+<p>docker build -t myapp .</p>
+<p>docker run -p 8080:8080 myapp</p>
+<p># Docker Compose: запустить всё вместе</p>
+<p>docker-compose up</p>
+<p># Запускает: app + database + network + volumes</p>
+<p>```</p>
+<p><strong>Почему это важно?</strong></p>
+<p>В реальных приложениях нужно несколько сервисов (приложение + база данных + кэш). Docker Compose упрощает управление ими.</p></p>
                 </div>
             </div>
         </div>
@@ -533,11 +904,89 @@
             <div class="question-content" id="content22">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>Externalized configuration allows the same application to run in different environments (dev, test, prod) without code changes. Configuration is stored in files (application.yml) or environment variables, making deployments flexible and environment-specific. | Почему конфигурацию нужно выносить наружу? Термины: Externalized configuration = внешняя конфигурация (не в коде) Environment-specific = специфичный для окружения Hardcoded = захардкоженный (в коде) Проблема БЕЗ внешней конфигурации: Решение: Преимущ...</p>
+                    <p>settings outside code allows the same application to run in different environments (dev, test, prod) without code changes. Configuration is stored in files (application.yml) or environment variables, making deployments flexible and environment-specific.</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p>Объяснение будет добавлено позже.</p>
+                    <p><p><strong>Почему конфигурацию нужно выносить наружу?</strong></p>
+<p><strong>Термины:</strong></p>
+<p>- <strong>Externalized configuration</strong> = внешняя конфигурация (не в коде)</p>
+<p>- <strong>Environment-specific</strong> = специфичный для окружения</p>
+<p>- <strong>Hardcoded</strong> = захардкоженный (в коде)</p>
+<p><strong>Проблема БЕЗ внешней конфигурации:</strong></p>
+<p>// Плохо: конфигурация в коде String dbUrl = "jdbc:postgresql://localhost:5432/mydb"; String dbUser = "postgres"; String dbPassword = "secret123";</p>
+<p>// Для продакшена нужно менять код → опасно!</p>
+<p><strong>Решение:</strong></p>
+<p># application.yml (внешний файл) spring: datasource: url: ${DB_URL:jdbc:postgresql://localhost:5432/mydb} username: ${DB_USER:postgres} password: ${DB_PASSWORD:}</p>
+<p># Разные окружения = разные переменные # Development DB_URL=jdbc:postgresql://localhost:5432/devdb</p>
+<p># Production DB_URL=jdbc:postgresql://prod-server:5432/proddb</p>
+<p><strong>Преимущества:</strong></p>
+<p>1. <strong>Один код</strong> → Работает везде, меняются только переменные 2. <strong>Безопасность</strong> → Секреты не в коде, а в переменных окружения 3. <strong>Гибкость</strong> → Легко менять настройки без пересборки</p>
+<p><strong>Пример:</strong></p>
+<p># Development docker run -e DB_URL=localhost:5432/dev app</p>
+<p># Production docker run -e DB_URL=prod-server:5432/prod app # Тот же образ, разные настройки!</p>
+<p><strong>Почему это важно в DevOps?</strong></p>
+<p>CI/CD деплоит один и тот же образ в разные окружения. Внешняя конфигурация позволяет адаптировать его под каждое окружение.</p></p>
+<p><strong>Термины:</strong></p>
+<p>- <strong>Externalized configuration</strong> = внешняя конфигурация (не в коде)</p>
+<p>- <strong>Environment-specific</strong> = специфичный для окружения</p>
+<p>- <strong>Hardcoded</strong> = захардкоженный (в коде)</p>
+<p><strong>Проблема БЕЗ внешней конфигурации:</strong></p>
+<p>// Плохо: конфигурация в коде String dbUrl = "jdbc:postgresql://localhost:5432/mydb"; String dbUser = "postgres"; String dbPassword = "secret123";</p>
+<p>// Для продакшена нужно менять код → опасно!</p>
+<p><strong>Решение:</strong></p>
+<p># application.yml (внешний файл) spring: datasource: url: ${DB_URL:jdbc:postgresql://localhost:5432/mydb} username: ${DB_USER:postgres} password: ${DB_PASSWORD:}</p>
+<p># Разные окружения = разные переменные # Development DB_URL=jdbc:postgresql://localhost:5432/devdb</p>
+<p># Production DB_URL=jdbc:postgresql://prod-server:5432/proddb</p>
+<p><strong>Преимущества:</strong></p>
+<p>1. <strong>Один код</strong> → Работает везде, меняются только переменные 2. <strong>Безопасность</strong> → Секреты не в коде, а в переменных окружения 3. <strong>Гибкость</strong> → Легко менять настройки без пересборки</p>
+<p><strong>Пример:</strong></p>
+<p># Development docker run -e DB_URL=localhost:5432/dev app</p>
+<p># Production docker run -e DB_URL=prod-server:5432/prod app # Тот же образ, разные настройки!</p>
+<p><strong>Почему это важно в DevOps?</strong></p>
+<p>CI/CD деплоит один и тот же образ в разные окружения. Внешняя конфигурация позволяет адаптировать его под каждое окружение.</p></p>
+<p><strong>Термины:</strong></p>
+<p>- <strong>Externalized configuration</strong> = внешняя конфигурация (не в коде)</p>
+<p>- <strong>Environment-specific</strong> = специфичный для окружения</p>
+<p>- <strong>Hardcoded</strong> = захардкоженный (в коде)</p>
+<p><strong>Проблема БЕЗ внешней конфигурации:</strong></p>
+<p>```java</p>
+<p>// Плохо: конфигурация в коде</p>
+<p>String dbUrl = "jdbc:postgresql://localhost:5432/mydb";</p>
+<p>String dbUser = "postgres";</p>
+<p>String dbPassword = "secret123";</p>
+<p>// Для продакшена нужно менять код → опасно!</p>
+<p>```</p>
+<p><strong>Решение:</strong></p>
+<p>```yaml</p>
+<p># application.yml (внешний файл)</p>
+<p>spring:</p>
+<p>datasource:</p>
+<p>url: ${DB_URL:jdbc:postgresql://localhost:5432/mydb}</p>
+<p>username: ${DB_USER:postgres}</p>
+<p>password: ${DB_PASSWORD:}</p>
+<p>```</p>
+<p>```bash</p>
+<p># Разные окружения = разные переменные</p>
+<p># Development</p>
+<p>DB_URL=jdbc:postgresql://localhost:5432/devdb</p>
+<p># Production</p>
+<p>DB_URL=jdbc:postgresql://prod-server:5432/proddb</p>
+<p>```</p>
+<p><strong>Преимущества:</strong></p>
+<p>1. <strong>Один код</strong> → Работает везде, меняются только переменные</p>
+<p>2. <strong>Безопасность</strong> → Секреты не в коде, а в переменных окружения</p>
+<p>3. <strong>Гибкость</strong> → Легко менять настройки без пересборки</p>
+<p><strong>Пример:</strong></p>
+<p>```bash</p>
+<p># Development</p>
+<p>docker run -e DB_URL=localhost:5432/dev app</p>
+<p># Production</p>
+<p>docker run -e DB_URL=prod-server:5432/prod app</p>
+<p># Тот же образ, разные настройки!</p>
+<p>```</p>
+<p><strong>Почему это важно в DevOps?</strong></p>
+<p>CI/CD деплоит один и тот же образ в разные окружения. Внешняя конфигурация позволяет адаптировать его под каждое окружение.</p></p>
                 </div>
             </div>
         </div>
@@ -551,11 +1000,125 @@
             <div class="question-content" id="content23">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>A Docker volume is persistent storage that survives container restarts and deletions. Databases use volumes to store data files, ensuring data persistence. Without volumes, database data would be lost when the container stops. | Что такое Docker volume и зачем он для баз данных? Термины: Volume = том (постоянное хранилище) Persistent storage = постоянное хранилище (данные сохраняются) Ephemeral = временный (исчезает при остановке контейнера) Проблема БЕЗ volume: Решение С vo...</p>
+                    <p>A Docker volume is data stays that survives container restarts and deletions. Databases use volumes to store data files, ensuring data persistence. Without volumes, database data would be lost when the container stops.</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p>Объяснение будет добавлено позже.</p>
+                    <p><p><strong>Что такое Docker volume и зачем он для баз данных?</strong></p>
+<p><strong>Термины:</strong></p>
+<p>- <strong>Volume</strong> = том (постоянное хранилище)</p>
+<p>- <strong>Persistent storage</strong> = постоянное хранилище (данные сохраняются)</p>
+<p>- <strong>Ephemeral</strong> = временный (исчезает при остановке контейнера)</p>
+<p><strong>Проблема БЕЗ volume:</strong></p>
+<p># Запускаем базу данных docker run postgres:15 # Создаём данные...</p>
+<p># Останавливаем контейнер docker stop postgres-container</p>
+<p># Запускаем снова docker run postgres:15 # Данные потеряны! ❌</p>
+<p><strong>Решение С volume:</strong></p>
+<p># docker-compose.yml services: db: image: postgres:15 volumes:</p>
+<p>- db-data:/var/lib/postgresql/data  # Данные сохраняются</p>
+<p>volumes: db-data:  # Именованный volume</p>
+<p># Запускаем docker-compose up</p>
+<p># Останавливаем docker-compose down</p>
+<p># Запускаем снова docker-compose up # Данные на месте! ✅</p>
+<p><strong>Как работает:</strong></p>
+<p>Контейнер PostgreSQL ↓ /var/lib/postgresql/data (внутри контейнера) ↓ Docker Volume (на хосте) ↓ /var/lib/docker/volumes/db-data (физическое хранилище)</p>
+<p><strong>Почему это важно для БД?</strong></p>
+<p>База данных хранит важные данные (пользователи, заказы, транзакции). Если данные потеряются → катастрофа. Volume гарантирует, что данные сохраняются.</p>
+<p><strong>Пример:</strong></p>
+<p># Без volume docker run postgres # Создали 1000 пользователей docker stop postgres docker rm postgres docker run postgres # Пользователи потеряны! 😱</p>
+<p># С volume docker run -v db-data:/var/lib/postgresql/data postgres # Создали 1000 пользователей docker stop postgres docker rm postgres docker run -v db-data:/var/lib/postgresql/data postgres # Пользователи на месте! ✅</p>
+<p><strong>Почему это важно в DevOps?</strong></p>
+<p>В продакшене нельзя терять данные. Volumes = гарантия сохранности данных при перезапуске контейнеров.</p></p>
+<p><strong>Термины:</strong></p>
+<p>- <strong>Volume</strong> = том (постоянное хранилище)</p>
+<p>- <strong>Persistent storage</strong> = постоянное хранилище (данные сохраняются)</p>
+<p>- <strong>Ephemeral</strong> = временный (исчезает при остановке контейнера)</p>
+<p><strong>Проблема БЕЗ volume:</strong></p>
+<p># Запускаем базу данных docker run postgres:15 # Создаём данные...</p>
+<p># Останавливаем контейнер docker stop postgres-container</p>
+<p># Запускаем снова docker run postgres:15 # Данные потеряны! ❌</p>
+<p><strong>Решение С volume:</strong></p>
+<p># docker-compose.yml services: db: image: postgres:15 volumes:</p>
+<p>- db-data:/var/lib/postgresql/data  # Данные сохраняются</p>
+<p>volumes: db-data:  # Именованный volume</p>
+<p># Запускаем docker-compose up</p>
+<p># Останавливаем docker-compose down</p>
+<p># Запускаем снова docker-compose up # Данные на месте! ✅</p>
+<p><strong>Как работает:</strong></p>
+<p>Контейнер PostgreSQL ↓ /var/lib/postgresql/data (внутри контейнера) ↓ Docker Volume (на хосте) ↓ /var/lib/docker/volumes/db-data (физическое хранилище)</p>
+<p><strong>Почему это важно для БД?</strong></p>
+<p>База данных хранит важные данные (пользователи, заказы, транзакции). Если данные потеряются → катастрофа. Volume гарантирует, что данные сохраняются.</p>
+<p><strong>Пример:</strong></p>
+<p># Без volume docker run postgres # Создали 1000 пользователей docker stop postgres docker rm postgres docker run postgres # Пользователи потеряны! 😱</p>
+<p># С volume docker run -v db-data:/var/lib/postgresql/data postgres # Создали 1000 пользователей docker stop postgres docker rm postgres docker run -v db-data:/var/lib/postgresql/data postgres # Пользователи на месте! ✅</p>
+<p><strong>Почему это важно в DevOps?</strong></p>
+<p>В продакшене нельзя терять данные. Volumes = гарантия сохранности данных при перезапуске контейнеров.</p></p>
+<p><strong>Термины:</strong></p>
+<p>- <strong>Volume</strong> = том (постоянное хранилище)</p>
+<p>- <strong>Persistent storage</strong> = постоянное хранилище (данные сохраняются)</p>
+<p>- <strong>Ephemeral</strong> = временный (исчезает при остановке контейнера)</p>
+<p><strong>Проблема БЕЗ volume:</strong></p>
+<p>```bash</p>
+<p># Запускаем базу данных</p>
+<p>docker run postgres:15</p>
+<p># Создаём данные...</p>
+<p># Останавливаем контейнер</p>
+<p>docker stop postgres-container</p>
+<p># Запускаем снова</p>
+<p>docker run postgres:15</p>
+<p># Данные потеряны! ❌</p>
+<p>```</p>
+<p><strong>Решение С volume:</strong></p>
+<p>```yaml</p>
+<p># docker-compose.yml</p>
+<p>services:</p>
+<p>db:</p>
+<p>image: postgres:15</p>
+<p>volumes:</p>
+<p>- db-data:/var/lib/postgresql/data  # Данные сохраняются</p>
+<p>volumes:</p>
+<p>db-data:  # Именованный volume</p>
+<p>```</p>
+<p>```bash</p>
+<p># Запускаем</p>
+<p>docker-compose up</p>
+<p># Останавливаем</p>
+<p>docker-compose down</p>
+<p># Запускаем снова</p>
+<p>docker-compose up</p>
+<p># Данные на месте! ✅</p>
+<p>```</p>
+<p><strong>Как работает:</strong></p>
+<p>```</p>
+<p>Контейнер PostgreSQL</p>
+<p>↓</p>
+<p>/var/lib/postgresql/data (внутри контейнера)</p>
+<p>↓</p>
+<p>Docker Volume (на хосте)</p>
+<p>↓</p>
+<p>/var/lib/docker/volumes/db-data (физическое хранилище)</p>
+<p>```</p>
+<p><strong>Почему это важно для БД?</strong></p>
+<p>База данных хранит важные данные (пользователи, заказы, транзакции). Если данные потеряются → катастрофа. Volume гарантирует, что данные сохраняются.</p>
+<p><strong>Пример:</strong></p>
+<p>```bash</p>
+<p># Без volume</p>
+<p>docker run postgres</p>
+<p># Создали 1000 пользователей</p>
+<p>docker stop postgres</p>
+<p>docker rm postgres</p>
+<p>docker run postgres</p>
+<p># Пользователи потеряны! 😱</p>
+<p># С volume</p>
+<p>docker run -v db-data:/var/lib/postgresql/data postgres</p>
+<p># Создали 1000 пользователей</p>
+<p>docker stop postgres</p>
+<p>docker rm postgres</p>
+<p>docker run -v db-data:/var/lib/postgresql/data postgres</p>
+<p># Пользователи на месте! ✅</p>
+<p>```</p>
+<p><strong>Почему это важно в DevOps?</strong></p>
+<p>В продакшене нельзя терять данные. Volumes = гарантия сохранности данных при перезапуске контейнеров.</p></p>
                 </div>
             </div>
         </div>

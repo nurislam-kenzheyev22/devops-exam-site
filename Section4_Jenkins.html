@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Exam - Section 4: CI/CD & Jenkins (Questions 24-31)</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .nav {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .nav a {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav a:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        
+        .nav a.active {
+            background: #764ba2;
+        }
+        
+        .question-card {
+            background: white;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .question-card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .question-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .question-header h2 {
+            font-size: 1.4em;
+            flex: 1;
+        }
+        
+        .toggle-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+        
+        .toggle-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .question-content {
+            padding: 25px;
+            display: none;
+        }
+        
+        .question-content.show {
+            display: block;
+        }
+        
+        .answer-section {
+            margin-bottom: 20px;
+        }
+        
+        .answer-section h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .answer-section p {
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .russian-explanation {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            margin-top: 20px;
+        }
+        
+        .russian-explanation h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+        
+        .russian-explanation ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .russian-explanation li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+                .russian-explanation code {
+            background: #f4f4f4;
+            color: #333;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #ddd;
+        }
+        
+                .russian-explanation pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-top: 10px;
+            border: 1px solid #555;
+        }
+        
+        .russian-explanation pre code {
+            background: transparent;
+            color: #f8f8f2;
+            padding: 0;
+            border: none;
+        }
+        
+        .russian-explanation table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        .russian-explanation table td,
+        .russian-explanation table th {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        .russian-explanation table th {
+            background: #667eea;
+            color: white;
+        }
+        
+        .search-box {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .stats {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .stats span {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 DevOps Final Exam</h1>
+            <p>Section 4: CI/CD & Jenkins (Questions 24-31)</p>
+        </div>
+        <div class="nav">
+            <a href="Section1_Linux_Git.html">Section 1: Linux & Git</a>
+            <a href="Section2_Gradle.html">Section 2: Gradle</a>
+            <a href="Section3_Docker.html">Section 3: Docker</a>
+            <a href="Section4_Jenkins.html">Section 4: Jenkins</a>
+            <a href="Section5_Kubernetes.html">Section 5: Kubernetes</a>
+            <a href="Section6_Ansible.html">Section 6: Ansible</a>
+            <a href="Section7_DevOps_Concepts.html">Section 7: DevOps Concepts</a>
+            <a href="Section8_Commands.html">Section 8: Commands</a>
+        </div>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Search questions...">
+        </div>
+        <div class="stats">
+            Total Questions: <span id="totalQuestions">8</span> | 
+            Showing: <span id="showingQuestions">8</span>
+        </div>
+        <!-- Q24 -->
+        <div class="question-card" data-question="24">
+            <div class="question-header" onclick="toggleQuestion(24)">
+                <h2>Q24: What problems does CI/CD solve?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content24">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>CI/CD solves manual deployment errors, slow release cycles, inconsistent environments, lack of testing, and deployment anxiety. It automates building, testing, and deployment, ensuring faster, reliable, and repeatable software delivery. | Какие проблемы решает CI/CD? Термины: CI = Continuous Integration (непрерывная интеграция) CD = Continuous Delivery/Deployment (непрерывная доставка/деплой) Manual errors = ручные ошибки Release cycle = цикл релиза Проблемы БЕЗ CI/CD: 1. Ручной депло...</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q25 -->
+        <div class="question-card" data-question="25">
+            <div class="question-header" onclick="toggleQuestion(25)">
+                <h2>Q25: What is the difference between CI and CD?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content25">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>CI (Continuous Integration) automatically builds and tests code when changes are committed. CD has two meanings: Continuous Delivery (automated deployment to staging, manual production) and Continuous Deployment (fully automated deployment to production). CI ensures code quality; CD ensures fast, reliable releases. | Разница между CI и CD Термины: Continuous Integration = непрерывная интеграция (автоматическая сборка и тесты) Continuous Delivery = непрерывная доставка (автоматический деплой до продакшена, но запуск вручную) Continuous Deployment = непрерывный деп...</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q26 -->
+        <div class="question-card" data-question="26">
+            <div class="question-header" onclick="toggleQuestion(26)">
+                <h2>Q26: Why is Jenkinsfile stored in the Git repository?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content26">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>Storing Jenkinsfile in Git enables version control, code review, infrastructure as code, collaboration, and reproducibility. The pipeline definition is treated as code, allowing changes to be tracked, reviewed, and rolled back like any other code. | Почему Jenkinsfile хранится в Git? Термины: Infrastructure as Code = инфраструктура как код (конфигурация в коде) Version control = контроль версий Code review = код-ревью (проверка кода перед слиянием) Проблемы БЕЗ Jenkinsfile в Git: 1. Конфигурация...</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q27 -->
+        <div class="question-card" data-question="27">
+            <div class="question-header" onclick="toggleQuestion(27)">
+                <h2>Q27: What stages are included in your Jenkins pipeline and why?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content27">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>The pipeline includes: Checkout (get code), Build (compile), Test (verify functionality), Static Code Analysis (code quality), Docker Build (create image), Docker Push (upload to registry), and Deploy (deploy to Kubernetes). Each stage validates a specific aspect before proceeding, ensuring quality and catching issues early. | Какие стадии в Jenkins pipeline и зачем? Термины: Stage = стадия (этап pipeline) Checkout = получение кода из Git Static code analysis = статический анализ кода (проверка качества) Стадии pipeline: Пример: Почему именно эти стадии? Каждая стадия пров...</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q28 -->
+        <div class="question-card" data-question="28">
+            <div class="question-header" onclick="toggleQuestion(28)">
+                <h2>Q28: How does Jenkins determine which branch is being built?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content28">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>Jenkins determines the branch from the Git SCM configuration. It can build specific branches (e.g., `*/main`), all branches, or branches matching a pattern. The branch name is available as `env.BRANCH_NAME` in the pipeline, allowing conditional logic based on the branch. | Как Jenkins определяет, какую ветку собирать? Термины: SCM = Source Control Management (система контроля версий) Branch specifier = спецификатор ветки (какие ветки собирать) Environment variable = переменная окружения Как это работает: 1. В Jenkins н...</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q29 -->
+        <div class="question-card" data-question="29">
+            <div class="question-header" onclick="toggleQuestion(29)">
+                <h2>Q29: Why should credentials not be stored directly in Jenkinsfile?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content29">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>Credentials in Jenkinsfile would be visible in Git, exposing secrets to anyone with repository access. Credentials should be stored in Jenkins Credentials Store and referenced by ID. This keeps secrets secure, allows rotation without code changes, and follows security best practices. | Почему не хранить credentials в Jenkinsfile? Термины: Credentials = учётные данные (пароли, ключи) Credentials Store = хранилище credentials в Jenkins Secret management = управление секретами Проблема с credentials в Jenkinsfile: Почему это опасно: 1...</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q30 -->
+        <div class="question-card" data-question="30">
+            <div class="question-header" onclick="toggleQuestion(30)">
+                <h2>Q30: What happens when tests fail in the pipeline?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content30">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>When tests fail, the pipeline stops immediately, preventing deployment. The build is marked as failed, notifications are sent, and the developer must fix the tests before the pipeline can proceed. This prevents broken code from reaching production. | Что происходит, когда тесты падают в pipeline? Термины: Pipeline failure = падение pipeline (остановка выполнения) Fail fast = быстрое падение (остановка при первой ошибке) Notification = уведомление (email, Slack) Что происходит: Последовательность:...</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q31 -->
+        <div class="question-card" data-question="31">
+            <div class="question-header" onclick="toggleQuestion(31)">
+                <h2>Q31: Why are Docker images tagged dynamically?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content31">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>Dynamic tagging (e.g., `${BUILD_NUMBER}`) creates unique image versions for each build, enabling version tracking, rollback capabilities, and traceability. Each deployment can reference a specific image version, making it easy to identify what's running and revert if needed. | Почему Docker образы тегируются динамически? Термины: Dynamic tagging = динамическое тегирование (тег меняется автоматически) Build number = номер сборки (уникальный для каждой сборки) Traceability = отслеживаемость (можно найти, какая версия где раб...</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <script>
+
+        function toggleQuestion(num) {
+            const content = document.getElementById('content' + num);
+            const btn = event.currentTarget.querySelector('.toggle-btn');
+            
+            if (content.classList.contains('show')) {
+                content.classList.remove('show');
+                btn.textContent = 'Show Answer';
+            } else {
+                content.classList.add('show');
+                btn.textContent = 'Hide Answer';
+            }
+        }
+        
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.question-card');
+            let visibleCount = 0;
+            
+            cards.forEach(card => {
+                const questionText = card.querySelector('h2').textContent.toLowerCase();
+                if (questionText.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            document.getElementById('showingQuestions').textContent = visibleCount;
+        });
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Exam - Commands: Lifecoding & Lifewriting (33 Commands)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .nav {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .nav a {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav a:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        
+        .nav a.active {
+            background: #764ba2;
+        }
+        
+        .question-card {
+            background: white;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .question-card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .question-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .question-header h2 {
+            font-size: 1.4em;
+            flex: 1;
+        }
+        
+        .toggle-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+        
+        .toggle-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .question-content {
+            padding: 25px;
+            display: none;
+        }
+        
+        .question-content.show {
+            display: block;
+        }
+        
+        .answer-section {
+            margin-bottom: 20px;
+        }
+        
+        .answer-section h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .answer-section p {
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .command-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            overflow-x: auto;
+            border: 1px solid #555;
+        }
+        
+        .russian-explanation {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            margin-top: 20px;
+        }
+        
+        .russian-explanation h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+        
+        .russian-explanation ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .russian-explanation li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+        .russian-explanation code {
+            background: #f4f4f4;
+            color: #333;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #ddd;
+        }
+        
+        .russian-explanation pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-top: 10px;
+            border: 1px solid #555;
+        }
+        
+        .russian-explanation pre code {
+            background: transparent;
+            color: #f8f8f2;
+            padding: 0;
+            border: none;
+        }
+        
+        .category-header {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            color: white;
+            padding: 20px;
+            margin: 30px 0 20px 0;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        
+        .search-box {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .stats {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .stats span {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💻 DevOps Commands</h1>
+            <p>Lifecoding & Lifewriting Commands (33 Commands)</p>
+        </div>
+        
+        <div class="nav">
+            <a href="Section1_Linux_Git.html">Section 1: Linux & Git</a>
+            <a href="Section2_Gradle.html">Section 2: Gradle</a>
+            <a href="Section3_Docker.html">Section 3: Docker</a>
+            <a href="Section4_Jenkins.html">Section 4: Jenkins</a>
+            <a href="Section5_Kubernetes.html">Section 5: Kubernetes</a>
+            <a href="Section6_Ansible.html">Section 6: Ansible</a>
+            <a href="Section7_DevOps_Concepts.html">Section 7: DevOps Concepts</a>
+            <a href="Section8_Commands.html" class="active">Section 8: Commands</a>
+        </div>
+        
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Search commands...">
+        </div>
+        
+        <div class="stats">
+            Total Commands: <span id="totalQuestions">33</span> | 
+            Showing: <span id="showingQuestions">33</span>
+        </div>
+        
+        <!-- Linux & User Management -->
+        <div class="category-header">🐧 Linux & User Management</div>
+        
+        <!-- C1 -->
+        <div class="question-card" data-question="1">
+            <div class="question-header" onclick="toggleQuestion(1)">
+                <h2>C1: Show a command to display the current Linux user and groups.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content1">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">id</div>
+                    <p>или</p>
+                    <div class="command-block">whoami && groups</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong>Команда <code>id</code></strong> показывает текущего пользователя, его UID, GID и все группы, к которым он принадлежит.</p>
+                    <p><strong>Команда <code>whoami</code></strong> показывает только имя текущего пользователя.</p>
+                    <p><strong>Команда <code>groups</code></strong> показывает все группы текущего пользователя.</p>
+                    <p><strong>Пример вывода:</strong></p>
+                    <pre><code>$ id
+uid=1000(student) gid=1000(student) groups=1000(student),27(sudo)
+
+$ whoami && groups
+student
+student sudo</code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C2 -->
+        <div class="question-card" data-question="2">
+            <div class="question-header" onclick="toggleQuestion(2)">
+                <h2>C2: Write a command to generate an SSH key.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content2">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">ssh-keygen -t ed25519 -C "your_email@example.com"</div>
+                    <p>или (для RSA):</p>
+                    <div class="command-block">ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>ssh-keygen</code></strong> — команда для генерации SSH ключей.</p>
+                    <p><strong>Параметры:</strong></p>
+                    <ul>
+                        <li><code>-t ed25519</code> — тип ключа (Ed25519 — современный и безопасный)</li>
+                        <li><code>-t rsa -b 4096</code> — RSA ключ длиной 4096 бит (альтернатива)</li>
+                        <li><code>-C "email"</code> — комментарий (обычно email)</li>
+                    </ul>
+                    <p><strong>После выполнения:</strong></p>
+                    <ul>
+                        <li>Создаются файлы: <code>~/.ssh/id_ed25519</code> (приватный ключ) и <code>~/.ssh/id_ed25519.pub</code> (публичный ключ)</li>
+                        <li>Публичный ключ нужно скопировать на сервер: <code>ssh-copy-id user@server</code></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C3 -->
+        <div class="question-card" data-question="3">
+            <div class="question-header" onclick="toggleQuestion(3)">
+                <h2>C3: Show how to check firewall status using ufw.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content3">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">sudo ufw status verbose</div>
+                    <p>или просто:</p>
+                    <div class="command-block">sudo ufw status</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>ufw status</code></strong> — показывает текущий статус firewall.</p>
+                    <p><strong><code>verbose</code></strong> — показывает подробную информацию (какие правила применены).</p>
+                    <p><strong>Пример вывода:</strong></p>
+                    <pre><code>$ sudo ufw status verbose
+Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), disabled (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW IN    Anywhere
+80/tcp                     ALLOW IN    Anywhere
+443/tcp                    ALLOW IN    Anywhere</code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Git Commands -->
+        <div class="category-header">📦 Git Commands</div>
+        
+        <!-- C4 -->
+        <div class="question-card" data-question="4">
+            <div class="question-header" onclick="toggleQuestion(4)">
+                <h2>C4: Create a new Git branch named feature/api.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content4">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">git checkout -b feature/api</div>
+                    <p>или (Git 2.23+):</p>
+                    <div class="command-block">git switch -c feature/api</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>git checkout -b</code></strong> — создаёт новую ветку и переключается на неё.</p>
+                    <p><strong>Параметры:</strong></p>
+                    <ul>
+                        <li><code>-b</code> — создать новую ветку</li>
+                        <li><code>feature/api</code> — имя новой ветки</li>
+                    </ul>
+                    <p><strong>Альтернатива:</strong> <code>git branch feature/api</code> (создать), затем <code>git checkout feature/api</code> (переключиться)</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C5 -->
+        <div class="question-card" data-question="5">
+            <div class="question-header" onclick="toggleQuestion(5)">
+                <h2>C5: Show how to clone a Git repository.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content5">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">git clone https://github.com/user/repo.git</div>
+                    <p>или с SSH:</p>
+                    <div class="command-block">git clone git@github.com:user/repo.git</div>
+                    <p>в конкретную папку:</p>
+                    <div class="command-block">git clone https://github.com/user/repo.git my-project</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>git clone</code></strong> — клонирует удалённый репозиторий в локальную папку.</p>
+                    <p><strong>Формат URL:</strong></p>
+                    <ul>
+                        <li><code>https://</code> — через HTTPS (нужен пароль или токен)</li>
+                        <li><code>git@</code> — через SSH (нужен SSH ключ)</li>
+                    </ul>
+                    <p><strong>После клонирования:</strong> создаётся папка с именем репозитория, содержащая весь код и историю.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Gradle Commands -->
+        <div class="category-header">🔨 Gradle Commands</div>
+        
+        <!-- C6 -->
+        <div class="question-card" data-question="6">
+            <div class="question-header" onclick="toggleQuestion(6)">
+                <h2>C6: Run a project build using Gradle Wrapper.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content6">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">./gradlew clean build</div>
+                    <p>или только build:</p>
+                    <div class="command-block">./gradlew build</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>./gradlew</code></strong> — запускает Gradle Wrapper (скрипт из проекта).</p>
+                    <p><strong>Параметры:</strong></p>
+                    <ul>
+                        <li><code>clean</code> — очистить предыдущие сборки</li>
+                        <li><code>build</code> — собрать проект (компиляция + тесты)</li>
+                    </ul>
+                    <p><strong>Результат:</strong> JAR файл в <code>build/libs/</code></p>
+                    <p><strong>Важно:</strong> Используй <code>./gradlew</code>, а не <code>gradle</code> — это гарантирует одинаковую версию Gradle для всех.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C7 -->
+        <div class="question-card" data-question="7">
+            <div class="question-header" onclick="toggleQuestion(7)">
+                <h2>C7: Show a command to run tests with Gradle.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content7">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">./gradlew test</div>
+                    <p>с подробным выводом:</p>
+                    <div class="command-block">./gradlew test --info</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>./gradlew test</code></strong> — запускает все тесты проекта.</p>
+                    <p><strong>Результат:</strong> отчёты в <code>build/test-results/</code></p>
+                    <p><strong>Параметры:</strong></p>
+                    <ul>
+                        <li><code>--info</code> — подробный вывод</li>
+                        <li><code>--debug</code> — очень подробный вывод</li>
+                        <li><code>--tests TestClass</code> — запустить только определённый тест</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C8 -->
+        <div class="question-card" data-question="8">
+            <div class="question-header" onclick="toggleQuestion(8)">
+                <h2>C8: Show where the built JAR file is located.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content8">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">ls -la build/libs/</div>
+                    <p>или найти JAR:</p>
+                    <div class="command-block">find build/libs -name "*.jar"</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong>Путь к JAR:</strong> <code>build/libs/</code></p>
+                    <p><strong>Имя файла:</strong> обычно <code>{project-name}-{version}.jar</code>, например <code>todo-0.0.1-SNAPSHOT.jar</code></p>
+                    <p><strong>Использование:</strong></p>
+                    <ul>
+                        <li>Dockerfile копирует JAR из <code>build/libs/</code></li>
+                        <li>Jenkins архивирует JAR из <code>build/libs/</code></li>
+                        <li>Деплой запускает JAR из <code>build/libs/</code></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Docker Commands -->
+        <div class="category-header">🐳 Docker Commands</div>
+        
+        <!-- C9 -->
+        <div class="question-card" data-question="9">
+            <div class="question-header" onclick="toggleQuestion(9)">
+                <h2>C9: Write a command to build a Docker image.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content9">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">docker build -t myapp:1.0 .</div>
+                    <p>с указанием Dockerfile:</p>
+                    <div class="command-block">docker build -f Dockerfile_Kenzheyev_Nurislam -t myapp:1.0 .</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>docker build</code></strong> — собирает Docker образ из Dockerfile.</p>
+                    <p><strong>Параметры:</strong></p>
+                    <ul>
+                        <li><code>-t myapp:1.0</code> — тег образа (имя:версия)</li>
+                        <li><code>-f Dockerfile</code> — указать конкретный Dockerfile</li>
+                        <li><code>.</code> — контекст сборки (текущая папка)</li>
+                    </ul>
+                    <p><strong>Пример:</strong> <code>docker build -f Dockerfile_Kenzheyev_Nurislam -t nurislam1234/todo-app:1.0 .</code></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C10 -->
+        <div class="question-card" data-question="10">
+            <div class="question-header" onclick="toggleQuestion(10)">
+                <h2>C10: Show how to list Docker images.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content10">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">docker images</div>
+                    <p>или с фильтром:</p>
+                    <div class="command-block">docker images | grep myapp</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>docker images</code></strong> — показывает все локальные Docker образы.</p>
+                    <p><strong>Вывод:</strong> REPOSITORY, TAG, IMAGE ID, CREATED, SIZE</p>
+                    <p><strong>Полезные команды:</strong></p>
+                    <ul>
+                        <li><code>docker images -a</code> — все образы (включая промежуточные)</li>
+                        <li><code>docker images --filter "dangling=true"</code> — неиспользуемые образы</li>
+                        <li><code>docker rmi image_id</code> — удалить образ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C11 -->
+        <div class="question-card" data-question="11">
+            <div class="question-header" onclick="toggleQuestion(11)">
+                <h2>C11: Start the application using Docker Compose.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content11">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">docker-compose up</div>
+                    <p>в фоновом режиме:</p>
+                    <div class="command-block">docker-compose up -d</div>
+                    <p>с пересборкой:</p>
+                    <div class="command-block">docker-compose up --build</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>docker-compose up</code></strong> — запускает все сервисы из <code>docker-compose.yml</code>.</p>
+                    <p><strong>Параметры:</strong></p>
+                    <ul>
+                        <li><code>-d</code> — detached mode (в фоне)</li>
+                        <li><code>--build</code> — пересобрать образы перед запуском</li>
+                        <li><code>-f docker-compose.yml</code> — указать конкретный файл</li>
+                    </ul>
+                    <p><strong>Результат:</strong> запускаются все контейнеры (app, database, и т.д.)</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C12 -->
+        <div class="question-card" data-question="12">
+            <div class="question-header" onclick="toggleQuestion(12)">
+                <h2>C12: Stop and remove running containers.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content12">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">docker-compose down</div>
+                    <p>с удалением volumes:</p>
+                    <div class="command-block">docker-compose down -v</div>
+                    <p>или для одного контейнера:</p>
+                    <div class="command-block">docker stop container_id && docker rm container_id</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>docker-compose down</code></strong> — останавливает и удаляет все контейнеры из docker-compose.</p>
+                    <p><strong>Параметры:</strong></p>
+                    <ul>
+                        <li><code>-v</code> — удалить также volumes (данные)</li>
+                        <li><code>--rmi all</code> — удалить также образы</li>
+                    </ul>
+                    <p><strong>Альтернатива:</strong> <code>docker stop</code> + <code>docker rm</code> для отдельных контейнеров</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C13 -->
+        <div class="question-card" data-question="13">
+            <div class="question-header" onclick="toggleQuestion(13)">
+                <h2>C13: Show container logs.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content13">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">docker logs container_id</div>
+                    <p>следить за логами в реальном времени:</p>
+                    <div class="command-block">docker logs -f container_id</div>
+                    <p>для docker-compose:</p>
+                    <div class="command-block">docker-compose logs</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>docker logs</code></strong> — показывает логи контейнера.</p>
+                    <p><strong>Параметры:</strong></p>
+                    <ul>
+                        <li><code>-f</code> — follow (следить за новыми логами)</li>
+                        <li><code>--tail 100</code> — показать последние 100 строк</li>
+                        <li><code>--since 10m</code> — логи за последние 10 минут</li>
+                    </ul>
+                    <p><strong>Для docker-compose:</strong> <code>docker-compose logs service_name</code> — логи конкретного сервиса</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Jenkins Commands -->
+        <div class="category-header">🔧 Jenkins Commands</div>
+        
+        <!-- C14 -->
+        <div class="question-card" data-question="14">
+            <div class="question-header" onclick="toggleQuestion(14)">
+                <h2>C14: Write a Jenkins pipeline stage that runs ./gradlew test.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content14">
+                <div class="answer-section">
+                    <h3>Command (Jenkinsfile):</h3>
+                    <div class="command-block">stage('Test') {
+    steps {
+        sh './gradlew test --no-daemon'
+    }
+    post {
+        always {
+            junit 'build/test-results/test/*.xml'
+        }
+    }
+}</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong>Jenkinsfile stage</strong> для запуска тестов.</p>
+                    <p><strong>Компоненты:</strong></p>
+                    <ul>
+                        <li><code>stage('Test')</code> — название стадии</li>
+                        <li><code>sh './gradlew test'</code> — выполнить команду в shell</li>
+                        <li><code>--no-daemon</code> — не запускать daemon (важно для CI/CD)</li>
+                        <li><code>junit</code> — публиковать результаты тестов</li>
+                    </ul>
+                    <p><strong>Результат:</strong> тесты запускаются, результаты публикуются в Jenkins</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C15 -->
+        <div class="question-card" data-question="15">
+            <div class="question-header" onclick="toggleQuestion(15)">
+                <h2>C15: Show a command Jenkins uses to build a Docker image.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content15">
+                <div class="answer-section">
+                    <h3>Command (Jenkinsfile):</h3>
+                    <div class="command-block">sh "docker build -f Dockerfile_Kenzheyev_Nurislam -t ${DOCKER_IMAGE} ."</div>
+                    <p>с переменными:</p>
+                    <div class="command-block">sh "docker build -f Dockerfile_Kenzheyev_Nurislam -t ${DOCKER_REGISTRY}/${IMAGE_NAME}:${VERSION} ."</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong>В Jenkinsfile</strong> команда сборки Docker образа.</p>
+                    <p><strong>Переменные:</strong></p>
+                    <ul>
+                        <li><code>${DOCKER_IMAGE}</code> — полное имя образа (например, <code>nurislam1234/todo-app:1</code>)</li>
+                        <li><code>${DOCKER_REGISTRY}</code> — реестр (например, <code>nurislam1234</code>)</li>
+                        <li><code>${IMAGE_NAME}</code> — имя образа (например, <code>todo-app</code>)</li>
+                        <li><code>${VERSION}</code> — версия (например, <code>${BUILD_NUMBER}</code>)</li>
+                    </ul>
+                    <p><strong>Пример:</strong> <code>docker build -f Dockerfile_Kenzheyev_Nurislam -t nurislam1234/todo-app:1 .</code></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C16 -->
+        <div class="question-card" data-question="16">
+            <div class="question-header" onclick="toggleQuestion(16)">
+                <h2>C16: Explain how to trigger a Jenkins pipeline manually.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content16">
+                <div class="answer-section">
+                    <h3>Способ 1: Через UI</h3>
+                    <p>Jenkins Dashboard → Выбрать pipeline → "Build Now"</p>
+                    <h3>Способ 2: Через API</h3>
+                    <div class="command-block">curl -X POST http://jenkins:8080/job/my-pipeline/build --user user:token</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong>Ручной запуск pipeline:</strong></p>
+                    <ol>
+                        <li>Зайти в Jenkins UI</li>
+                        <li>Выбрать нужный pipeline/job</li>
+                        <li>Нажать кнопку <strong>"Build Now"</strong></li>
+                    </ol>
+                    <p><strong>Через API:</strong> можно запустить через HTTP запрос (нужен API token)</p>
+                    <p><strong>Автоматический запуск:</strong> обычно pipeline запускается автоматически при коммите в Git (webhook)</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C17 -->
+        <div class="question-card" data-question="17">
+            <div class="question-header" onclick="toggleQuestion(17)">
+                <h2>C17: Show how to view Jenkins pipeline logs.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content17">
+                <div class="answer-section">
+                    <h3>Способ 1: Через UI</h3>
+                    <p>Jenkins Dashboard → Pipeline → Build #N → "Console Output"</p>
+                    <h3>Способ 2: Через API</h3>
+                    <div class="command-block">curl http://jenkins:8080/job/my-pipeline/lastBuild/consoleText</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong>Просмотр логов pipeline:</strong></p>
+                    <ol>
+                        <li>Зайти в Jenkins UI</li>
+                        <li>Выбрать pipeline</li>
+                        <li>Выбрать конкретный build (например, #5)</li>
+                        <li>Нажать <strong>"Console Output"</strong></li>
+                    </ol>
+                    <p><strong>В логах видно:</strong> все команды, вывод, ошибки, время выполнения каждой стадии</p>
+                    <p><strong>Через API:</strong> можно получить логи через HTTP запрос</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Kubernetes Commands -->
+        <div class="category-header">☸️ Kubernetes Commands</div>
+        
+        <!-- C18 -->
+        <div class="question-card" data-question="18">
+            <div class="question-header" onclick="toggleQuestion(18)">
+                <h2>C18: Write a command to deploy an application to Kubernetes.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content18">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">kubectl apply -f deployment_Kenzheyev_Nurislam.yaml</div>
+                    <p>или несколько файлов:</p>
+                    <div class="command-block">kubectl apply -f k8s/</div>
+                    <p>создать из файла:</p>
+                    <div class="command-block">kubectl create -f deployment_Kenzheyev_Nurislam.yaml</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>kubectl apply</code></strong> — применяет манифест (создаёт или обновляет ресурсы).</p>
+                    <p><strong>Параметры:</strong></p>
+                    <ul>
+                        <li><code>-f</code> — файл или папка с манифестами</li>
+                        <li><code>deployment_Kenzheyev_Nurislam.yaml</code> — файл манифеста</li>
+                    </ul>
+                    <p><strong>Разница:</strong></p>
+                    <ul>
+                        <li><code>apply</code> — идемпотентная операция (можно запускать много раз)</li>
+                        <li><code>create</code> — создаёт только если не существует (ошибка, если уже есть)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C19 -->
+        <div class="question-card" data-question="19">
+            <div class="question-header" onclick="toggleQuestion(19)">
+                <h2>C19: Show how to list running pods.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content19">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">kubectl get pods</div>
+                    <p>все namespace:</p>
+                    <div class="command-block">kubectl get pods --all-namespaces</div>
+                    <p>с подробной информацией:</p>
+                    <div class="command-block">kubectl get pods -o wide</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>kubectl get pods</code></strong> — показывает все Pod'ы в текущем namespace.</p>
+                    <p><strong>Параметры:</strong></p>
+                    <ul>
+                        <li><code>--all-namespaces</code> или <code>-A</code> — все namespace</li>
+                        <li><code>-o wide</code> — подробная информация (IP, Node)</li>
+                        <li><code>-l app=todo</code> — фильтр по label</li>
+                    </ul>
+                    <p><strong>Вывод:</strong> NAME, READY, STATUS, RESTARTS, AGE</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C20 -->
+        <div class="question-card" data-question="20">
+            <div class="question-header" onclick="toggleQuestion(20)">
+                <h2>C20: Describe a specific pod.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content20">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">kubectl describe pod pod-name</div>
+                    <p>или по label:</p>
+                    <div class="command-block">kubectl describe pod -l app=todo</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>kubectl describe pod</code></strong> — показывает подробную информацию о Pod.</p>
+                    <p><strong>Информация включает:</strong></p>
+                    <ul>
+                        <li>Статус Pod'а</li>
+                        <li>События (Events)</li>
+                        <li>Контейнеры и их статусы</li>
+                        <li>Переменные окружения</li>
+                        <li>Volumes</li>
+                        <li>Логи (если есть проблемы)</li>
+                    </ul>
+                    <p><strong>Использование:</strong> для отладки проблем с Pod'ами</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C21 -->
+        <div class="question-card" data-question="21">
+            <div class="question-header" onclick="toggleQuestion(21)">
+                <h2>C21: Expose a deployment using NodePort.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content21">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">kubectl expose deployment todo-app --type=NodePort --port=8080</div>
+                    <p>или через манифест:</p>
+                    <div class="command-block">kubectl apply -f service_Kenzheyev_Nurislam.yaml</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>kubectl expose</code></strong> — создаёт Service для доступа к Pod'ам.</p>
+                    <p><strong>Параметры:</strong></p>
+                    <ul>
+                        <li><code>deployment todo-app</code> — deployment для экспозиции</li>
+                        <li><code>--type=NodePort</code> — тип Service (внешний доступ)</li>
+                        <li><code>--port=8080</code> — порт контейнера</li>
+                    </ul>
+                    <p><strong>Результат:</strong> Service создан, доступен через <code>http://node-ip:nodeport</code></p>
+                    <p><strong>NodePort диапазон:</strong> 30000-32767 (автоматически назначается)</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C22 -->
+        <div class="question-card" data-question="22">
+            <div class="question-header" onclick="toggleQuestion(22)">
+                <h2>C22: Roll back a deployment to a previous version.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content22">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">kubectl rollout undo deployment/todo-app</div>
+                    <p>к конкретной ревизии:</p>
+                    <div class="command-block">kubectl rollout undo deployment/todo-app --to-revision=2</div>
+                    <p>посмотреть историю:</p>
+                    <div class="command-block">kubectl rollout history deployment/todo-app</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>kubectl rollout undo</code></strong> — откатывает deployment к предыдущей версии.</p>
+                    <p><strong>Параметры:</strong></p>
+                    <ul>
+                        <li><code>deployment/todo-app</code> — имя deployment</li>
+                        <li><code>--to-revision=N</code> — откатить к конкретной ревизии</li>
+                    </ul>
+                    <p><strong>Процесс:</strong> Kubernetes постепенно заменяет Pod'ы на старую версию (rolling update в обратную сторону)</p>
+                    <p><strong>Проверка:</strong> <code>kubectl rollout status deployment/todo-app</code></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C23 -->
+        <div class="question-card" data-question="23">
+            <div class="question-header" onclick="toggleQuestion(23)">
+                <h2>C23: Check the status of a deployment.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content23">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">kubectl rollout status deployment/todo-app</div>
+                    <p>или общая информация:</p>
+                    <div class="command-block">kubectl get deployment todo-app</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>kubectl rollout status</code></strong> — показывает статус rollout (обновления).</p>
+                    <p><strong>Вывод:</strong></p>
+                    <ul>
+                        <li>Текущий статус (in progress, complete, failed)</li>
+                        <li>Количество обновлённых Pod'ов</li>
+                        <li>Время выполнения</li>
+                    </ul>
+                    <p><strong><code>kubectl get deployment</code></strong> — показывает общую информацию:</p>
+                    <ul>
+                        <li>READY — сколько Pod'ов готово</li>
+                        <li>UP-TO-DATE — сколько обновлено</li>
+                        <li>AVAILABLE — сколько доступно</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Ansible Commands -->
+        <div class="category-header">⚙️ Ansible Commands</div>
+        
+        <!-- C24 -->
+        <div class="question-card" data-question="24">
+            <div class="question-header" onclick="toggleQuestion(24)">
+                <h2>C24: Run an Ansible playbook.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content24">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">ansible-playbook playbook_Kenzheyev_Nurislam.yml</div>
+                    <p>с указанием inventory:</p>
+                    <div class="command-block">ansible-playbook -i inventory_Kenzheyev_Nurislam.ini playbook_Kenzheyev_Nurislam.yml</div>
+                    <p>с проверкой (dry-run):</p>
+                    <div class="command-block">ansible-playbook --check playbook_Kenzheyev_Nurislam.yml</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>ansible-playbook</code></strong> — запускает Ansible playbook.</p>
+                    <p><strong>Параметры:</strong></p>
+                    <ul>
+                        <li><code>-i inventory.ini</code> — указать inventory файл</li>
+                        <li><code>--check</code> — dry-run (проверка без выполнения)</li>
+                        <li><code>--limit group</code> — выполнить только на определённой группе хостов</li>
+                        <li><code>-v</code> — verbose (подробный вывод)</li>
+                    </ul>
+                    <p><strong>Результат:</strong> Ansible выполняет все задачи из playbook на указанных хостах</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C25 -->
+        <div class="question-card" data-question="25">
+            <div class="question-header" onclick="toggleQuestion(25)">
+                <h2>C25: Check an Ansible playbook for syntax errors.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content25">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">ansible-playbook --syntax-check playbook_Kenzheyev_Nurislam.yml</div>
+                    <p>или через ansible-lint:</p>
+                    <div class="command-block">ansible-lint playbook_Kenzheyev_Nurislam.yml</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>--syntax-check</code></strong> — проверяет синтаксис YAML без выполнения playbook.</p>
+                    <p><strong>Что проверяется:</strong></p>
+                    <ul>
+                        <li>Правильность YAML синтаксиса</li>
+                        <li>Правильность структуры playbook</li>
+                        <li>Наличие обязательных полей</li>
+                    </ul>
+                    <p><strong>Результат:</strong> если ошибок нет — "playbook: playbook_Kenzheyev_Nurislam.yml", если есть — показывает ошибки</p>
+                    <p><strong>Важно:</strong> всегда проверяй синтаксис перед запуском!</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C26 -->
+        <div class="question-card" data-question="26">
+            <div class="question-header" onclick="toggleQuestion(26)">
+                <h2>C26: Write a task that installs Docker using Ansible.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content26">
+                <div class="answer-section">
+                    <h3>Command (Ansible task):</h3>
+                    <div class="command-block">- name: Install Docker
+  apt:
+    name: docker.io
+    state: present
+    update_cache: yes</div>
+                    <p>или через модуль docker:</p>
+                    <div class="command-block">- name: Install Docker
+  package:
+    name: docker.io
+    state: present</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong>Ansible task</strong> для установки Docker.</p>
+                    <p><strong>Компоненты:</strong></p>
+                    <ul>
+                        <li><code>name</code> — описание задачи</li>
+                        <li><code>apt</code> — модуль для управления пакетами (Ubuntu/Debian)</li>
+                        <li><code>name: docker.io</code> — имя пакета</li>
+                        <li><code>state: present</code> — установить (если нет)</li>
+                        <li><code>update_cache: yes</code> — обновить кэш пакетов</li>
+                    </ul>
+                    <p><strong>Идемпотентность:</strong> если Docker уже установлен, задача ничего не делает</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C27 -->
+        <div class="question-card" data-question="27">
+            <div class="question-header" onclick="toggleQuestion(27)">
+                <h2>C27: Encrypt a variable using Ansible Vault.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content27">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">ansible-vault encrypt group_vars/vault.yml</div>
+                    <p>создать новый зашифрованный файл:</p>
+                    <div class="command-block">ansible-vault create group_vars/vault.yml</div>
+                    <p>расшифровать для редактирования:</p>
+                    <div class="command-block">ansible-vault edit group_vars/vault.yml</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>ansible-vault</code></strong> — шифрует/расшифровывает файлы с секретами.</p>
+                    <p><strong>Команды:</strong></p>
+                    <ul>
+                        <li><code>encrypt</code> — зашифровать существующий файл</li>
+                        <li><code>create</code> — создать новый зашифрованный файл</li>
+                        <li><code>edit</code> — редактировать зашифрованный файл</li>
+                        <li><code>decrypt</code> — расшифровать файл</li>
+                    </ul>
+                    <p><strong>Использование:</strong> хранить пароли, API ключи, токены в зашифрованном виде</p>
+                    <p><strong>Запуск playbook:</strong> <code>ansible-playbook --ask-vault-pass playbook.yml</code></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C28 -->
+        <div class="question-card" data-question="28">
+            <div class="question-header" onclick="toggleQuestion(28)">
+                <h2>C28: Run a playbook on a specific inventory group.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content28">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">ansible-playbook -i inventory_Kenzheyev_Nurislam.ini --limit devops-server playbook_Kenzheyev_Nurislam.yml</div>
+                    <p>или несколько групп:</p>
+                    <div class="command-block">ansible-playbook --limit "web-servers:db-servers" playbook.yml</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>--limit</code></strong> — ограничивает выполнение playbook определённой группой хостов.</p>
+                    <p><strong>Параметры:</strong></p>
+                    <ul>
+                        <li><code>-i inventory.ini</code> — inventory файл</li>
+                        <li><code>--limit devops-server</code> — выполнить только на группе "devops-server"</li>
+                    </ul>
+                    <p><strong>Пример inventory:</strong></p>
+                    <pre><code>[devops-server]
+server1 ansible_host=192.168.1.10
+server2 ansible_host=192.168.1.11</code></pre>
+                    <p><strong>Использование:</strong> для выполнения на конкретных серверах без изменения playbook</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- System & Troubleshooting -->
+        <div class="category-header">🔍 System & Troubleshooting</div>
+        
+        <!-- C29 -->
+        <div class="question-card" data-question="29">
+            <div class="question-header" onclick="toggleQuestion(29)">
+                <h2>C29: Check CPU and memory usage on a Linux system.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content29">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">top</div>
+                    <p>или более удобный:</p>
+                    <div class="command-block">htop</div>
+                    <p>краткая информация:</p>
+                    <div class="command-block">free -h && df -h</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>top</code></strong> — показывает процессы и использование ресурсов в реальном времени.</p>
+                    <p><strong><code>htop</code></strong> — улучшенная версия top (нужно установить: <code>apt install htop</code>)</p>
+                    <p><strong><code>free -h</code></strong> — показывает использование памяти (human-readable)</p>
+                    <p><strong><code>df -h</code></strong> — показывает использование дискового пространства</p>
+                    <p><strong>Выход:</strong> нажми <code>q</code> для выхода из top/htop</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C30 -->
+        <div class="question-card" data-question="30">
+            <div class="question-header" onclick="toggleQuestion(30)">
+                <h2>C30: Inspect application logs for troubleshooting.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content30">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">tail -f /var/log/app.log</div>
+                    <p>последние 100 строк:</p>
+                    <div class="command-block">tail -n 100 /var/log/app.log</div>
+                    <p>поиск ошибок:</p>
+                    <div class="command-block">grep -i error /var/log/app.log</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>tail -f</code></strong> — следит за логами в реальном времени (follow).</p>
+                    <p><strong>Параметры:</strong></p>
+                    <ul>
+                        <li><code>-f</code> — follow (следить за новыми строками)</li>
+                        <li><code>-n 100</code> — показать последние 100 строк</li>
+                    </ul>
+                    <p><strong><code>grep</code></strong> — поиск по логам:</p>
+                    <ul>
+                        <li><code>-i</code> — case-insensitive (игнорировать регистр)</li>
+                        <li><code>error</code> — искать слово "error"</li>
+                    </ul>
+                    <p><strong>Для Spring Boot:</strong> логи обычно в <code>logs/</code> или <code>/var/log/</code></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C31 -->
+        <div class="question-card" data-question="31">
+            <div class="question-header" onclick="toggleQuestion(31)">
+                <h2>C31: Verify application availability via HTTP request.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content31">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">curl http://localhost:8080/actuator/health</div>
+                    <p>с подробным выводом:</p>
+                    <div class="command-block">curl -v http://localhost:8080/actuator/health</div>
+                    <p>или через wget:</p>
+                    <div class="command-block">wget -qO- http://localhost:8080/actuator/health</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>curl</code></strong> — отправляет HTTP запрос и показывает ответ.</p>
+                    <p><strong>Параметры:</strong></p>
+                    <ul>
+                        <li><code>-v</code> — verbose (подробный вывод, включая заголовки)</li>
+                        <li><code>-i</code> — показать заголовки ответа</li>
+                        <li><code>-X GET</code> — указать HTTP метод</li>
+                    </ul>
+                    <p><strong>Проверка health:</strong> <code>curl http://localhost:8080/actuator/health</code> должен вернуть <code>{"status":"UP"}</code></p>
+                    <p><strong>Для Kubernetes:</strong> <code>curl http://pod-ip:8080/actuator/health</code></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C32 -->
+        <div class="question-card" data-question="32">
+            <div class="question-header" onclick="toggleQuestion(32)">
+                <h2>C32: Show how to clean up Kubernetes resources.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content32">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">kubectl delete -f deployment_Kenzheyev_Nurislam.yaml</div>
+                    <p>удалить все ресурсы из namespace:</p>
+                    <div class="command-block">kubectl delete all --all -n namespace</div>
+                    <p>удалить конкретный ресурс:</p>
+                    <div class="command-block">kubectl delete deployment todo-app</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>kubectl delete</code></strong> — удаляет ресурсы Kubernetes.</p>
+                    <p><strong>Способы удаления:</strong></p>
+                    <ul>
+                        <li><code>-f file.yaml</code> — удалить ресурсы из манифеста</li>
+                        <li><code>deployment name</code> — удалить конкретный ресурс</li>
+                        <li><code>all --all</code> — удалить все ресурсы в namespace</li>
+                    </ul>
+                    <p><strong>Осторожно!</strong> <code>kubectl delete all --all</code> удалит ВСЁ в namespace!</p>
+                    <p><strong>Проверка:</strong> <code>kubectl get all</code> — проверить, что всё удалено</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- C33 -->
+        <div class="question-card" data-question="33">
+            <div class="question-header" onclick="toggleQuestion(33)">
+                <h2>C33: Check logs of a running Kubernetes pod.</h2>
+                <button class="toggle-btn">Show Command</button>
+            </div>
+            <div class="question-content" id="content33">
+                <div class="answer-section">
+                    <h3>Command:</h3>
+                    <div class="command-block">kubectl logs pod-name</div>
+                    <p>следить за логами:</p>
+                    <div class="command-block">kubectl logs -f pod-name</div>
+                    <p>для deployment:</p>
+                    <div class="command-block">kubectl logs -f deployment/todo-app</div>
+                    <p>предыдущий контейнер:</p>
+                    <div class="command-block">kubectl logs pod-name --previous</div>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение:</h3>
+                    <p><strong><code>kubectl logs</code></strong> — показывает логи Pod'а.</p>
+                    <p><strong>Параметры:</strong></p>
+                    <ul>
+                        <li><code>-f</code> — follow (следить за новыми логами)</li>
+                        <li><code>--tail=100</code> — показать последние 100 строк</li>
+                        <li><code>--previous</code> — логи предыдущего контейнера (если Pod перезапустился)</li>
+                        <li><code>-c container-name</code> — логи конкретного контейнера (если несколько)</li>
+                    </ul>
+                    <p><strong>Для deployment:</strong> автоматически выбирает один из Pod'ов</p>
+                    <p><strong>Использование:</strong> для отладки проблем с приложением в Kubernetes</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <script>
+        function toggleQuestion(num) {
+            const content = document.getElementById('content' + num);
+            const btn = event.currentTarget.querySelector('.toggle-btn');
+            
+            if (content.classList.contains('show')) {
+                content.classList.remove('show');
+                btn.textContent = 'Show Command';
+            } else {
+                content.classList.add('show');
+                btn.textContent = 'Hide Command';
+            }
+        }
+        
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.question-card');
+            let visibleCount = 0;
+            
+            cards.forEach(card => {
+                const questionText = card.querySelector('h2').textContent.toLowerCase();
+                if (questionText.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            document.getElementById('showingQuestions').textContent = visibleCount;
+        });
+    </script>
+</body>
+</html>
+

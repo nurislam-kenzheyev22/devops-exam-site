@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Exam - Section 5: Kubernetes (Questions 32-41)</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .nav {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .nav a {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav a:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        
+        .nav a.active {
+            background: #764ba2;
+        }
+        
+        .question-card {
+            background: white;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .question-card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .question-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .question-header h2 {
+            font-size: 1.4em;
+            flex: 1;
+        }
+        
+        .toggle-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+        
+        .toggle-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .question-content {
+            padding: 25px;
+            display: none;
+        }
+        
+        .question-content.show {
+            display: block;
+        }
+        
+        .answer-section {
+            margin-bottom: 20px;
+        }
+        
+        .answer-section h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .answer-section p {
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .russian-explanation {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            margin-top: 20px;
+        }
+        
+        .russian-explanation h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+        
+        .russian-explanation ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .russian-explanation li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+                .russian-explanation code {
+            background: #f4f4f4;
+            color: #333;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #ddd;
+        }
+        
+                .russian-explanation pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-top: 10px;
+            border: 1px solid #555;
+        }
+        
+        .russian-explanation pre code {
+            background: transparent;
+            color: #f8f8f2;
+            padding: 0;
+            border: none;
+        }
+        
+        .russian-explanation table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        .russian-explanation table td,
+        .russian-explanation table th {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        .russian-explanation table th {
+            background: #667eea;
+            color: white;
+        }
+        
+        .search-box {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .stats {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .stats span {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 DevOps Final Exam</h1>
+            <p>Section 5: Kubernetes (Questions 32-41)</p>
+        </div>
+        <div class="nav">
+            <a href="Section1_Linux_Git.html">Section 1: Linux & Git</a>
+            <a href="Section2_Gradle.html">Section 2: Gradle</a>
+            <a href="Section3_Docker.html">Section 3: Docker</a>
+            <a href="Section4_Jenkins.html">Section 4: Jenkins</a>
+            <a href="Section5_Kubernetes.html">Section 5: Kubernetes</a>
+            <a href="Section6_Ansible.html">Section 6: Ansible</a>
+            <a href="Section7_DevOps_Concepts.html">Section 7: DevOps Concepts</a>
+            <a href="Section8_Commands.html">Section 8: Commands</a>
+        </div>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Search questions...">
+        </div>
+        <div class="stats">
+            Total Questions: <span id="totalQuestions">10</span> | 
+            Showing: <span id="showingQuestions">10</span>
+        </div>
+        <!-- Q32 -->
+        <div class="question-card" data-question="32">
+            <div class="question-header" onclick="toggleQuestion(32)">
+                <h2>Q32: K8s vs Docker?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content32">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>Docker = containers; K8s = orchestration, scaling, service discovery | Docker создаёт контейнеры (изолированные приложения), а Kubernetes управляет этими контейнерами: масштабирует, распределяет нагрузку, находит сервисы. Docker = упаковка, Kubernetes = оркестрация.</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q33 -->
+        <div class="question-card" data-question="33">
+            <div class="question-header" onclick="toggleQuestion(33)">
+                <h2>Q33: Pod vs Deployment?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content33">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>Pod = single container instance; Deployment = pod management, scaling, updates | Pod = один контейнер (или несколько связанных). Deployment = управление Pod'ами: создаёт, масштабирует, обновляет. Deployment управляет Pod'ами, а не наоборот.</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q34 -->
+        <div class="question-card" data-question="34">
+            <div class="question-header" onclick="toggleQuestion(34)">
+                <h2>Q34: Multiple replicas?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content34">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>High availability, load distribution, zero-downtime updates | Несколько копий (replicas) = высокая доступность. Если один Pod упадёт, другие продолжат работать. Нагрузка распределяется между Pod'ами. Обновления без простоя: новые Pod'ы запускаются, старые останавливаются постепенно.</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q35 -->
+        <div class="question-card" data-question="35">
+            <div class="question-header" onclick="toggleQuestion(35)">
+                <h2>Q35: K8s Service?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content35">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>Stable network endpoint, load balancing, service discovery | Kubernetes Service = стабильная точка доступа к Pod'ам. Pod'ы могут перезапускаться и менять IP, но Service всегда имеет один IP. Service распределяет трафик между Pod'ами (load balancing) и находит их (service discovery).</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q36 -->
+        <div class="question-card" data-question="36">
+            <div class="question-header" onclick="toggleQuestion(36)">
+                <h2>Q36: ClusterIP vs NodePort?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content36">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>ClusterIP = internal only; NodePort = external access via node IP | ClusterIP = доступ только внутри кластера (внутренний). NodePort = доступ извне через IP узла и специальный порт (30000-32767). ClusterIP для внутренних сервисов, NodePort для внешнего доступа.</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q37 -->
+        <div class="question-card" data-question="37">
+            <div class="question-header" onclick="toggleQuestion(37)">
+                <h2>Q37: ConfigMap?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content37">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>Non-sensitive configuration data, externalized from code | ConfigMap = хранилище несекретных настроек (URL базы данных, порты, имена). Позволяет вынести конфигурацию из кода. Можно менять настройки без пересборки приложения.</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q38 -->
+        <div class="question-card" data-question="38">
+            <div class="question-header" onclick="toggleQuestion(38)">
+                <h2>Q38: Secret vs ConfigMap?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content38">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>Secret = sensitive data (Base64 encoded); ConfigMap = non-sensitive | Secret = секретные данные (пароли, ключи), закодированные в Base64. ConfigMap = несекретные данные. Secret для безопасности, ConfigMap для обычных настроек.</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q39 -->
+        <div class="question-card" data-question="39">
+            <div class="question-header" onclick="toggleQuestion(39)">
+                <h2>Q39: Liveness/Readiness probes?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content39">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>Liveness = container health; Readiness = traffic acceptance | Liveness probe = проверка, жив ли контейнер. Если не отвечает → Kubernetes перезапускает Pod. Readiness probe = проверка, готов ли контейнер принимать трафик. Если не готов → Kubernetes не отправляет трафик.</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q40 -->
+        <div class="question-card" data-question="40">
+            <div class="question-header" onclick="toggleQuestion(40)">
+                <h2>Q40: HPA?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content40">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>Automatically scales pods based on CPU/memory metrics | HPA (Horizontal Pod Autoscaler) = автоматическое масштабирование. Следит за CPU/памятью Pod'ов. Если нагрузка высокая → создаёт больше Pod'ов. Если низкая → уменьшает количество Pod'ов.</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q41 -->
+        <div class="question-card" data-question="41">
+            <div class="question-header" onclick="toggleQuestion(41)">
+                <h2>Q41: Rolling update?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content41">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>Gradual replacement: new pods start, old pods terminate, zero downtime | Rolling update = постепенное обновление. Новые Pod'ы запускаются по одному, старые останавливаются после запуска новых. Нулевой простой: всегда есть работающие Pod'ы во время обновления.</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <script>
+
+        function toggleQuestion(num) {
+            const content = document.getElementById('content' + num);
+            const btn = event.currentTarget.querySelector('.toggle-btn');
+            
+            if (content.classList.contains('show')) {
+                content.classList.remove('show');
+                btn.textContent = 'Show Answer';
+            } else {
+                content.classList.add('show');
+                btn.textContent = 'Hide Answer';
+            }
+        }
+        
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.question-card');
+            let visibleCount = 0;
+            
+            cards.forEach(card => {
+                const questionText = card.querySelector('h2').textContent.toLowerCase();
+                if (questionText.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            document.getElementById('showingQuestions').textContent = visibleCount;
+        });
+    
+    </script>
+</body>
+</html>

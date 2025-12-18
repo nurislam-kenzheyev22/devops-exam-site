@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Exam - Section 2: Gradle & Build (Questions 12-16)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .nav {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .nav a {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav a:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        
+        .nav a.active {
+            background: #764ba2;
+        }
+        
+        .question-card {
+            background: white;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .question-card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .question-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .question-header h2 {
+            font-size: 1.4em;
+            flex: 1;
+        }
+        
+        .toggle-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+        
+        .toggle-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .question-content {
+            padding: 25px;
+            display: none;
+        }
+        
+        .question-content.show {
+            display: block;
+        }
+        
+        .answer-section {
+            margin-bottom: 20px;
+        }
+        
+        .answer-section h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .answer-section p {
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .russian-explanation {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            margin-top: 20px;
+        }
+        
+        .russian-explanation h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+        
+        .russian-explanation ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .russian-explanation li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+                .russian-explanation code {
+            background: #f4f4f4;
+            color: #333;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #ddd;
+        }
+        
+                .russian-explanation pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-top: 10px;
+            border: 1px solid #555;
+        }
+        
+        .russian-explanation pre code {
+            background: transparent;
+            color: #f8f8f2;
+            padding: 0;
+            border: none;
+        }
+        
+        .russian-explanation table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        .russian-explanation table td,
+        .russian-explanation table th {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        .russian-explanation table th {
+            background: #667eea;
+            color: white;
+        }
+        
+        .search-box {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .stats {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .stats span {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 DevOps Final Exam</h1>
+            <p>Section 2: Gradle & Build (Questions 12-16)</p>
+        </div>
+        
+        <div class="nav">
+            <a href="Section1_Linux_Git.html">Section 1: Linux & Git</a>
+            <a href="Section2_Gradle.html">Section 2: Gradle</a>
+            <a href="Section3_Docker.html">Section 3: Docker</a>
+            <a href="Section4_Jenkins.html">Section 4: Jenkins</a>
+            <a href="Section5_Kubernetes.html">Section 5: Kubernetes</a>
+            <a href="Section6_Ansible.html">Section 6: Ansible</a>
+            <a href="Section7_DevOps_Concepts.html">Section 7: DevOps Concepts</a>
+            <a href="Section8_Commands.html">Section 8: Commands</a>
+        </div>
+        
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Search questions...">
+        </div>
+        
+        <div class="stats">
+            Total Questions: <span id="totalQuestions">5</span> | 
+            Showing: <span id="showingQuestions">5</span>
+        </div>
+        
+                <!-- Q12 -->
+        <div class="question-card" data-question="12">
+            <div class="question-header" onclick="toggleQuestion(12)">
+                <h2>Q12: Why was Gradle chosen instead of Maven?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content12">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>Gradle was chosen for its flexibility, faster builds through incremental compilation, Groovy/Kotlin DSL for readable build scripts, better dependency management, and parallel task execution. It's more modern and suitable for complex projects compared to Maven's XML-based configuration.</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p><strong>Почему Gradle вместо Maven?</strong></p>
+<p><strong>Термины:</strong></p>
+<ul>
+<li><strong>Build tool</strong> = инструмент сборки (компилирует код в JAR)</li>
+<li><strong>DSL</strong> = Domain-Specific Language (язык для конкретной задачи)</li>
+<li><strong>Incremental compilation</strong> = инкрементальная компиляция (компилирует только изменённые файлы)</li>
+<li><strong>Dependency management</strong> = управление зависимостями (библиотеки)</li>
+</ol>
+<p><strong>Сравнение:</strong></p>
+<p>| Параметр | Maven | Gradle |</p>
+<p>|----------|-------|--------|</p>
+<p>| <strong>Конфигурация</strong> | XML (громоздкий) | Groovy/Kotlin (читаемый) |</p>
+<p>| <strong>Скорость</strong> | Медленнее | Быстрее (кэш, параллельность) |</p>
+<p>| <strong>Гибкость</strong> | Жёсткие правила | Гибкий, можно кастомизировать |</p>
+<p>| <strong>Современность</strong> | Старый стандарт | Современный инструмент |</p>
+<p><strong>Почему Gradle лучше?</strong></p>
+<ol>
+<li><strong>Читаемость</strong> → Gradle код короче и понятнее</li>
+</ol>
+<p>2. <strong>Скорость</strong> → Gradle кэширует результаты, собирает быстрее</p>
+<p>3. <strong>Гибкость</strong> → Можно писать кастомные задачи на Groovy/Kotlin</p>
+<p>4. <strong>Параллельность</strong> → Gradle может собирать несколько модулей одновременно</p>
+<p><strong>Почему это важно в DevOps?</strong></p>
+<p>В CI/CD pipeline каждый коммит запускает сборку. Если сборка быстрая (Gradle) → экономия времени и ресурсов.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q13 -->
+        <div class="question-card" data-question="13">
+            <div class="question-header" onclick="toggleQuestion(13)">
+                <h2>Q13: What is the Gradle Wrapper and why is it important?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content13">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>The Gradle Wrapper (`gradlew`) is a script that ensures everyone uses the same Gradle version. It automatically downloads the correct Gradle version if missing, eliminating "works on my machine" problems. The wrapper files (`gradlew`, `gradlew.bat`, `gradle/wrapper/`) are committed to Git.</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p><strong>Что такое Gradle Wrapper и зачем он нужен?</strong></p>
+<p><strong>Термины:</strong></p>
+<ul>
+<li><strong>Wrapper</strong> = обёртка (скрипт, который запускает Gradle)</li>
+<li><strong>Version consistency</strong> = единая версия (все используют одну версию)</li>
+<li><strong>"Works on my machine"</strong> = "у меня работает" (проблема, когда у всех разные версии)</li>
+</ol>
+<p><strong>Что такое wrapper?</strong></p>
+<p>Это скрипт <code>gradlew</code> (Linux/Mac) или <code>gradlew.bat</code> (Windows), который:</p>
+<ol>
+<li>Проверяет, какая версия Gradle нужна</li>
+</ol>
+<p>2. Скачивает её, если нет</p>
+<p>3. Запускает сборку этой версией</p>
+<p><strong>Почему это важно?</strong></p>
+<ol>
+<li><strong>Единая версия</strong> → Все используют Gradle 8.10.2 (как в проекте)</li>
+</ol>
+<p>2. <strong>Автоматическая установка</strong> → Не нужно устанавливать Gradle вручную</p>
+<p>3. <strong>Reproducibility</strong> → Сборка одинаковая на всех машинах</p>
+<p>4. <strong>CI/CD</strong> → Jenkins не нужно устанавливать Gradle, wrapper сам скачает</p>
+<p><strong>Почему это важно в DevOps?</strong></p>
+<p>Reproducibility (воспроизводимость) — ключевой принцип DevOps. Если сборка работает у тебя, но не работает в Jenkins → проблема. Wrapper решает это.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q14 -->
+        <div class="question-card" data-question="14">
+            <div class="question-header" onclick="toggleQuestion(14)">
+                <h2>Q14: Where does Gradle store build artifacts?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content14">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>Gradle stores build artifacts in the `build/libs/` directory. The JAR file is typically named `{project-name}-{version}.jar` (e.g., `todo-0.0.1-SNAPSHOT.jar`). This location is standardized and used by Docker and deployment tools.</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p><strong>Где Gradle хранит собранные файлы (артефакты)?</strong></p>
+<p><strong>Термины:</strong></p>
+<ul>
+<li><strong>Build artifacts</strong> = артефакты сборки (скомпилированные файлы)</li>
+<li><strong>JAR file</strong> = Java Archive (файл с приложением)</li>
+<li><strong>Standardized location</strong> = стандартное расположение</li>
+</ol>
+<p><strong>Где хранятся:</strong></p>
+<p>``<code></p>
+<p>project/</p>
+<p>└── build/</p>
+<p>    └── libs/</p>
+<p>        └── todo-0.0.1-SNAPSHOT.jar  # Готовое приложение</p>
+<p></code>`<code></p>
+<p><strong>Зачем знать это?</strong></p>
+<ol>
+<li><strong>Dockerfile</strong> → Копирует JAR из </code>build/libs/<code></li>
+</ol>
+<p>2. <strong>Jenkins</strong> → Архивирует JAR из </code>build/libs/<code></p>
+<p>3. <strong>Деплой</strong> → Запускает JAR из </code>build/libs/<code></p>
+<p><strong>Почему это важно?</strong></p>
+<p>Если не знаешь, где JAR → не сможешь его скопировать в Docker или задеплоить. </code>build/libs/` — стандартное место, все его знают.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q15 -->
+        <div class="question-card" data-question="15">
+            <div class="question-header" onclick="toggleQuestion(15)">
+                <h2>Q15: Why is reproducible build important in DevOps?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content15">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>Reproducible builds ensure that the same source code always produces the same binary output, regardless of when, where, or by whom it's built. This enables reliable deployments, debugging, security auditing, and ensures that what works in development also works in production.</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p><strong>Почему важна воспроизводимая сборка (reproducible build)?</strong></p>
+<p><strong>Термины:</strong></p>
+<ul>
+<li><strong>Reproducible build</strong> = воспроизводимая сборка (одинаковый результат всегда)</li>
+<li><strong>Binary output</strong> = бинарный вывод (скомпилированный файл)</li>
+<li><strong>Deterministic</strong> = детерминированный (предсказуемый результат)</li>
+</ol>
+<p><strong>Что это значит?</strong></p>
+<p>Один и тот же код → всегда один и тот же JAR файл.</p>
+<p><strong>Почему это важно?</strong></p>
+<ol>
+<li><strong>Надёжность</strong> → Если работает у тебя, работает везде</li>
+</ol>
+<p>2. <strong>Отладка</strong> → Если баг в продакшене, можешь воспроизвести локально</p>
+<p>3. <strong>Безопасность</strong> → Можно проверить, что в JAR нет вредоносного кода</p>
+<p>4. <strong>Деплой</strong> → Уверенность, что деплоишь то, что тестировал</p>
+<p><strong>Почему это важно в DevOps?</strong></p>
+<p>DevOps = автоматизация. Если сборка непредсказуема → автоматизация не работает. Reproducible build = основа надёжного CI/CD.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q16 -->
+        <div class="question-card" data-question="16">
+            <div class="question-header" onclick="toggleQuestion(16)">
+                <h2>Q16: What is the difference between `gradle build` and `./gradlew build`?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content16">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>`gradle build` uses the Gradle installation on your system (may vary between machines). `./gradlew build` uses the Gradle Wrapper, ensuring everyone uses the exact same Gradle version specified in the project. The wrapper is preferred for consistency and reproducibility.</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p><strong>Разница между <code>gradle build</code> и <code>./gradlew build</code></strong></p>
+<p><strong>Термины:</strong></p>
+<ul>
+<li><strong>System Gradle</strong> = Gradle, установленный в системе</li>
+<li><strong>Wrapper Gradle</strong> = Gradle из wrapper (версия из проекта)</li>
+</ol>
+<p><strong>Разница:</strong></p>
+<p>| Команда | Что использует | Версия | Проблема |</p>
+<p>|---------|---------------|--------|----------|</p>
+<p>| <code>gradle build</code> | Gradle из системы | Какая установлена | У всех разная |</p>
+<p>| <code>./gradlew build</code> | Gradle из wrapper | Из проекта | У всех одинаковая |</p>
+<p><strong>Почему wrapper лучше?</strong></p>
+<ol>
+<li><strong>Единая версия</strong> → Все используют одну версию</li>
+</ol>
+<p>2. <strong>Автоматическая установка</strong> → Не нужно устанавливать Gradle</p>
+<p>3. <strong>Reproducibility</strong> → Одинаковая сборка везде</p>
+<p>4. <strong>CI/CD</strong> → Jenkins не нужно настраивать Gradle</p>
+<p><strong>Почему это важно?</strong></p>
+<p>В DevOps все должны использовать одинаковые инструменты. Wrapper гарантирует это.</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <script>
+        function toggleQuestion(num) {
+            const content = document.getElementById('content' + num);
+            const btn = event.currentTarget.querySelector('.toggle-btn');
+            
+            if (content.classList.contains('show')) {
+                content.classList.remove('show');
+                btn.textContent = 'Show Answer';
+            } else {
+                content.classList.add('show');
+                btn.textContent = 'Hide Answer';
+            }
+        }
+        
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.question-card');
+            let visibleCount = 0;
+            
+            cards.forEach(card => {
+                const questionText = card.querySelector('h2').textContent.toLowerCase();
+                if (questionText.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            document.getElementById('showingQuestions').textContent = visibleCount;
+        });
+    </script>
+</body>
+</html>

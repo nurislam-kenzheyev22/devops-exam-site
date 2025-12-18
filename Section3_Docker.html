@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Exam - Section 3: Docker & Containerization (Questions 17-23)</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .nav {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .nav a {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav a:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        
+        .nav a.active {
+            background: #764ba2;
+        }
+        
+        .question-card {
+            background: white;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .question-card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .question-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .question-header h2 {
+            font-size: 1.4em;
+            flex: 1;
+        }
+        
+        .toggle-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+        
+        .toggle-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .question-content {
+            padding: 25px;
+            display: none;
+        }
+        
+        .question-content.show {
+            display: block;
+        }
+        
+        .answer-section {
+            margin-bottom: 20px;
+        }
+        
+        .answer-section h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .answer-section p {
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .russian-explanation {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            margin-top: 20px;
+        }
+        
+        .russian-explanation h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+        
+        .russian-explanation ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .russian-explanation li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+                .russian-explanation code {
+            background: #f4f4f4;
+            color: #333;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #ddd;
+        }
+        
+                .russian-explanation pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-top: 10px;
+            border: 1px solid #555;
+        }
+        
+        .russian-explanation pre code {
+            background: transparent;
+            color: #f8f8f2;
+            padding: 0;
+            border: none;
+        }
+        
+        .russian-explanation table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        .russian-explanation table td,
+        .russian-explanation table th {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        .russian-explanation table th {
+            background: #667eea;
+            color: white;
+        }
+        
+        .search-box {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .stats {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .stats span {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 DevOps Final Exam</h1>
+            <p>Section 3: Docker & Containerization (Questions 17-23)</p>
+        </div>
+        <div class="nav">
+            <a href="Section1_Linux_Git.html">Section 1: Linux & Git</a>
+            <a href="Section2_Gradle.html">Section 2: Gradle</a>
+            <a href="Section3_Docker.html">Section 3: Docker</a>
+            <a href="Section4_Jenkins.html">Section 4: Jenkins</a>
+            <a href="Section5_Kubernetes.html">Section 5: Kubernetes</a>
+            <a href="Section6_Ansible.html">Section 6: Ansible</a>
+            <a href="Section7_DevOps_Concepts.html">Section 7: DevOps Concepts</a>
+            <a href="Section8_Commands.html">Section 8: Commands</a>
+        </div>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Search questions...">
+        </div>
+        <div class="stats">
+            Total Questions: <span id="totalQuestions">7</span> | 
+            Showing: <span id="showingQuestions">7</span>
+        </div>
+        <!-- Q17 -->
+        <div class="question-card" data-question="17">
+            <div class="question-header" onclick="toggleQuestion(17)">
+                <h2>Q17: Why is containerization important in DevOps?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content17">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>Containerization provides isolation, portability, consistency across environments, resource efficiency, and faster deployments. Containers package applications with dependencies, ensuring they run the same way in development, testing, and production. | Почему важна контейнеризация в DevOps? Термины: Containerization = контейнеризация (упаковка приложения в контейнер) Isolation = изоляция (приложения не мешают друг другу) Portability = переносимость (работает везде одинаково) Consistency = согласова...</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q18 -->
+        <div class="question-card" data-question="18">
+            <div class="question-header" onclick="toggleQuestion(18)">
+                <h2>Q18: Why do we use multi-stage Docker builds?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content18">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>Multi-stage builds reduce final image size by excluding build tools and intermediate files from the runtime image. The build stage compiles the application, and the runtime stage only contains the compiled JAR and runtime dependencies, resulting in smaller, faster, and more secure images. | Почему используем multi-stage Docker builds? Термины: Multi-stage build = многоэтапная сборка (несколько этапов в Dockerfile) Build stage = этап сборки (компиляция) Runtime stage = этап выполнения (только готовое приложение) Image size = размер образ...</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q19 -->
+        <div class="question-card" data-question="19">
+            <div class="question-header" onclick="toggleQuestion(19)">
+                <h2>Q19: Why should containers run as non-root users?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content19">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>Running containers as non-root users follows the principle of least privilege, reducing security risks. If a container is compromised, the attacker has limited permissions and cannot damage the host system or access sensitive files. | Почему контейнеры должны работать не от root? Термины: Non-root user = непривилегированный пользователь (не администратор) Principle of least privilege = принцип минимальных привилегий Container escape = побег из контейнера (доступ к хосту) Compromis...</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q20 -->
+        <div class="question-card" data-question="20">
+            <div class="question-header" onclick="toggleQuestion(20)">
+                <h2>Q20: What are Docker layers and why are they important?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content20">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>Docker layers are read-only filesystem snapshots created by each instruction in a Dockerfile. Layers are cached and reused, making subsequent builds faster. If a layer hasn't changed, Docker reuses the cached version instead of rebuilding it. | Что такое Docker layers и зачем они нужны? Термины: Layer = слой (снимок файловой системы) Caching = кэширование (сохранение для повторного использования) Read-only = только для чтения (нельзя изменить) Union filesystem = объединённая файловая систем...</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q21 -->
+        <div class="question-card" data-question="21">
+            <div class="question-header" onclick="toggleQuestion(21)">
+                <h2>Q21: What is the difference between Dockerfile and Docker Compose?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content21">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>A Dockerfile defines how to build a single container image. Docker Compose orchestrates multiple containers (application, database, etc.) as a single application stack, defining networks, volumes, and dependencies between services. | Разница между Dockerfile и Docker Compose Термины: Dockerfile = инструкция для сборки одного образа Docker Compose = оркестрация нескольких контейнеров Orchestration = оркестрация (управление несколькими контейнерами) Stack = стек (группа связанных с...</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q22 -->
+        <div class="question-card" data-question="22">
+            <div class="question-header" onclick="toggleQuestion(22)">
+                <h2>Q22: Why should application configuration be externalized?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content22">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>Externalized configuration allows the same application to run in different environments (dev, test, prod) without code changes. Configuration is stored in files (application.yml) or environment variables, making deployments flexible and environment-specific. | Почему конфигурацию нужно выносить наружу? Термины: Externalized configuration = внешняя конфигурация (не в коде) Environment-specific = специфичный для окружения Hardcoded = захардкоженный (в коде) Проблема БЕЗ внешней конфигурации: Решение: Преимущ...</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Q23 -->
+        <div class="question-card" data-question="23">
+            <div class="question-header" onclick="toggleQuestion(23)">
+                <h2>Q23: What is a Docker volume and why is it used for databases?</h2>
+                <button class="toggle-btn">Show Answer</button>
+            </div>
+            <div class="question-content" id="content23">
+                <div class="answer-section">
+                    <h3>Answer (English):</h3>
+                    <p>A Docker volume is persistent storage that survives container restarts and deletions. Databases use volumes to store data files, ensuring data persistence. Without volumes, database data would be lost when the container stops. | Что такое Docker volume и зачем он для баз данных? Термины: Volume = том (постоянное хранилище) Persistent storage = постоянное хранилище (данные сохраняются) Ephemeral = временный (исчезает при остановке контейнера) Проблема БЕЗ volume: Решение С vo...</p>
+                </div>
+                <div class="russian-explanation">
+                    <h3>Объяснение (Русский):</h3>
+                    <p>Объяснение будет добавлено позже.</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <script>
+
+        function toggleQuestion(num) {
+            const content = document.getElementById('content' + num);
+            const btn = event.currentTarget.querySelector('.toggle-btn');
+            
+            if (content.classList.contains('show')) {
+                content.classList.remove('show');
+                btn.textContent = 'Show Answer';
+            } else {
+                content.classList.add('show');
+                btn.textContent = 'Hide Answer';
+            }
+        }
+        
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.question-card');
+            let visibleCount = 0;
+            
+            cards.forEach(card => {
+                const questionText = card.querySelector('h2').textContent.toLowerCase();
+                if (questionText.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            document.getElementById('showingQuestions').textContent = visibleCount;
+        });
+    
+    </script>
+</body>
+</html>

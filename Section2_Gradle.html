@@ -450,7 +450,7 @@
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Почему Gradle вместо Maven?</strong></p>
+                    <p><strong>Почему Gradle вместо Maven?</strong></p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>Build tool</strong> = инструмент сборки (компилирует код в JAR)</p>
 <p>- <strong>DSL</strong> = Domain-Specific Language (язык для конкретной задачи)</p>
@@ -469,7 +469,7 @@
 <p># Maven mvn clean build  # 2 минуты (всё пересобирает)</p>
 <p># Gradle ./gradlew clean build  # 30 секунд (использует кэш)</p>
 <p><strong>Почему это важно в DevOps?</strong></p>
-<p>В CI/CD pipeline каждый коммит запускает сборку. Если сборка быстрая (Gradle) → экономия времени и ресурсов. Если медленная (Maven) → pipeline тормозит.</p></p>
+<p>В CI/CD pipeline каждый коммит запускает сборку. Если сборка быстрая (Gradle) → экономия времени и ресурсов. Если медленная (Maven) → pipeline тормозит.</p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>Build tool</strong> = инструмент сборки (компилирует код в JAR)</p>
 <p>- <strong>DSL</strong> = Domain-Specific Language (язык для конкретной задачи)</p>
@@ -488,7 +488,7 @@
 <p># Maven mvn clean build  # 2 минуты (всё пересобирает)</p>
 <p># Gradle ./gradlew clean build  # 30 секунд (использует кэш)</p>
 <p><strong>Почему это важно в DevOps?</strong></p>
-<p>В CI/CD pipeline каждый коммит запускает сборку. Если сборка быстрая (Gradle) → экономия времени и ресурсов. Если медленная (Maven) → pipeline тормозит.</p></p>
+<p>В CI/CD pipeline каждый коммит запускает сборку. Если сборка быстрая (Gradle) → экономия времени и ресурсов. Если медленная (Maven) → pipeline тормозит.</p>
 <p><strong>Термины:</strong></p>
 <ul>
 <li><strong>Build tool</strong> = инструмент сборки (компилирует код в JAR)</li>
@@ -529,7 +529,7 @@
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Что такое Gradle Wrapper и зачем он нужен?</strong></p>
+                    <p><strong>Что такое Gradle Wrapper и зачем он нужен?</strong></p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>Wrapper</strong> = обёртка (скрипт, который запускает Gradle)</p>
 <p>- <strong>Version consistency</strong> = единая версия (все используют одну версию)</p>
@@ -546,7 +546,7 @@
 <p><strong>Пример в CI/CD:</strong></p>
 <p>// Jenkinsfile stage('Build') { steps { sh './gradlew clean build'  // Wrapper сам скачает нужную версию } }</p>
 <p><strong>Почему это важно в DevOps?</strong></p>
-<p>Reproducibility (воспроизводимость) — ключевой принцип DevOps. Если сборка работает у тебя, но не работает в Jenkins → проблема. Wrapper решает это.</p></p>
+<p>Reproducibility (воспроизводимость) — ключевой принцип DevOps. Если сборка работает у тебя, но не работает в Jenkins → проблема. Wrapper решает это.</p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>Wrapper</strong> = обёртка (скрипт, который запускает Gradle)</p>
 <p>- <strong>Version consistency</strong> = единая версия (все используют одну версию)</p>
@@ -563,7 +563,7 @@
 <p><strong>Пример в CI/CD:</strong></p>
 <p>// Jenkinsfile stage('Build') { steps { sh './gradlew clean build'  // Wrapper сам скачает нужную версию } }</p>
 <p><strong>Почему это важно в DevOps?</strong></p>
-<p>Reproducibility (воспроизводимость) — ключевой принцип DevOps. Если сборка работает у тебя, но не работает в Jenkins → проблема. Wrapper решает это.</p></p>
+<p>Reproducibility (воспроизводимость) — ключевой принцип DevOps. Если сборка работает у тебя, но не работает в Jenkins → проблема. Wrapper решает это.</p>
 <p><strong>Термины:</strong></p>
 <ul>
 <li><strong>Wrapper</strong> = обёртка (скрипт, который запускает Gradle)</li>
@@ -603,7 +603,7 @@
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Где Gradle хранит собранные файлы (артефакты)?</strong></p>
+                    <p><strong>Где Gradle хранит собранные файлы (артефакты)?</strong></p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>Build artifacts</strong> = артефакты сборки (скомпилированные файлы)</p>
 <p>- <strong>JAR file</strong> = Java Archive (файл с приложением)</p>
@@ -618,7 +618,7 @@
 <p><strong>Пример в Dockerfile:</strong></p>
 <p># Копируем JAR из build/libs/ COPY --from=build /app/build/libs/todo-*.jar app.jar</p>
 <p><strong>Почему это важно?</strong></p>
-<p>Если не знаешь, где JAR → не сможешь его скопировать в Docker или задеплоить. `build/libs/` — стандартное место, все его знают.</p></p>
+<p>Если не знаешь, где JAR → не сможешь его скопировать в Docker или задеплоить. `build/libs/` — стандартное место, все его знают.</p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>Build artifacts</strong> = артефакты сборки (скомпилированные файлы)</p>
 <p>- <strong>JAR file</strong> = Java Archive (файл с приложением)</p>
@@ -633,7 +633,7 @@
 <p><strong>Пример в Dockerfile:</strong></p>
 <p># Копируем JAR из build/libs/ COPY --from=build /app/build/libs/todo-*.jar app.jar</p>
 <p><strong>Почему это важно?</strong></p>
-<p>Если не знаешь, где JAR → не сможешь его скопировать в Docker или задеплоить. `build/libs/` — стандартное место, все его знают.</p></p>
+<p>Если не знаешь, где JAR → не сможешь его скопировать в Docker или задеплоить. `build/libs/` — стандартное место, все его знают.</p>
 <p><strong>Термины:</strong></p>
 <ul>
 <li><strong>Build artifacts</strong> = артефакты сборки (скомпилированные файлы)</li>
@@ -672,7 +672,7 @@
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Почему важна воспроизводимая сборка (reproducible build)?</strong></p>
+                    <p><strong>Почему важна воспроизводимая сборка (reproducible build)?</strong></p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>Reproducible build</strong> = воспроизводимая сборка (одинаковый результат всегда)</p>
 <p>- <strong>Binary output</strong> = бинарный вывод (скомпилированный файл)</p>
@@ -693,7 +693,7 @@
 <p># Проблема: разные версии Java Твой компьютер: Java 17 → JAR работает Jenkins: Java 11 → JAR не работает (несовместимость)</p>
 <p># Решение: фиксировать версию # Dockerfile FROM eclipse-temurin:17-jre-alpine  # Всегда Java 17</p>
 <p><strong>Почему это важно в DevOps?</strong></p>
-<p>DevOps = автоматизация. Если сборка непредсказуема → автоматизация не работает. Reproducible build = основа надёжного CI/CD.</p></p>
+<p>DevOps = автоматизация. Если сборка непредсказуема → автоматизация не работает. Reproducible build = основа надёжного CI/CD.</p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>Reproducible build</strong> = воспроизводимая сборка (одинаковый результат всегда)</p>
 <p>- <strong>Binary output</strong> = бинарный вывод (скомпилированный файл)</p>
@@ -714,7 +714,7 @@
 <p># Проблема: разные версии Java Твой компьютер: Java 17 → JAR работает Jenkins: Java 11 → JAR не работает (несовместимость)</p>
 <p># Решение: фиксировать версию # Dockerfile FROM eclipse-temurin:17-jre-alpine  # Всегда Java 17</p>
 <p><strong>Почему это важно в DevOps?</strong></p>
-<p>DevOps = автоматизация. Если сборка непредсказуема → автоматизация не работает. Reproducible build = основа надёжного CI/CD.</p></p>
+<p>DevOps = автоматизация. Если сборка непредсказуема → автоматизация не работает. Reproducible build = основа надёжного CI/CD.</p>
 <p><strong>Термины:</strong></p>
 <ul>
 <li><strong>Reproducible build</strong> = воспроизводимая сборка (одинаковый результат всегда)</li>
@@ -749,7 +749,7 @@
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Разница между `gradle build` и `./gradlew build`</strong></p>
+                    <p><strong>Разница между `gradle build` и `./gradlew build`</strong></p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>System Gradle</strong> = Gradle, установленный в системе</p>
 <p>- <strong>Wrapper Gradle</strong> = Gradle из wrapper (версия из проекта)</p>
@@ -764,7 +764,7 @@
 <p># Проблема с gradle build Твой компьютер: Gradle 8.0 → сборка работает Jenkins: Gradle 7.0 → сборка падает (синтаксис изменился)</p>
 <p># Решение с ./gradlew build Твой компьютер: ./gradlew → скачает Gradle 8.10.2 → работает Jenkins: ./gradlew → скачает Gradle 8.10.2 → работает</p>
 <p><strong>Почему это важно?</strong></p>
-<p>В DevOps все должны использовать одинаковые инструменты. Wrapper гарантирует это.</p></p>
+<p>В DevOps все должны использовать одинаковые инструменты. Wrapper гарантирует это.</p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>System Gradle</strong> = Gradle, установленный в системе</p>
 <p>- <strong>Wrapper Gradle</strong> = Gradle из wrapper (версия из проекта)</p>
@@ -779,7 +779,7 @@
 <p># Проблема с gradle build Твой компьютер: Gradle 8.0 → сборка работает Jenkins: Gradle 7.0 → сборка падает (синтаксис изменился)</p>
 <p># Решение с ./gradlew build Твой компьютер: ./gradlew → скачает Gradle 8.10.2 → работает Jenkins: ./gradlew → скачает Gradle 8.10.2 → работает</p>
 <p><strong>Почему это важно?</strong></p>
-<p>В DevOps все должны использовать одинаковые инструменты. Wrapper гарантирует это.</p></p>
+<p>В DevOps все должны использовать одинаковые инструменты. Wrapper гарантирует это.</p>
 <p><strong>Термины:</strong></p>
 <ul>
 <li><strong>System Gradle</strong> = Gradle, установленный в системе</li>

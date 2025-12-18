@@ -443,11 +443,11 @@
             <div class="question-content" id="content42">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>Infrastructure automation, configuration management, IaC | Ansible = автоматизация инфраструктуры. Вместо ручной установки на каждом сервере пишешь playbook один раз → Ansible выполняет на всех серверах. Infrastructure as Code = инфраструктура как код.</p>
+                    <p>Infrastructure automation, configuration management, IaC</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Какую проблему решает Ansible?</strong></p><p>Ansible автоматизирует настройку серверов. Вместо ручной настройки каждого сервера → один automation script настраивает все серверы одинаково.</p></p>
+                    <p><strong>Какую проблему решает Ansible?</strong></p><p>Ansible автоматизирует настройку серверов. Вместо ручной настройки каждого сервера → один automation script настраивает все серверы одинаково.</p>
                 </div>
             </div>
         </div>
@@ -461,11 +461,11 @@
             <div class="question-content" id="content43">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>Running playbook multiple times produces same result (no side effects) | Idempotency = идемпотентность. Запускаешь playbook много раз → результат одинаковый. Если что-то уже установлено → Ansible не переустанавливает. Безопасно запускать повторно.</p>
+                    <p>Running automation script multiple times produces same result (no side effects)</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Что значит idempotency в Ansible?</strong></p><p>safe to repeat = можно запускать много раз, результат одинаковый. Если уже установлено → не переустанавливает. Безопасно запускать повторно.</p></p>
+                    <p><strong>Что значит idempotency в Ansible?</strong></p><p>safe to repeat = можно запускать много раз, результат одинаковый. Если уже установлено → не переустанавливает. Безопасно запускать повторно.</p>
                 </div>
             </div>
         </div>
@@ -479,11 +479,11 @@
             <div class="question-content" id="content44">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>List of target hosts for Ansible to manage | Inventory = список серверов для управления. Указываешь IP или имена серверов, Ansible подключается к ним и выполняет задачи. Можешь группировать серверы (web-servers, db-servers).</p>
+                    <p>List of target hosts for Ansible to manage</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Что такое inventory файл?</strong></p><p>server list = список серверов, на которых Ansible работает. Указывает IP адреса, пользователей, группы серверов (dev, prod).</p></p>
+                    <p><strong>Что такое inventory файл?</strong></p><p>server list = список серверов, на которых Ansible работает. Указывает IP адреса, пользователей, группы серверов (dev, prod).</p>
                 </div>
             </div>
         </div>
@@ -497,11 +497,11 @@
             <div class="question-content" id="content45">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>Playbook = execution plan; Role = reusable task collection | Playbook = план выполнения (что делать). Role = переиспользуемая коллекция задач (как библиотека). Role можно использовать в разных playbook'ах. Playbook вызывает roles.</p>
+                    <p>automation script = execution plan; Role = reusable task collection</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Разница между playbook и role?</strong></p><p>automation script = основной файл с задачами. Role = переиспользуемая группа задач (например, установка Docker). Role можно использовать в разных automation script.</p></p>
+                    <p><strong>Разница между playbook и role?</strong></p><p>automation script = основной файл с задачами. Role = переиспользуемая группа задач (например, установка Docker). Role можно использовать в разных automation script.</p>
                 </div>
             </div>
         </div>
@@ -515,11 +515,11 @@
             <div class="question-content" id="content46">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>Tasks triggered by changes (e.g., restart service after config change) | Handlers = задачи, которые выполняются только при изменениях. Например: изменился конфиг → handler перезапускает сервис. Если конфиг не изменился → handler не выполняется.</p>
+                    <p>Tasks triggered by changes (e.g., restart network access after config change)</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Для чего используются handlers?</strong></p><p>actions on change = действия, которые выполняются только при изменении (например, перезапуск сервиса). Если задача не изменила ничего → handler не запускается.</p></p>
+                    <p><strong>Для чего используются handlers?</strong></p><p>actions on change = действия, которые выполняются только при изменении (например, перезапуск сервиса). Если задача не изменила ничего → handler не запускается.</p>
                 </div>
             </div>
         </div>
@@ -533,11 +533,11 @@
             <div class="question-content" id="content47">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>Consistency, speed, error reduction, documentation | Автоматизация = скорость, единообразие, меньше ошибок. Вручную установить на 10 серверах = долго и можно ошибиться. Ansible playbook = быстро и одинаково на всех.</p>
+                    <p>same everywhere, speed, error reduction, documentation</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Почему нужно автоматизировать установку инфраструктуры?</strong></p><p>Автоматизация = быстро, одинаково, без ошибок. Ручная установка = медленно, могут быть различия, легко забыть шаг.</p></p>
+                    <p><strong>Почему нужно автоматизировать установку инфраструктуры?</strong></p><p>Автоматизация = быстро, одинаково, без ошибок. Ручная установка = медленно, могут быть различия, легко забыть шаг.</p>
                 </div>
             </div>
         </div>
@@ -551,11 +551,11 @@
             <div class="question-content" id="content48">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>Encrypt sensitive variables (passwords, API keys) | Ansible Vault = шифрование секретов. Пароли и ключи хранятся в зашифрованном виде. Безопасно хранить в Git. Для расшифровки нужен пароль.</p>
+                    <p>Encrypt sensitive variables (passwords, API keys)</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Что такое Ansible Vault и зачем?</strong></p><p>Ansible encrypted storage = шифрование секретов (паролей, ключей) в файлах. Файлы зашифрованы, можно хранить в Git безопасно.</p></p>
+                    <p><strong>Что такое Ansible Vault и зачем?</strong></p><p>Ansible encrypted storage = шифрование секретов (паролей, ключей) в файлах. Файлы зашифрованы, можно хранить в Git безопасно.</p>
                 </div>
             </div>
         </div>

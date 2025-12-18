@@ -443,11 +443,11 @@
             <div class="question-content" id="content32">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>Docker = containers; K8s = orchestration, scaling, service discovery | Docker создаёт контейнеры (изолированные приложения), а Kubernetes управляет этими контейнерами: масштабирует, распределяет нагрузку, находит сервисы. Docker = упаковка, Kubernetes = оркестрация.</p>
+                    <p>Docker = containers; K8s = managing containers, add copies, network access discovery</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Почему нужен Kubernetes, если есть Docker?</strong></p><p>Docker запускает один контейнер. Kubernetes управляет множеством контейнеров на многих серверах. Kubernetes = оркестратор (управляет, масштабирует, обновляет).</p></p>
+                    <p><strong>Почему нужен Kubernetes, если есть Docker?</strong></p><p>Docker запускает один контейнер. Kubernetes управляет множеством контейнеров на многих серверах. Kubernetes = оркестратор (управляет, масштабирует, обновляет).</p>
                 </div>
             </div>
         </div>
@@ -461,11 +461,11 @@
             <div class="question-content" id="content33">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>Pod = single container instance; Deployment = pod management, scaling, updates | Pod = один контейнер (или несколько связанных). Deployment = управление Pod'ами: создаёт, масштабирует, обновляет. Deployment управляет Pod'ами, а не наоборот.</p>
+                    <p>Pod = single container instance; app setup = pod management, add copies, updates</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Разница между Pod и Deployment</strong></p><p>Pod = один контейнер (или несколько связанных). app setup = управляет Pod-ами (создаёт, обновляет, масштабирует). app setup создаёт Pod-ы автоматически.</p></p>
+                    <p><strong>Разница между Pod и Deployment</strong></p><p>Pod = один контейнер (или несколько связанных). app setup = управляет Pod-ами (создаёт, обновляет, масштабирует). app setup создаёт Pod-ы автоматически.</p>
                 </div>
             </div>
         </div>
@@ -479,11 +479,11 @@
             <div class="question-content" id="content34">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>High availability, load distribution, zero-downtime updates | Несколько копий (replicas) = высокая доступность. Если один Pod упадёт, другие продолжат работать. Нагрузка распределяется между Pod'ами. Обновления без простоя: новые Pod'ы запускаются, старые останавливаются постепенно.</p>
+                    <p>High availability, load distribution, zero-downtime updates</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Почему несколько реплик?</strong></p><p>Несколько копий = если одна упадёт, другие работают (высокая доступность). Также можно распределить нагрузку между копиями.</p></p>
+                    <p><strong>Почему несколько реплик?</strong></p><p>Несколько копий = если одна упадёт, другие работают (высокая доступность). Также можно распределить нагрузку между копиями.</p>
                 </div>
             </div>
         </div>
@@ -497,11 +497,11 @@
             <div class="question-content" id="content35">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>Stable network endpoint, load balancing, service discovery | Kubernetes Service = стабильная точка доступа к Pod'ам. Pod'ы могут перезапускаться и менять IP, но Service всегда имеет один IP. Service распределяет трафик между Pod'ами (load balancing) и находит их (service discovery).</p>
+                    <p>Stable network endpoint, load balancing, network access discovery</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Что такое Service и зачем?</strong></p><p>network access = сетевой доступ к Pod-ам. Pod-ы могут перезапускаться и менять IP. network access даёт постоянный адрес для доступа к приложению.</p></p>
+                    <p><strong>Что такое Service и зачем?</strong></p><p>network access = сетевой доступ к Pod-ам. Pod-ы могут перезапускаться и менять IP. network access даёт постоянный адрес для доступа к приложению.</p>
                 </div>
             </div>
         </div>
@@ -515,11 +515,11 @@
             <div class="question-content" id="content36">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>ClusterIP = internal only; NodePort = external access via node IP | ClusterIP = доступ только внутри кластера (внутренний). NodePort = доступ извне через IP узла и специальный порт (30000-32767). ClusterIP для внутренних сервисов, NodePort для внешнего доступа.</p>
+                    <p>ClusterIP = internal only; NodePort = external access via node IP</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Разница между ClusterIP и NodePort</strong></p><p>ClusterIP = доступ только внутри кластера. NodePort = доступ снаружи через порт на узле (например, 30080).</p></p>
+                    <p><strong>Разница между ClusterIP и NodePort</strong></p><p>ClusterIP = доступ только внутри кластера. NodePort = доступ снаружи через порт на узле (например, 30080).</p>
                 </div>
             </div>
         </div>
@@ -533,11 +533,11 @@
             <div class="question-content" id="content37">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>Non-sensitive configuration data, externalized from code | ConfigMap = хранилище несекретных настроек (URL базы данных, порты, имена). Позволяет вынести конфигурацию из кода. Можно менять настройки без пересборки приложения.</p>
+                    <p>Non-sensitive configuration data, externalized from code</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Что такое ConfigMap и зачем?</strong></p><p>settings = настройки приложения (не секретные). Например, URL базы данных, имена сервисов. Можно менять без пересборки образа.</p></p>
+                    <p><strong>Что такое ConfigMap и зачем?</strong></p><p>settings = настройки приложения (не секретные). Например, URL базы данных, имена сервисов. Можно менять без пересборки образа.</p>
                 </div>
             </div>
         </div>
@@ -551,11 +551,11 @@
             <div class="question-content" id="content38">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>Secret = sensitive data (Base64 encoded); ConfigMap = non-sensitive | Secret = секретные данные (пароли, ключи), закодированные в Base64. ConfigMap = несекретные данные. Secret для безопасности, ConfigMap для обычных настроек.</p>
+                    <p>passwords = sensitive data (Base64 encoded); settings = non-sensitive</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Что такое Secret и чем отличается от ConfigMap?</strong></p><p>passwords = секретные данные (пароли, ключи). Хранится в Base64, но не зашифрован. settings = обычные настройки. passwords для паролей, settings для URL.</p></p>
+                    <p><strong>Что такое Secret и чем отличается от ConfigMap?</strong></p><p>passwords = секретные данные (пароли, ключи). Хранится в Base64, но не зашифрован. settings = обычные настройки. passwords для паролей, settings для URL.</p>
                 </div>
             </div>
         </div>
@@ -569,11 +569,11 @@
             <div class="question-content" id="content39">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>Liveness = container health; Readiness = traffic acceptance | Liveness probe = проверка, жив ли контейнер. Если не отвечает → Kubernetes перезапускает Pod. Readiness probe = проверка, готов ли контейнер принимать трафик. Если не готов → Kubernetes не отправляет трафик.</p>
+                    <p>Liveness = container health; Readiness = traffic acceptance</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Что такое liveness и readiness probes?</strong></p><p>Liveness probe = проверка, что приложение живое (если нет → перезапуск). Readiness probe = проверка, что готово принимать трафик (если нет → убрать из балансировщика).</p></p>
+                    <p><strong>Что такое liveness и readiness probes?</strong></p><p>Liveness probe = проверка, что приложение живое (если нет → перезапуск). Readiness probe = проверка, что готово принимать трафик (если нет → убрать из балансировщика).</p>
                 </div>
             </div>
         </div>
@@ -587,11 +587,11 @@
             <div class="question-content" id="content40">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>Automatically scales pods based on CPU/memory metrics | HPA (Horizontal Pod Autoscaler) = автоматическое масштабирование. Следит за CPU/памятью Pod'ов. Если нагрузка высокая → создаёт больше Pod'ов. Если низкая → уменьшает количество Pod'ов.</p>
+                    <p>Automatically scales containers based on CPU/memory metrics</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Как работает Horizontal Pod Autoscaler?</strong></p><p>HPA следит за нагрузкой (CPU, память). Если нагрузка высокая → создаёт больше Pod-ов. Если низкая → удаляет лишние. Автоматическое масштабирование.</p></p>
+                    <p><strong>Как работает Horizontal Pod Autoscaler?</strong></p><p>HPA следит за нагрузкой (CPU, память). Если нагрузка высокая → создаёт больше Pod-ов. Если низкая → удаляет лишние. Автоматическое масштабирование.</p>
                 </div>
             </div>
         </div>
@@ -605,11 +605,11 @@
             <div class="question-content" id="content41">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p>Gradual replacement: new pods start, old pods terminate, zero downtime | Rolling update = постепенное обновление. Новые Pod'ы запускаются по одному, старые останавливаются после запуска новых. Нулевой простой: всегда есть работающие Pod'ы во время обновления.</p>
+                    <p>Gradual replacement: new containers start, old containers terminate, zero downtime</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Что происходит при rolling update?</strong></p><p>update without downtime = обновление без простоя. Создаёт новые Pod-ы с новой версией, постепенно заменяет старые. Если что-то не так → можно откатить.</p></p>
+                    <p><strong>Что происходит при rolling update?</strong></p><p>update without downtime = обновление без простоя. Создаёт новые Pod-ы с новой версией, постепенно заменяет старые. Если что-то не так → можно откатить.</p>
                 </div>
             </div>
         </div>

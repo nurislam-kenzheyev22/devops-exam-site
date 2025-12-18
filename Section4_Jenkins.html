@@ -447,7 +447,7 @@
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Какие проблемы решает CI/CD?</strong></p>
+                    <p><strong>Какие проблемы решает CI/CD?</strong></p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>CI</strong> = Continuous Integration (непрерывная интеграция)</p>
 <p>- <strong>CD</strong> = Continuous Delivery/Deployment (непрерывная доставка/деплой)</p>
@@ -461,7 +461,7 @@
 <p># БЕЗ CI/CD (плохо) Разработчик: "Код готов!" → Ждёт DevOps инженера (1 день) → DevOps деплоит вручную (может забыть шаг) → Что-то сломалось → откат вручную (ещё 1 день) → Итого: 2 дня на релиз</p>
 <p># С CI/CD (хорошо) Разработчик: git push → Jenkins автоматически: build → test → deploy → Если тесты прошли → деплой автоматически → Если тесты упали → деплой не происходит → Итого: 5 минут на релиз</p>
 <p><strong>Почему это важно?</strong></p>
-<p>CI/CD = основа современной разработки. Без него релизы медленные, рискованные, с ошибками.</p></p>
+<p>CI/CD = основа современной разработки. Без него релизы медленные, рискованные, с ошибками.</p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>CI</strong> = Continuous Integration (непрерывная интеграция)</p>
 <p>- <strong>CD</strong> = Continuous Delivery/Deployment (непрерывная доставка/деплой)</p>
@@ -475,7 +475,7 @@
 <p># БЕЗ CI/CD (плохо) Разработчик: "Код готов!" → Ждёт DevOps инженера (1 день) → DevOps деплоит вручную (может забыть шаг) → Что-то сломалось → откат вручную (ещё 1 день) → Итого: 2 дня на релиз</p>
 <p># С CI/CD (хорошо) Разработчик: git push → Jenkins автоматически: build → test → deploy → Если тесты прошли → деплой автоматически → Если тесты упали → деплой не происходит → Итого: 5 минут на релиз</p>
 <p><strong>Почему это важно?</strong></p>
-<p>CI/CD = основа современной разработки. Без него релизы медленные, рискованные, с ошибками.</p></p>
+<p>CI/CD = основа современной разработки. Без него релизы медленные, рискованные, с ошибками.</p>
                 </div>
             </div>
         </div>
@@ -493,7 +493,7 @@
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Разница между CI и CD</strong></p>
+                    <p><strong>Разница между CI и CD</strong></p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>Continuous Integration</strong> = непрерывная интеграция (автоматическая сборка и тесты)</p>
 <p>- <strong>Continuous Delivery</strong> = непрерывная доставка (автоматический деплой до продакшена, но запуск вручную)</p>
@@ -511,7 +511,7 @@
 <p>// Jenkinsfile - CD (Delivery) stage('Deploy to Staging') { sh 'kubectl apply -f k8s/' } stage('Deploy to Production') { when { branch 'main' // Но запускается вручную (человек нажимает "Deploy") } }</p>
 <p>// Jenkinsfile - CD (Deployment) stage('Deploy to Production') { when { branch 'main' } // Автоматически деплоится, если тесты прошли }</p>
 <p><strong>Почему это важно?</strong></p>
-<p>CI = качество кода. CD = скорость доставки. Вместе = быстрые, надёжные релизы.</p></p>
+<p>CI = качество кода. CD = скорость доставки. Вместе = быстрые, надёжные релизы.</p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>Continuous Integration</strong> = непрерывная интеграция (автоматическая сборка и тесты)</p>
 <p>- <strong>Continuous Delivery</strong> = непрерывная доставка (автоматический деплой до продакшена, но запуск вручную)</p>
@@ -529,7 +529,7 @@
 <p>// Jenkinsfile - CD (Delivery) stage('Deploy to Staging') { sh 'kubectl apply -f k8s/' } stage('Deploy to Production') { when { branch 'main' // Но запускается вручную (человек нажимает "Deploy") } }</p>
 <p>// Jenkinsfile - CD (Deployment) stage('Deploy to Production') { when { branch 'main' } // Автоматически деплоится, если тесты прошли }</p>
 <p><strong>Почему это важно?</strong></p>
-<p>CI = качество кода. CD = скорость доставки. Вместе = быстрые, надёжные релизы.</p></p>
+<p>CI = качество кода. CD = скорость доставки. Вместе = быстрые, надёжные релизы.</p>
                 </div>
             </div>
         </div>
@@ -547,7 +547,7 @@
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Почему Jenkinsfile хранится в Git?</strong></p>
+                    <p><strong>Почему Jenkinsfile хранится в Git?</strong></p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>Infrastructure as Code</strong> = инфраструктура как код (конфигурация в коде)</p>
 <p>- <strong>Version control</strong> = контроль версий</p>
@@ -560,7 +560,7 @@
 <p># Jenkinsfile в Git git log Jenkinsfile # Видно: кто, когда, что изменил в pipeline</p>
 <p># Если pipeline сломался git checkout предыдущая_версия Jenkinsfile # Откатили pipeline к рабочей версии</p>
 <p><strong>Почему это важно?</strong></p>
-<p>Pipeline — это тоже код. Если он в Git → его можно версионировать, ревьюить, откатывать, как и обычный код.</p></p>
+<p>Pipeline — это тоже код. Если он в Git → его можно версионировать, ревьюить, откатывать, как и обычный код.</p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>Infrastructure as Code</strong> = инфраструктура как код (конфигурация в коде)</p>
 <p>- <strong>Version control</strong> = контроль версий</p>
@@ -573,7 +573,7 @@
 <p># Jenkinsfile в Git git log Jenkinsfile # Видно: кто, когда, что изменил в pipeline</p>
 <p># Если pipeline сломался git checkout предыдущая_версия Jenkinsfile # Откатили pipeline к рабочей версии</p>
 <p><strong>Почему это важно?</strong></p>
-<p>Pipeline — это тоже код. Если он в Git → его можно версионировать, ревьюить, откатывать, как и обычный код.</p></p>
+<p>Pipeline — это тоже код. Если он в Git → его можно версионировать, ревьюить, откатывать, как и обычный код.</p>
                 </div>
             </div>
         </div>
@@ -591,7 +591,7 @@
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Какие стадии в Jenkins pipeline и зачем?</strong></p>
+                    <p><strong>Какие стадии в Jenkins pipeline и зачем?</strong></p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>Stage</strong> = стадия (этап pipeline)</p>
 <p>- <strong>Checkout</strong> = получение кода из Git</p>
@@ -601,7 +601,7 @@
 <p><strong>Пример:</strong></p>
 <p>pipeline { stages { stage('Checkout') { steps { checkout scm } } stage('Build') { steps { sh './gradlew build' } // Если не компилируется → pipeline останавливается } stage('Test') { steps { sh './gradlew test' } // Если тесты упали → pipeline останавливается } stage('Docker Build') { steps { sh 'docker build -t app:${BUILD_NUMBER} .' } } stage('Deploy') { steps { sh 'kubectl apply -f k8s/' } } } }</p>
 <p><strong>Почему именно эти стадии?</strong></p>
-<p>Каждая стадия проверяет что-то важное. Если что-то не так → pipeline останавливается, деплой не происходит. Это защита от багов в продакшене.</p></p>
+<p>Каждая стадия проверяет что-то важное. Если что-то не так → pipeline останавливается, деплой не происходит. Это защита от багов в продакшене.</p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>Stage</strong> = стадия (этап pipeline)</p>
 <p>- <strong>Checkout</strong> = получение кода из Git</p>
@@ -611,7 +611,7 @@
 <p><strong>Пример:</strong></p>
 <p>pipeline { stages { stage('Checkout') { steps { checkout scm } } stage('Build') { steps { sh './gradlew build' } // Если не компилируется → pipeline останавливается } stage('Test') { steps { sh './gradlew test' } // Если тесты упали → pipeline останавливается } stage('Docker Build') { steps { sh 'docker build -t app:${BUILD_NUMBER} .' } } stage('Deploy') { steps { sh 'kubectl apply -f k8s/' } } } }</p>
 <p><strong>Почему именно эти стадии?</strong></p>
-<p>Каждая стадия проверяет что-то важное. Если что-то не так → pipeline останавливается, деплой не происходит. Это защита от багов в продакшене.</p></p>
+<p>Каждая стадия проверяет что-то важное. Если что-то не так → pipeline останавливается, деплой не происходит. Это защита от багов в продакшене.</p>
                 </div>
             </div>
         </div>
@@ -629,7 +629,7 @@
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Как Jenkins определяет, какую ветку собирать?</strong></p>
+                    <p><strong>Как Jenkins определяет, какую ветку собирать?</strong></p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>SCM</strong> = Source Control Management (система контроля версий)</p>
 <p>- <strong>Branch specifier</strong> = спецификатор ветки (какие ветки собирать)</p>
@@ -645,7 +645,7 @@
 <p><strong>Пример использования:</strong></p>
 <p>stage('Deploy') { when { branch 'main'  # Только main → деплой в production } } stage('Deploy to Staging') { when { branch 'develop'  # develop → деплой в staging } }</p>
 <p><strong>Почему это важно?</strong></p>
-<p>Разные ветки → разные окружения. Main → production, develop → staging. Jenkins автоматически определяет ветку и деплоит в нужное окружение.</p></p>
+<p>Разные ветки → разные окружения. Main → production, develop → staging. Jenkins автоматически определяет ветку и деплоит в нужное окружение.</p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>SCM</strong> = Source Control Management (система контроля версий)</p>
 <p>- <strong>Branch specifier</strong> = спецификатор ветки (какие ветки собирать)</p>
@@ -661,7 +661,7 @@
 <p><strong>Пример использования:</strong></p>
 <p>stage('Deploy') { when { branch 'main'  # Только main → деплой в production } } stage('Deploy to Staging') { when { branch 'develop'  # develop → деплой в staging } }</p>
 <p><strong>Почему это важно?</strong></p>
-<p>Разные ветки → разные окружения. Main → production, develop → staging. Jenkins автоматически определяет ветку и деплоит в нужное окружение.</p></p>
+<p>Разные ветки → разные окружения. Main → production, develop → staging. Jenkins автоматически определяет ветку и деплоит в нужное окружение.</p>
                 </div>
             </div>
         </div>
@@ -679,7 +679,7 @@
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Почему не хранить credentials в Jenkinsfile?</strong></p>
+                    <p><strong>Почему не хранить credentials в Jenkinsfile?</strong></p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>Credentials</strong> = учётные данные (пароли, ключи)</p>
 <p>- <strong>Credentials Store</strong> = хранилище credentials в Jenkins</p>
@@ -695,7 +695,7 @@
 <p><strong>Преимущества:</strong></p>
 <p>1. <strong>Безопасность</strong> → Пароль не в коде, не в Git 2. <strong>Ротация</strong> → Можешь сменить пароль в Jenkins, код не трогать 3. <strong>Доступ</strong> → Только те, у кого есть доступ к Jenkins, видят пароль</p>
 <p><strong>Почему это важно?</strong></p>
-<p>Секреты в коде = катастрофа безопасности. Всегда используй Credentials Store.</p></p>
+<p>Секреты в коде = катастрофа безопасности. Всегда используй Credentials Store.</p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>Credentials</strong> = учётные данные (пароли, ключи)</p>
 <p>- <strong>Credentials Store</strong> = хранилище credentials в Jenkins</p>
@@ -711,7 +711,7 @@
 <p><strong>Преимущества:</strong></p>
 <p>1. <strong>Безопасность</strong> → Пароль не в коде, не в Git 2. <strong>Ротация</strong> → Можешь сменить пароль в Jenkins, код не трогать 3. <strong>Доступ</strong> → Только те, у кого есть доступ к Jenkins, видят пароль</p>
 <p><strong>Почему это важно?</strong></p>
-<p>Секреты в коде = катастрофа безопасности. Всегда используй Credentials Store.</p></p>
+<p>Секреты в коде = катастрофа безопасности. Всегда используй Credentials Store.</p>
                 </div>
             </div>
         </div>
@@ -729,7 +729,7 @@
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Что происходит, когда тесты падают в pipeline?</strong></p>
+                    <p><strong>Что происходит, когда тесты падают в pipeline?</strong></p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>Pipeline failure</strong> = падение pipeline (остановка выполнения)</p>
 <p>- <strong>Fail fast</strong> = быстрое падение (остановка при первой ошибке)</p>
@@ -742,7 +742,7 @@
 <p># Тесты прошли ./gradlew test # BUILD SUCCESSFUL # Pipeline продолжается → Docker Build → Deploy</p>
 <p># Тесты упали ./gradlew test # BUILD FAILED # Tests failed: 5 tests, 2 failed # Pipeline останавливается → Docker Build НЕ выполняется → Deploy НЕ выполняется</p>
 <p><strong>Почему это важно?</strong></p>
-<p>Если тесты падают → код с багами. Pipeline останавливается → баги не попадают в продакшен. Это защита от плохого кода.</p></p>
+<p>Если тесты падают → код с багами. Pipeline останавливается → баги не попадают в продакшен. Это защита от плохого кода.</p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>Pipeline failure</strong> = падение pipeline (остановка выполнения)</p>
 <p>- <strong>Fail fast</strong> = быстрое падение (остановка при первой ошибке)</p>
@@ -755,7 +755,7 @@
 <p># Тесты прошли ./gradlew test # BUILD SUCCESSFUL # Pipeline продолжается → Docker Build → Deploy</p>
 <p># Тесты упали ./gradlew test # BUILD FAILED # Tests failed: 5 tests, 2 failed # Pipeline останавливается → Docker Build НЕ выполняется → Deploy НЕ выполняется</p>
 <p><strong>Почему это важно?</strong></p>
-<p>Если тесты падают → код с багами. Pipeline останавливается → баги не попадают в продакшен. Это защита от плохого кода.</p></p>
+<p>Если тесты падают → код с багами. Pipeline останавливается → баги не попадают в продакшен. Это защита от плохого кода.</p>
                 </div>
             </div>
         </div>
@@ -773,7 +773,7 @@
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><p><strong>Почему Docker образы тегируются динамически?</strong></p>
+                    <p><strong>Почему Docker образы тегируются динамически?</strong></p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>Dynamic tagging</strong> = динамическое тегирование (тег меняется автоматически)</p>
 <p>- <strong>Build number</strong> = номер сборки (уникальный для каждой сборки)</p>
@@ -790,7 +790,7 @@
 <p># Сборка 2 (новый функционал) docker build -t app:2 # Деплой app:2 в production</p>
 <p># Что-то сломалось → откат kubectl set image deployment/app app=app:1 # Вернулись к версии 1</p>
 <p><strong>Почему это важно?</strong></p>
-<p>В продакшене нужно знать, какая версия работает. Если что-то сломалось → нужно быстро откатиться. Динамические теги = версионирование образов.</p></p>
+<p>В продакшене нужно знать, какая версия работает. Если что-то сломалось → нужно быстро откатиться. Динамические теги = версионирование образов.</p>
 <p><strong>Термины:</strong></p>
 <p>- <strong>Dynamic tagging</strong> = динамическое тегирование (тег меняется автоматически)</p>
 <p>- <strong>Build number</strong> = номер сборки (уникальный для каждой сборки)</p>
@@ -807,7 +807,7 @@
 <p># Сборка 2 (новый функционал) docker build -t app:2 # Деплой app:2 в production</p>
 <p># Что-то сломалось → откат kubectl set image deployment/app app=app:1 # Вернулись к версии 1</p>
 <p><strong>Почему это важно?</strong></p>
-<p>В продакшене нужно знать, какая версия работает. Если что-то сломалось → нужно быстро откатиться. Динамические теги = версионирование образов.</p></p>
+<p>В продакшене нужно знать, какая версия работает. Если что-то сломалось → нужно быстро откатиться. Динамические теги = версионирование образов.</p>
                 </div>
             </div>
         </div>

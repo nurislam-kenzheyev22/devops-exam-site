@@ -576,7 +576,7 @@
 <td>Современный инструмент</td>
 </tr>
 </table><br>**Пример конфигурации:**<br>**Maven (XML):**<br>```xml<br><project><br><dependencies><br><dependency><br><groupId>org.springframework.boot</groupId><br><artifactId>spring-boot-starter-web</artifactId><br><version>3.4.1</version><br></dependency><br></dependencies><br></project><br>```<br>**Gradle (Groovy):**<br>```groovy<br>dependencies {<br>implementation 'org.springframework.boot:spring-boot-starter-web:3.4.1'<br>}<br>```<br>**Почему Gradle лучше?**<br>1. **Читаемость** → Gradle код короче и понятнее<br>2. **Скорость** → Gradle кэширует результаты, собирает быстрее<br>3. **Гибкость** → Можно писать кастомные задачи на Groovy/Kotlin<br>4. **Параллельность** → Gradle может собирать несколько модулей одновременно<br>**Пример скорости:**<br>```bash<br># Maven<br>mvn clean build  # 2 минуты (всё пересобирает)<br># Gradle<br>./gradlew clean build  # 30 секунд (использует кэш)<br>```<br>**Почему это важно в DevOps?**<br>В CI/CD pipeline каждый коммит запускает сборку. Если сборка быстрая (Gradle) → экономия времени и ресурсов. Если медленная (Maven) → pipeline тормозит.<br>---</p>
-<p>|----------|-------|--------|</p>
+
 <p>| <strong>Конфигурация</strong> | XML (громоздкий) | Groovy/Kotlin (читаемый) |</p>
 <p>| <strong>Скорость</strong> | Медленнее | Быстрее (кэш, параллельность) |</p>
 <p>| <strong>Гибкость</strong> | Жёсткие правила | Гибкий, можно кастомизировать |</p>
@@ -864,8 +864,27 @@
 <li><strong>Wrapper Gradle</strong> = Gradle из wrapper (версия из проекта)</li>
 </ol>
 <p><strong>Разница:</strong></p>
-<p>**Разница между `gradle build` и `./gradlew build`**<br>**Термины:**<br>- **System Gradle** = Gradle, установленный в системе<br>- **Wrapper Gradle** = Gradle из wrapper (версия из проекта)<br>**Разница:**<br>| Команда | Что использует | Версия | Проблема |<br>|---------|---------------|--------|----------|<br>| `gradle build` | Gradle из системы | Какая установлена | У всех разная |<br>| `./gradlew build` | Gradle из wrapper | Из проекта | У всех одинаковая |<br>**Пример:**<br>```bash<br># gradle build (плохо)<br>gradle build<br># Использует Gradle 8.0 (если установлен)<br># У коллеги может быть 7.0 → разные результаты!<br># ./gradlew build (хорошо)<br>./gradlew build<br># Использует Gradle 8.10.2 (из gradle-wrapper.properties)<br># У всех одинаковая версия → одинаковые результаты!<br>```<br>**Почему wrapper лучше?**<br>1. **Единая версия** → Все используют одну версию<br>2. **Автоматическая установка** → Не нужно устанавливать Gradle<br>3. **Reproducibility** → Одинаковая сборка везде<br>4. **CI/CD** → Jenkins не нужно настраивать Gradle<br>**Пример проблемы:**<br>```bash<br># Проблема с gradle build<br>Твой компьютер: Gradle 8.0 → сборка работает<br>Jenkins: Gradle 7.0 → сборка падает (синтаксис изменился)<br># Решение с ./gradlew build<br>Твой компьютер: ./gradlew → скачает Gradle 8.10.2 → работает<br>Jenkins: ./gradlew → скачает Gradle 8.10.2 → работает<br>```<br>**Почему это важно?**<br>В DevOps все должны использовать одинаковые инструменты. Wrapper гарантирует это.<br>---<br>## 4. Docker & Containerization</p>
-<p>|---------|---------------|--------|----------|</p>
+<p>**Разница между `gradle build` и `./gradlew build`**<br>**Термины:**<br>- **System Gradle** = Gradle, установленный в системе<br>- **Wrapper Gradle** = Gradle из wrapper (версия из проекта)<br>**Разница:**<br><table>
+<tr>
+<th>Команда</th>
+<th>Что использует</th>
+<th>Версия</th>
+<th>Проблема</th>
+</tr>
+<tr>
+<td><code>gradle build</code></td>
+<td>Gradle из системы</td>
+<td>Какая установлена</td>
+<td>У всех разная</td>
+</tr>
+<tr>
+<td><code>./gradlew build</code></td>
+<td>Gradle из wrapper</td>
+<td>Из проекта</td>
+<td>У всех одинаковая</td>
+</tr>
+</table><br>**Пример:**<br>```bash<br># gradle build (плохо)<br>gradle build<br># Использует Gradle 8.0 (если установлен)<br># У коллеги может быть 7.0 → разные результаты!<br># ./gradlew build (хорошо)<br>./gradlew build<br># Использует Gradle 8.10.2 (из gradle-wrapper.properties)<br># У всех одинаковая версия → одинаковые результаты!<br>```<br>**Почему wrapper лучше?**<br>1. **Единая версия** → Все используют одну версию<br>2. **Автоматическая установка** → Не нужно устанавливать Gradle<br>3. **Reproducibility** → Одинаковая сборка везде<br>4. **CI/CD** → Jenkins не нужно настраивать Gradle<br>**Пример проблемы:**<br>```bash<br># Проблема с gradle build<br>Твой компьютер: Gradle 8.0 → сборка работает<br>Jenkins: Gradle 7.0 → сборка падает (синтаксис изменился)<br># Решение с ./gradlew build<br>Твой компьютер: ./gradlew → скачает Gradle 8.10.2 → работает<br>Jenkins: ./gradlew → скачает Gradle 8.10.2 → работает<br>```<br>**Почему это важно?**<br>В DevOps все должны использовать одинаковые инструменты. Wrapper гарантирует это.<br>---<br>## 4. Docker & Containerization</p>
+
 <p>| <code>gradle build</code> | Gradle из системы | Какая установлена | У всех разная |</p>
 <p>| <code>./gradlew build</code> | Gradle из wrapper | Из проекта | У всех одинаковая |</p>
 <p><strong>Почему wrapper лучше?</strong></p>

@@ -673,7 +673,7 @@
 <p>```</p>
 <p><strong>Почему это важно?</strong></p>
 <p>| Root пользователь | Non-root пользователь |</p>
-<p>|-------------------|----------------------|</p>
+
 <p>| Может удалить файлы системы | Может удалить только свои файлы |</p>
 <p>| Может изменить системные настройки | Не может изменить системные настройки |</p>
 <p>| Если контейнер скомпрометирован → опасность для хоста | Если контейнер скомпрометирован → ограниченный ущерб |</p>
@@ -824,7 +824,28 @@
 <p>db: image: postgres:15 volumes:</p>
 <p>- db-data:/var/lib/postgresql/data</p>
 <p><strong>Сравнение:</strong></p>
-<p>| Параметр | Dockerfile | Docker Compose | |----------|------------|----------------| | <strong>Что делает</strong> | Собирает образ | Запускает несколько контейнеров | | <strong>Команда</strong> | `docker build` | `docker-compose up` | | <strong>Использование</strong> | Один контейнер | Несколько связанных контейнеров |</p>
+<table>
+<tr>
+<th>Параметр</th>
+<th>Dockerfile</th>
+<th>Docker Compose</th>
+</tr>
+<tr>
+<td><strong>Что делает</strong></td>
+<td>Собирает образ</td>
+<td>Запускает несколько контейнеров</td>
+</tr>
+<tr>
+<td><strong>Команда</strong></td>
+<td><code>docker build</code></td>
+<td><code>docker-compose up</code></td>
+</tr>
+<tr>
+<td><strong>Использование</strong></td>
+<td>Один контейнер</td>
+<td>Несколько связанных контейнеров</td>
+</tr>
+</table>
 <p><strong>Пример:</strong></p>
 <p># Dockerfile: собрать образ docker build -t myapp . docker run -p 8080:8080 myapp</p>
 <p># Docker Compose: запустить всё вместе docker-compose up # Запускает: app + database + network + volumes</p>
@@ -843,7 +864,28 @@
 <p>db: image: postgres:15 volumes:</p>
 <p>- db-data:/var/lib/postgresql/data</p>
 <p><strong>Сравнение:</strong></p>
-<p>| Параметр | Dockerfile | Docker Compose | |----------|------------|----------------| | <strong>Что делает</strong> | Собирает образ | Запускает несколько контейнеров | | <strong>Команда</strong> | `docker build` | `docker-compose up` | | <strong>Использование</strong> | Один контейнер | Несколько связанных контейнеров |</p>
+<table>
+<tr>
+<th>Параметр</th>
+<th>Dockerfile</th>
+<th>Docker Compose</th>
+</tr>
+<tr>
+<td><strong>Что делает</strong></td>
+<td>Собирает образ</td>
+<td>Запускает несколько контейнеров</td>
+</tr>
+<tr>
+<td><strong>Команда</strong></td>
+<td><code>docker build</code></td>
+<td><code>docker-compose up</code></td>
+</tr>
+<tr>
+<td><strong>Использование</strong></td>
+<td>Один контейнер</td>
+<td>Несколько связанных контейнеров</td>
+</tr>
+</table>
 <p><strong>Пример:</strong></p>
 <p># Dockerfile: собрать образ docker build -t myapp . docker run -p 8080:8080 myapp</p>
 <p># Docker Compose: запустить всё вместе docker-compose up # Запускает: app + database + network + volumes</p>
@@ -876,7 +918,7 @@
 <p>```</p>
 <p><strong>Сравнение:</strong></p>
 <p>| Параметр | Dockerfile | Docker Compose |</p>
-<p>|----------|------------|----------------|</p>
+
 <p>| <strong>Что делает</strong> | Собирает образ | Запускает несколько контейнеров |</p>
 <p>| <strong>Команда</strong> | `docker build` | `docker-compose up` |</p>
 <p>| <strong>Использование</strong> | Один контейнер | Несколько связанных контейнеров |</p>

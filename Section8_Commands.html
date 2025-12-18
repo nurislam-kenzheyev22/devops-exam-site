@@ -250,9 +250,125 @@
             font-weight: bold;
             font-size: 1.2em;
         }
+    
+        /* Dark mode styles */
+        body.dark-mode {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        
+        body.dark-mode .header,
+        body.dark-mode .question-card,
+        body.dark-mode .nav,
+        body.dark-mode .search-box,
+        body.dark-mode .stats {
+            background: #2d2d44;
+            color: #e0e0e0;
+        }
+        
+        body.dark-mode .header h1,
+        body.dark-mode .question-header h2 {
+            color: #8b9aff;
+        }
+        
+        body.dark-mode .header p,
+        body.dark-mode .answer-section p,
+        body.dark-mode .russian-explanation {
+            color: #b0b0b0;
+        }
+        
+        body.dark-mode .russian-explanation {
+            background: #1e1e2e;
+            border-left-color: #8b9aff;
+        }
+        
+        body.dark-mode .russian-explanation h3 {
+            color: #a5b4fc;
+        }
+        
+        body.dark-mode .answer-section h3 {
+            color: #8b9aff;
+        }
+        
+        body.dark-mode .nav a {
+            background: #3d3d5c;
+        }
+        
+        body.dark-mode .nav a:hover,
+        body.dark-mode .nav a.active {
+            background: #5d5d7c;
+        }
+        
+        body.dark-mode .search-box input {
+            background: #1e1e2e;
+            color: #e0e0e0;
+            border-color: #3d3d5c;
+        }
+        
+        body.dark-mode .stats span {
+            color: #8b9aff;
+        }
+        
+        body.dark-mode .russian-explanation code {
+            background: #3d3d5c;
+            color: #e0e0e0;
+            border-color: #5d5d7c;
+        }
+        
+        body.dark-mode .russian-explanation pre {
+            background: #0d1117;
+            border-color: #30363d;
+        }
+        
+        body.dark-mode .russian-explanation table th {
+            background: #5d5d7c;
+        }
+        
+        body.dark-mode .russian-explanation table td,
+        body.dark-mode .russian-explanation table th {
+            border-color: #3d3d5c;
+        }
+        
+        body.dark-mode .command-block {
+            background: #0d1117;
+            border-color: #30363d;
+        }
+        
+        body.dark-mode .category-header {
+            background: linear-gradient(135deg, #5d5d7c 0%, #8b9aff 100%);
+        }
+        
+        /* Dark mode toggle button */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        body.dark-mode .dark-mode-toggle {
+            background: #2d2d44;
+            color: #ffd700;
+        }
     </style>
 </head>
 <body>
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()" title="Переключить тёмный режим">
+        🌙
+    </button>
     <div class="container">
         <div class="header">
             <h1>💻 DevOps Commands</h1>
@@ -1310,6 +1426,31 @@ server2 ansible_host=192.168.1.11</code></pre>
             
             document.getElementById('showingQuestions').textContent = visibleCount;
         });
+    
+        // Dark mode functionality
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+            updateDarkModeButton();
+        }
+        
+        function updateDarkModeButton() {
+            const button = document.querySelector('.dark-mode-toggle');
+            if (button) {
+                if (document.body.classList.contains('dark-mode')) {
+                    button.textContent = '☀️';
+                } else {
+                    button.textContent = '🌙';
+                }
+            }
+        }
+        
+        // Load saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+        updateDarkModeButton();
     </script>
 </body>
 </html>

@@ -457,7 +457,33 @@
 <p>- <strong>Incremental compilation</strong> = инкрементальная компиляция (компилирует только изменённые файлы)</p>
 <p>- <strong>Dependency management</strong> = управление зависимостями (библиотеки)</p>
 <p><strong>Сравнение:</strong></p>
-<p>| Параметр | Maven | Gradle | |----------|-------|--------| | <strong>Конфигурация</strong> | XML (громоздкий) | Groovy/Kotlin (читаемый) | | <strong>Скорость</strong> | Медленнее | Быстрее (кэш, параллельность) | | <strong>Гибкость</strong> | Жёсткие правила | Гибкий, можно кастомизировать | | <strong>Современность</strong> | Старый стандарт | Современный инструмент |</p>
+<table>
+<tr>
+<th>Параметр</th>
+<th>Maven</th>
+<th>Gradle</th>
+</tr>
+<tr>
+<td><strong>Конфигурация</strong></td>
+<td>XML (громоздкий)</td>
+<td>Groovy/Kotlin (читаемый)</td>
+</tr>
+<tr>
+<td><strong>Скорость</strong></td>
+<td>Медленнее</td>
+<td>Быстрее (кэш, параллельность)</td>
+</tr>
+<tr>
+<td><strong>Гибкость</strong></td>
+<td>Жёсткие правила</td>
+<td>Гибкий, можно кастомизировать</td>
+</tr>
+<tr>
+<td><strong>Современность</strong></td>
+<td>Старый стандарт</td>
+<td>Современный инструмент</td>
+</tr>
+</table>
 <p><strong>Пример конфигурации:</strong></p>
 <p><strong>Maven (XML):</strong></p>
 <p><project> <dependencies> <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-web</artifactId> <version>3.4.1</version> </dependency> </dependencies> </project></p>
@@ -476,7 +502,33 @@
 <p>- <strong>Incremental compilation</strong> = инкрементальная компиляция (компилирует только изменённые файлы)</p>
 <p>- <strong>Dependency management</strong> = управление зависимостями (библиотеки)</p>
 <p><strong>Сравнение:</strong></p>
-<p>| Параметр | Maven | Gradle | |----------|-------|--------| | <strong>Конфигурация</strong> | XML (громоздкий) | Groovy/Kotlin (читаемый) | | <strong>Скорость</strong> | Медленнее | Быстрее (кэш, параллельность) | | <strong>Гибкость</strong> | Жёсткие правила | Гибкий, можно кастомизировать | | <strong>Современность</strong> | Старый стандарт | Современный инструмент |</p>
+<table>
+<tr>
+<th>Параметр</th>
+<th>Maven</th>
+<th>Gradle</th>
+</tr>
+<tr>
+<td><strong>Конфигурация</strong></td>
+<td>XML (громоздкий)</td>
+<td>Groovy/Kotlin (читаемый)</td>
+</tr>
+<tr>
+<td><strong>Скорость</strong></td>
+<td>Медленнее</td>
+<td>Быстрее (кэш, параллельность)</td>
+</tr>
+<tr>
+<td><strong>Гибкость</strong></td>
+<td>Жёсткие правила</td>
+<td>Гибкий, можно кастомизировать</td>
+</tr>
+<tr>
+<td><strong>Современность</strong></td>
+<td>Старый стандарт</td>
+<td>Современный инструмент</td>
+</tr>
+</table>
 <p><strong>Пример конфигурации:</strong></p>
 <p><strong>Maven (XML):</strong></p>
 <p><project> <dependencies> <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-web</artifactId> <version>3.4.1</version> </dependency> </dependencies> </project></p>
@@ -497,7 +549,33 @@
 <li><strong>Dependency management</strong> = управление зависимостями (библиотеки)</li>
 </ol>
 <p><strong>Сравнение:</strong></p>
-<p>**Почему Gradle вместо Maven?**<br>**Термины:**<br>- **Build tool** = инструмент сборки (компилирует код в JAR)<br>- **DSL** = Domain-Specific Language (язык для конкретной задачи)<br>- **Incremental compilation** = инкрементальная компиляция (компилирует только изменённые файлы)<br>- **Dependency management** = управление зависимостями (библиотеки)<br>**Сравнение:**<br>| Параметр | Maven | Gradle |<br>|----------|-------|--------|<br>| **Конфигурация** | XML (громоздкий) | Groovy/Kotlin (читаемый) |<br>| **Скорость** | Медленнее | Быстрее (кэш, параллельность) |<br>| **Гибкость** | Жёсткие правила | Гибкий, можно кастомизировать |<br>| **Современность** | Старый стандарт | Современный инструмент |<br>**Пример конфигурации:**<br>**Maven (XML):**<br>```xml<br><project><br><dependencies><br><dependency><br><groupId>org.springframework.boot</groupId><br><artifactId>spring-boot-starter-web</artifactId><br><version>3.4.1</version><br></dependency><br></dependencies><br></project><br>```<br>**Gradle (Groovy):**<br>```groovy<br>dependencies {<br>implementation 'org.springframework.boot:spring-boot-starter-web:3.4.1'<br>}<br>```<br>**Почему Gradle лучше?**<br>1. **Читаемость** → Gradle код короче и понятнее<br>2. **Скорость** → Gradle кэширует результаты, собирает быстрее<br>3. **Гибкость** → Можно писать кастомные задачи на Groovy/Kotlin<br>4. **Параллельность** → Gradle может собирать несколько модулей одновременно<br>**Пример скорости:**<br>```bash<br># Maven<br>mvn clean build  # 2 минуты (всё пересобирает)<br># Gradle<br>./gradlew clean build  # 30 секунд (использует кэш)<br>```<br>**Почему это важно в DevOps?**<br>В CI/CD pipeline каждый коммит запускает сборку. Если сборка быстрая (Gradle) → экономия времени и ресурсов. Если медленная (Maven) → pipeline тормозит.<br>---</p>
+<p>**Почему Gradle вместо Maven?**<br>**Термины:**<br>- **Build tool** = инструмент сборки (компилирует код в JAR)<br>- **DSL** = Domain-Specific Language (язык для конкретной задачи)<br>- **Incremental compilation** = инкрементальная компиляция (компилирует только изменённые файлы)<br>- **Dependency management** = управление зависимостями (библиотеки)<br>**Сравнение:**<br><table>
+<tr>
+<th>Параметр</th>
+<th>Maven</th>
+<th>Gradle</th>
+</tr>
+<tr>
+<td><strong>Конфигурация</strong></td>
+<td>XML (громоздкий)</td>
+<td>Groovy/Kotlin (читаемый)</td>
+</tr>
+<tr>
+<td><strong>Скорость</strong></td>
+<td>Медленнее</td>
+<td>Быстрее (кэш, параллельность)</td>
+</tr>
+<tr>
+<td><strong>Гибкость</strong></td>
+<td>Жёсткие правила</td>
+<td>Гибкий, можно кастомизировать</td>
+</tr>
+<tr>
+<td><strong>Современность</strong></td>
+<td>Старый стандарт</td>
+<td>Современный инструмент</td>
+</tr>
+</table><br>**Пример конфигурации:**<br>**Maven (XML):**<br>```xml<br><project><br><dependencies><br><dependency><br><groupId>org.springframework.boot</groupId><br><artifactId>spring-boot-starter-web</artifactId><br><version>3.4.1</version><br></dependency><br></dependencies><br></project><br>```<br>**Gradle (Groovy):**<br>```groovy<br>dependencies {<br>implementation 'org.springframework.boot:spring-boot-starter-web:3.4.1'<br>}<br>```<br>**Почему Gradle лучше?**<br>1. **Читаемость** → Gradle код короче и понятнее<br>2. **Скорость** → Gradle кэширует результаты, собирает быстрее<br>3. **Гибкость** → Можно писать кастомные задачи на Groovy/Kotlin<br>4. **Параллельность** → Gradle может собирать несколько модулей одновременно<br>**Пример скорости:**<br>```bash<br># Maven<br>mvn clean build  # 2 минуты (всё пересобирает)<br># Gradle<br>./gradlew clean build  # 30 секунд (использует кэш)<br>```<br>**Почему это важно в DevOps?**<br>В CI/CD pipeline каждый коммит запускает сборку. Если сборка быстрая (Gradle) → экономия времени и ресурсов. Если медленная (Maven) → pipeline тормозит.<br>---</p>
 <p>|----------|-------|--------|</p>
 <p>| <strong>Конфигурация</strong> | XML (громоздкий) | Groovy/Kotlin (читаемый) |</p>
 <p>| <strong>Скорость</strong> | Медленнее | Быстрее (кэш, параллельность) |</p>
@@ -754,7 +832,7 @@
 <p>- <strong>System Gradle</strong> = Gradle, установленный в системе</p>
 <p>- <strong>Wrapper Gradle</strong> = Gradle из wrapper (версия из проекта)</p>
 <p><strong>Разница:</strong></p>
-<p>| Команда | Что использует | Версия | Проблема | |---------|---------------|--------|----------| | `gradle build` | Gradle из системы | Какая установлена | У всех разная | | `./gradlew build` | Gradle из wrapper | Из проекта | У всех одинаковая |</p>
+| Команда | Что использует | Версия | Проблема | |---------|---------------|--------|----------| | `gradle build` | Gradle из системы | Какая установлена | У всех разная | | `./gradlew build` | Gradle из wrapper | Из проекта | У всех одинаковая |
 <p><strong>Пример:</strong></p>
 <p># gradle build (плохо) gradle build # Использует Gradle 8.0 (если установлен) # У коллеги может быть 7.0 → разные результаты!</p>
 <p># ./gradlew build (хорошо) ./gradlew build # Использует Gradle 8.10.2 (из gradle-wrapper.properties) # У всех одинаковая версия → одинаковые результаты!</p>
@@ -769,7 +847,7 @@
 <p>- <strong>System Gradle</strong> = Gradle, установленный в системе</p>
 <p>- <strong>Wrapper Gradle</strong> = Gradle из wrapper (версия из проекта)</p>
 <p><strong>Разница:</strong></p>
-<p>| Команда | Что использует | Версия | Проблема | |---------|---------------|--------|----------| | `gradle build` | Gradle из системы | Какая установлена | У всех разная | | `./gradlew build` | Gradle из wrapper | Из проекта | У всех одинаковая |</p>
+| Команда | Что использует | Версия | Проблема | |---------|---------------|--------|----------| | `gradle build` | Gradle из системы | Какая установлена | У всех разная | | `./gradlew build` | Gradle из wrapper | Из проекта | У всех одинаковая |
 <p><strong>Пример:</strong></p>
 <p># gradle build (плохо) gradle build # Использует Gradle 8.0 (если установлен) # У коллеги может быть 7.0 → разные результаты!</p>
 <p># ./gradlew build (хорошо) ./gradlew build # Использует Gradle 8.10.2 (из gradle-wrapper.properties) # У всех одинаковая версия → одинаковые результаты!</p>

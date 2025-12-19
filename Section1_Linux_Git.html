@@ -1528,7 +1528,6 @@ stage('Deploy') {
     steps {
         sh 'kubectl set image deployment/app app=myapp:${env.TAG_NAME}'
     }
-}</code></pre>
                     <p><strong>Почему это важно?</strong></p>
                     <p>Git tags mark specific commits as releases (e.g., v1.0.0). CI/CD pipelines can trigger on tags, deploy specific versions, enable rollbacks to known good states, and provide version tracking. Tags create immutable reference points for production deployments.</p>
                 </div>
@@ -1851,7 +1850,6 @@ String apiKey = System.getenv("API_KEY");  # Секрет на сервере</c
                 content.classList.add('show');
                 btn.textContent = 'Hide Answer';
             }
-        }
         
         // Search functionality
         document.getElementById('searchInput').addEventListener('input', function(e) {
@@ -1888,8 +1886,6 @@ String apiKey = System.getenv("API_KEY");  # Секрет на сервере</c
                 } else {
                     button.textContent = '🌙';
                 }
-            }
-        }
         
         // Load saved dark mode preference
         if (localStorage.getItem('darkMode') === 'true') {

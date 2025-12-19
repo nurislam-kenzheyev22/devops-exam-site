@@ -472,7 +472,7 @@
             <div class="question-content" id="content2">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p><strong>Почему Linux?</strong> Linux — это бесплатная операционная система, которая идеально подходит для серверов.<br><strong>Термины:</strong><br>- <strong>Open-source</strong> = открытый исходный код (можно смотреть и изменять код)<br>- <strong>Package management</strong> = система управления пакетами (apt, yum — легко устанавливать программы)<br>- <strong>Industry standard</strong> = стандарт индустрии (все используют)<br><strong>Пример:</strong><br>Вместо Windows Server (платный, ~$500/год) используем Ubuntu Server (бесплатный). Команда `apt install docker` устанавливает Docker за секунды, а в Windows нужно скачивать установщик вручную.<br>---</p>
+                    <p>---</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
@@ -1198,7 +1198,7 @@ git diff          # Посмотреть, что изменилось</code></pr
             <div class="question-content" id="content8">
                 <div class="answer-section">
                     <h3>Answer (English):</h3>
-                    <p><strong>Какую проблему решает Git?</strong><br><strong>Термины:</strong><br>- <strong>Version control</strong> = контроль версий (отслеживание изменений)<br>- <strong>Rollback</strong> = откат (вернуться к старой версии)<br>- <strong>Collaboration</strong> = совместная работа<br>- <strong>History</strong> = история изменений<br><strong>Проблемы БЕЗ Git:</strong><br>1. <strong>Несколько версий файла</strong> → `app_v1.java`, `app_v2.java`, `app_final.java` — путаница<br>2. <strong>Кто что изменил?</strong> → Непонятно, кто сломал код<br>3. <strong>Откатить изменения?</strong> → Невозможно, если не сохранил копию<br>4. <strong>Работа в команде?</strong> → Конфликты, кто-то перезапишет чужой код<br><strong>Что решает Git:</strong><br>1. <strong>Одна версия</strong> → Git хранит все версии, можно переключаться<br>2. <strong>История изменений</strong> → Видно, кто, когда и что изменил<br>3. <strong>Откат</strong> → `git revert` вернёт старую версию<br>4. <strong>Ветки</strong> → Каждый работает в своей ветке, потом объединяем<br><strong>Пример:</strong><br>```bash<br># Без Git (плохо)<br>app.java          # Текущая версия<br>app_backup.java   # Старая версия (на всякий случай)<br>app_old.java      # Ещё старше (не знаю, зачем)<br># С Git (хорошо)<br>git log           # Вся история изменений<br>git checkout v1.0 # Вернуться к версии 1.0<br>git diff          # Посмотреть, что изменилось<br>```<br><strong>Почему это важно в DevOps?</strong><br>Если деплой сломался, нужно быстро откатиться. С Git это одна команда: `git revert` или `git checkout предыдущая_версия`. Без Git пришлось бы искать старую копию файла.<br>---</p>
+                    <p>```bash ``` ---</p>
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>

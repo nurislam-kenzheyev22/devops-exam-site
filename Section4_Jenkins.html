@@ -622,7 +622,7 @@
 <p><strong>Стадии pipeline:</strong></p>
 <p>| Стадия | Что делает | Зачем | |--------|-----------|-------| | <strong>Checkout</strong> | Клонирует код из Git | Получить последнюю версию | | <strong>Build</strong> | Компилирует код (`./gradlew build`) | Проверить, что код компилируется | | <strong>Test</strong> | Запускает тесты (`./gradlew test`) | Проверить, что всё работает | | <strong>Static Analysis</strong> | Проверяет качество кода (`./gradlew check`) | Найти баги до деплоя | | <strong>Docker Build</strong> | Собирает Docker образ | Упаковать приложение | | <strong>Docker Push</strong> | Загружает образ в registry | Сохранить образ для деплоя | | <strong>Deploy</strong> | Деплоит в Kubernetes | Запустить приложение |</p>
 <p><strong>Пример:</strong></p>
-<p>pipeline { stages { stage('Checkout') { steps { checkout scm } } stage('Build') { steps { sh './gradlew build' } // Если не компилируется → pipeline останавливается } stage('Test') { steps { sh './gradlew test' } // Если тесты упали → pipeline останавливается } stage('Docker Build') { steps { sh 'docker build -t app:${BUILD_NUMBER} .' } } stage('Deploy') { steps { sh 'kubectl apply -f k8s/' } } } }</p>
+<p>pipeline { stages { stage('Checkout') { steps { checkout scm } } stage('Build') { steps { sh './gradlew build' } // Если не компилируется → pipeline останавливается } stage('Test') { steps { sh './gradlew test' } // Если тесты упали → pipeline останавливается } stage('Docker Build') { steps { sh 'docker build -t app:${BUILD_NUMBER} .' } } stage('Deploy') { steps { sh 'kubectl apply -f k8s/' } } } }.</p>
 <p><strong>Почему именно эти стадии?</strong></p>
 <p>Каждая стадия проверяет что-то важное. Если что-то не так → pipeline останавливается, деплой не происходит. Это защита от багов в продакшене.</p>
                 </div>
@@ -664,7 +664,7 @@
 <p>- <strong>Branch specifier</strong> = спецификатор ветки (какие ветки собирать)</p>
 <p>- <strong>Environment variable</strong> = переменная окружения</p>
 <p><strong>Как это работает:</strong></p>
-<p>1. В Jenkins настраивается Git репозиторий 2. Указывается, какие ветки собирать (например, `*/main`, `*/develop`, `*`) 3. Jenkins отслеживает изменения в этих ветках 4. При коммите в отслеживаемую ветку → запускается pipeline</p>
+<p>1. В Jenkins настраивается Git репозиторий 2. Указывается, какие ветки собирать (например, `*/main`, `*/develop`, `*`) 3.. Jenkins отслеживает изменения в этих ветках 4. При коммите в отслеживаемую ветку → запускается pipeline.</p>
 <p><strong>Пример настройки:</strong></p>
 <p>Jenkins → Pipeline → Branch Sources → Git Repository: https://github.com/user/repo.git Branch Specifier: */main  # Только main ветка</p>
 <p><strong>В Jenkinsfile:</strong></p>

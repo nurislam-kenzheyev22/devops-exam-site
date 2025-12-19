@@ -736,7 +736,7 @@
 <p>- <strong>Read-only</strong> = только для чтения (нельзя изменить)</p>
 <p>- <strong>Union filesystem</strong> = объединённая файловая система (слои накладываются друг на друга)</p>
 <p><strong>Как работают слои:</strong></p>
-<p>FROM alpine                    # Слой 1: базовый образ RUN apk add java              # Слой 2: установка Java COPY app.jar app.jar          # Слой 3: копирование JAR CMD ["java", "-jar", "app.jar"] # Слой 4: команда запуска</p>
+<p>FROM alpine                    # Слой 1: базовый образ RUN apk add java              # Слой 2: установка Java COPY app.jar app.jar          # Слой 3: копирование JAR CMD ["java", "-jar", "app.jar"] # Слой 4: команда запуска.</p>
 <p><strong>Каждая команда = новый слой:</strong></p>
 <p>Слой 4: CMD Слой 3: COPY app.jar Слой 2: RUN apk add java Слой 1: FROM alpine</p>
 <p><strong>Почему это важно?</strong></p>

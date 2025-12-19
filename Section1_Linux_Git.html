@@ -450,27 +450,15 @@
                 </div>
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
-                    <p><strong>Почему Linux?</strong> Linux — это бесплатная операционная система, которая идеально подходит для серверов.</p>
-<p><strong>Термины:</strong></p>
-<p>- <strong>Open-source</strong> = открытый исходный код (можно смотреть и изменять код)</p>
-<p>- <strong>Package management</strong> = система управления пакетами (apt, yum — легко устанавливать программы)</p>
-<p>- <strong>Industry standard</strong> = стандарт индустрии (все используют)</p>
-<p><strong>Пример:</strong></p>
-
-<p><strong>Термины:</strong></p>
-<p>- <strong>Open-source</strong> = открытый исходный код (можно смотреть и изменять код)</p>
-<p>- <strong>Package management</strong> = система управления пакетами (apt, yum — легко устанавливать программы)</p>
-<p>- <strong>Industry standard</strong> = стандарт индустрии (все используют)</p>
-<p><strong>Пример:</strong></p>
-<p>Вместо Windows Server (платный, ~$500/год) используем Ubuntu Server (бесплатный). Команда `apt install docker` устанавливает Docker за секунды, а в Windows нужно скачивать установщик вручную.</p>
+                    <p><strong>Почему Linux?</strong> Бесплатная ОС для серверов. Удобная установка программ через <code>apt</code>.</p>
                     <p><strong>Термины:</strong></p>
                     <ul>
-                        <li><strong>Open-source</strong> = открытый исходный код (можно смотреть и изменять код)</li>
-                        <li><strong>Package management</strong> = система управления пакетами (apt, yum — легко устанавливать программы)</li>
-                        <li><strong>Industry standard</strong> = стандарт индустрии (все используют)</li>
+                        <li><strong>Open-source</strong> = открытый код (можно изменять)</li>
+                        <li><strong>Package management</strong> = установка программ через <code>apt</code></li>
+                        <li><strong>Industry standard</strong> = все используют</li>
                     </ul>
                     <p><strong>Пример:</strong></p>
-                    <p>Вместо Windows Server (платный, ~$500/год) используем Ubuntu Server (бесплатный). Команда <code>apt install docker</code> устанавливает Docker за секунды, а в Windows нужно скачивать установщик вручную.</p>
+                    <p>Ubuntu Server (бесплатный) вместо Windows Server (~$500/год). <code>apt install docker</code> устанавливает за секунды.</p>
                 </div>
             </div>
         </div>
@@ -851,7 +839,7 @@ sudo ufw enable          # Всё остальное заблокировано<
 </tr>
 </table>
 <p><strong>Пример команды:</strong></p>
-<p>sudo ufw allow 22/tcp    # SSH - чтобы подключиться к серверу sudo ufw allow 80/tcp    # HTTP - чтобы сайт работал sudo ufw allow 443/tcp   # HTTPS - чтобы сайт был безопасным sudo ufw enable          # Включить firewall</p>
+<p>sudo ufw allow 22/tcp    # SSH - чтобы подключиться к серверу sudo ufw allow 80/tcp    # HTTP - чтобы сайт работал sudo ufw allow 443/tcp   # HTTPS - чтобы сайт был безопасным sudo ufw enable          # Включить firewall.</p>
 <p><strong>Почему только эти?</strong></p>
 <p>- <strong>SSH (22)</strong> → без него не сможешь управлять сервером</p>
 <p>- <strong>HTTP (80)</strong> → без него сайт не откроется</p>
@@ -1015,7 +1003,7 @@ This separation follows the principle of organization and makes it easier to loc
 <p>- <strong>Separation of concerns</strong> = разделение по назначению</p>
 <p>- <strong>Manifests</strong> = манифесты (файлы конфигурации)</p>
 <p><strong>Структура:</strong></p>
-<p>/opt/devops-project/ ├── app/          # Исходный код приложения ├── docker/       # Docker файлы (Dockerfile, docker-compose) ├── k8s/          # Kubernetes манифесты (deployment, service) ├── ansible/      # Ansible плейбуки и роли └── scripts/      # Скрипты (установка, автоматизация)</p>
+<p>/opt/devops-project/ ├── app/          # Исходный код приложения ├── docker/       # Docker файлы (Dockerfile, docker-compose) ├── k8s/          # Kubernetes манифесты (deployment, service) ├── ansible/      # Ansible плейбуки и роли └── scripts/      # Скрипты (установка, автоматизация).</p>
 <p><strong>Зачем так?</strong></p>
 <table>
 <tr>

@@ -512,25 +512,7 @@
 
 <p><strong>Почему это важно?</strong></p>
 
-<p><strong>Термины:</strong></p>
-<p>- <strong>Continuous Integration</strong> = непрерывная интеграция (автоматическая сборка и тесты)</p>
-<p>- <strong>Continuous Delivery</strong> = непрерывная доставка (автоматический деплой до продакшена, но запуск вручную)</p>
-<p>- <strong>Continuous Deployment</strong> = непрерывный деплой (полностью автоматический деплой в продакшен)</p>
-<p><strong>CI (Continuous Integration):</strong></p>
-<p>Коммит кода ↓ Автоматическая сборка (build) ↓ Автоматические тесты (test) ↓ Результат: код готов к деплою (но не деплоится автоматически)</p>
-<p><strong>CD - Continuous Delivery:</strong></p>
-<p>CI прошёл успешно ↓ Автоматический деплой в staging (тестовое окружение) ↓ Ручной запуск деплоя в production (человек нажимает кнопку)</p>
-<p><strong>CD - Continuous Deployment:</strong></p>
-
-<p><strong>Сравнение:</strong></p>
-<p>| Тип | Деплой в production | Когда использовать | |-----|---------------------|-------------------| | <strong>CI only</strong> | Вручную | Маленькие проекты | | <strong>CI + CD (Delivery)</strong> | Вручную (после автоматического деплоя в staging) | Большинство компаний (безопаснее) | | <strong>CI + CD (Deployment)</strong> | Автоматически | Большие компании с хорошими тестами |</p>
-<p><strong>Пример:</strong></p>
-<p>// Jenkinsfile - CI stage('Build') { sh './gradlew build' } stage('Test') { sh './gradlew test' } // Код готов, но не деплоится</p>
-<p>// Jenkinsfile - CD (Delivery) stage('Deploy to Staging') { sh 'kubectl apply -f k8s/' } stage('Deploy to Production') { when { branch 'main' // Но запускается вручную (человек нажимает "Deploy") } }</p>
-<p>// Jenkinsfile - CD (Deployment) stage('Deploy to Production') { when { branch 'main' } // Автоматически деплоится, если тесты прошли }</p>
-<p><strong>Почему это важно?</strong></p>
-<p>CI = качество кода. CD = скорость доставки. Вместе = быстрые, надёжные релизы.</p>
-                </div>
+<p></div>
             </div>
         </div>
         
@@ -545,41 +527,34 @@
                     <h3>Answer (English):</h3>
                     <p>Storing Jenkinsfile in Git enables track changes, check code, servers as code, collaboration, and reproducibility. The pipeline definition is treated as code, allowing changes to be tracked, reviewed, and rolled back like any other code.</p>
                 </div>
-                <p><div class="russian-explanation">
+                <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
                     <p><strong>Почему Jenkinsfile хранится в Git?</strong></p>
-<p><strong>Термины:</strong></p>
-<p>- <strong>Infrastructure as Code</strong> = инфраструктура как код (конфигурация в коде)</p>
-<p>- <strong>Version control</strong> = контроль версий</p>
-<p>- <strong>Code review</strong> = код-ревью (проверка кода перед слиянием)</p>
-<p><strong>Проблемы БЕЗ Jenkinsfile в Git:</strong></p>
-<p>1</p>
-<p>. <strong>Конфигурация в Jenkins UI</strong> → Нельзя отследить изменения 2.</p>
-<p><strong>Нет истории</strong> → Непонятно, кто и когда изменил pipeline 3. <strong>Нет код-ревью</strong> → Ошибки в pipeline не проверяются 4</p>
-<p>. <strong>Нельзя откатить</strong> → Если сломалось, сложно вернуться назад</p>
-<p><strong>Преимущества Jenkinsfile в Git:</strong></p>
-<p>1.</p>
-<p><strong>Версионирование</strong> → Видно все изменения pipeline 2. <strong>Код-ревью</strong> → Pipeline проверяется перед слиянием 3</p>
-<p>. <strong>Infrastructure as Code</strong> → Pipeline = код, как и приложение 4.</p>
-<p><strong>Совместная работа</strong> → Несколько человек могут работать над pipeline 5. <strong>Reproducibility</strong> → Одинаковый pipeline везде</p>
-<p><strong>Пример:</strong></p>
-
-
-<p><strong>Почему это важно?</strong></p>
-
-<p><strong>Термины:</strong></p>
-<p>- <strong>Infrastructure as Code</strong> = инфраструктура как код (конфигурация в коде)</p>
-<p>- <strong>Version control</strong> = контроль версий</p>
-<p>- <strong>Code review</strong> = код-ревью (проверка кода перед слиянием)</p>
-<p><strong>Проблемы БЕЗ Jenkinsfile в Git:</strong></p>
-<p>1. <strong>Конфигурация в Jenkins UI</strong> → Нельзя отследить изменения 2. <strong>Нет истории</strong> → Непонятно, кто и когда изменил pipeline 3. <strong>Нет код-ревью</strong> → Ошибки в pipeline не проверяются 4. <strong>Нельзя откатить</strong> → Если сломалось, сложно вернуться назад</p>
-<p><strong>Преимущества Jenkinsfile в Git:</strong></p>
-<p>1. <strong>Версионирование</strong> → Видно все изменения pipeline 2. <strong>Код-ревью</strong> → Pipeline проверяется перед слиянием 3. <strong>Infrastructure as Code</strong> → Pipeline = код, как и приложение 4. <strong>Совместная работа</strong> → Несколько человек могут работать над pipeline 5. <strong>Reproducibility</strong> → Одинаковый pipeline везде</p>
-<p><strong>Пример:</strong></p>
-<p># Jenkinsfile в Git git log Jenkinsfile # Видно: кто, когда, что изменил в pipeline</p>
-<p># Если pipeline сломался git checkout предыдущая_версия Jenkinsfile # Откатили pipeline к рабочей версии</p>
-<p><strong>Почему это важно?</strong></p>
-<p>Pipeline — это тоже код. Если он в Git → его можно версионировать, ревьюить, откатывать, как и обычный код.</p>
+                    <p><strong>Термины:</strong></p>
+                    <ul>
+                        <li><strong>Infrastructure as Code</strong> = инфраструктура как код (конфигурация в коде)</li>
+                        <li><strong>Version control</strong> = контроль версий</li>
+                        <li><strong>Code review</strong> = код-ревью (проверка кода перед слиянием)</li>
+                    </ul>
+                    <p><strong>Проблемы БЕЗ Jenkinsfile в Git:</strong></p>
+                    <ul>
+                        <li><strong>Конфигурация в Jenkins UI</strong> → Нельзя отследить изменения</li>
+                        <li><strong>Нет истории</strong> → Непонятно, кто и когда изменил pipeline</li>
+                        <li><strong>Нет код-ревью</strong> → Ошибки в pipeline не проверяются</li>
+                        <li><strong>Нельзя откатить</strong> → Если сломалось, сложно вернуться назад</li>
+                    </ul>
+                    <p><strong>Преимущества Jenkinsfile в Git:</strong></p>
+                    <ul>
+                        <li><strong>Версионирование</strong> → Видно все изменения pipeline</li>
+                        <li><strong>Код-ревью</strong> → Pipeline проверяется перед слиянием</li>
+                        <li><strong>Infrastructure as Code</strong> → Pipeline = код, как и приложение</li>
+                        <li><strong>Совместная работа</strong> → Несколько человек могут работать над pipeline</li>
+                        <li><strong>Reproducibility</strong> → Одинаковый pipeline везде</li>
+                    </ul>
+                    <p><strong>Пример:</strong></p>
+                    <p><code>git log Jenkinsfile</code> — видно, кто и когда изменил pipeline. Если сломалось → <code>git checkout предыдущая_версия Jenkinsfile</code> — откат к рабочей версии.</p>
+                    <p><strong>Почему это важно?</strong></p>
+                    <p>Pipeline — это тоже код. Если он в Git → его можно версионировать, ревьюить, откатывать, как и обычный код.</p>
                 </div>
             </div>
         </div>
@@ -598,26 +573,67 @@
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
                     <p><strong>Какие стадии в Jenkins pipeline и зачем?</strong></p>
-<p><strong>Термины:</strong></p>
-<p>- <strong>Stage</strong> = стадия (этап pipeline)</p>
-<p>- <strong>Checkout</strong> = получение кода из Git</p>
-<p>- <strong>Static code analysis</strong> = статический анализ кода (проверка качества)</p>
-<p><strong>Стадии pipeline:</strong></p>
-<p>| Стадия | Что делает | Зачем | |--------|-----------|-------| | <strong>Checkout</strong> | Клонирует код из Git | Получить последнюю версию | | <strong>Build</strong> | Компилирует код (`./gradlew build`) | Проверить, что код компилируется | | <strong>Test</strong> | Запускает тесты (`./gradlew test`) | Проверить, что всё работает | | <strong>Static Analysis</strong> | Проверяет качество кода (`./gradlew check`) | Найти баги до деплоя | | <strong>Docker Build</strong> | Собирает Docker образ | Упаковать приложение | | <strong>Docker Push</strong> | Загружает образ в registry | Сохранить образ для деплоя | | <strong>Deploy</strong> | Деплоит в Kubernetes | Запустить приложение |</p>
-<p><strong>Пример:</strong></p>
-
-<p><strong>Почему именно эти стадии?</strong></p>
-
-<p><strong>Термины:</strong></p>
-<p>- <strong>Stage</strong> = стадия (этап pipeline)</p>
-<p>- <strong>Checkout</strong> = получение кода из Git</p>
-<p>- <strong>Static code analysis</strong> = статический анализ кода (проверка качества)</p>
-<p><strong>Стадии pipeline:</strong></p>
-<p>| Стадия | Что делает | Зачем | |--------|-----------|-------| | <strong>Checkout</strong> | Клонирует код из Git | Получить последнюю версию | | <strong>Build</strong> | Компилирует код (`./gradlew build`) | Проверить, что код компилируется | | <strong>Test</strong> | Запускает тесты (`./gradlew test`) | Проверить, что всё работает | | <strong>Static Analysis</strong> | Проверяет качество кода (`./gradlew check`) | Найти баги до деплоя | | <strong>Docker Build</strong> | Собирает Docker образ | Упаковать приложение | | <strong>Docker Push</strong> | Загружает образ в registry | Сохранить образ для деплоя | | <strong>Deploy</strong> | Деплоит в Kubernetes | Запустить приложение |</p>
-<p><strong>Пример:</strong></p>
-<p>pipeline { stages { stage('Checkout') { steps { checkout scm } } stage('Build') { steps { sh './gradlew build' } // Если не компилируется → pipeline останавливается } stage('Test') { steps { sh './gradlew test' } // Если тесты упали → pipeline останавливается } stage('Docker Build') { steps { sh 'docker build -t app:${BUILD_NUMBER} .' } } stage('Deploy') { steps { sh 'kubectl apply -f k8s/' } } } }.</p>
-<p><strong>Почему именно эти стадии?</strong></p>
-<p>Каждая стадия проверяет что-то важное. Если что-то не так → pipeline останавливается, деплой не происходит. Это защита от багов в продакшене.</p>
+                    <p><strong>Термины:</strong></p>
+                    <ul>
+                        <li><strong>Stage</strong> = стадия (этап pipeline)</li>
+                        <li><strong>Checkout</strong> = получение кода из Git</li>
+                        <li><strong>Static code analysis</strong> = статический анализ кода (проверка качества)</li>
+                    </ul>
+                    <p><strong>Стадии pipeline:</strong></p>
+                    <table>
+                    <tr>
+                    <th>Стадия</th>
+                    <th>Что делает</th>
+                    <th>Зачем</th>
+                    </tr>
+                    <tr>
+                    <td><strong>Checkout</strong></td>
+                    <td>Клонирует код из Git</td>
+                    <td>Получить последнюю версию</td>
+                    </tr>
+                    <tr>
+                    <td><strong>Build</strong></td>
+                    <td>Компилирует код (<code>./gradlew build</code>)</td>
+                    <td>Проверить, что код компилируется</td>
+                    </tr>
+                    <tr>
+                    <td><strong>Test</strong></td>
+                    <td>Запускает тесты (<code>./gradlew test</code>)</td>
+                    <td>Проверить, что всё работает</td>
+                    </tr>
+                    <tr>
+                    <td><strong>Static Analysis</strong></td>
+                    <td>Проверяет качество кода (<code>./gradlew check</code>)</td>
+                    <td>Найти баги до деплоя</td>
+                    </tr>
+                    <tr>
+                    <td><strong>Docker Build</strong></td>
+                    <td>Собирает Docker образ</td>
+                    <td>Упаковать приложение</td>
+                    </tr>
+                    <tr>
+                    <td><strong>Docker Push</strong></td>
+                    <td>Загружает образ в registry</td>
+                    <td>Сохранить образ для деплоя</td>
+                    </tr>
+                    <tr>
+                    <td><strong>Deploy</strong></td>
+                    <td>Деплоит в Kubernetes</td>
+                    <td>Запустить приложение</td>
+                    </tr>
+                    </table>
+                    <p><strong>Пример:</strong></p>
+                    <pre><code>pipeline {
+  stages {
+    stage('Checkout') { steps { checkout scm } }
+    stage('Build') { steps { sh './gradlew build' } }
+    stage('Test') { steps { sh './gradlew test' } }
+    stage('Docker Build') { steps { sh 'docker build -t app:${BUILD_NUMBER} .' } }
+    stage('Deploy') { steps { sh 'kubectl apply -f k8s/' } }
+  }
+}</code></pre>
+                    <p><strong>Почему именно эти стадии?</strong></p>
+                    <p>Каждая стадия проверяет что-то важное. Если что-то не так → pipeline останавливается, деплой не происходит. Это защита от багов в продакшене.</p>
                 </div>
             </div>
         </div>
@@ -636,39 +652,37 @@
                 <div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
                     <p><strong>Как Jenkins определяет, какую ветку собирать?</strong></p>
-<p><strong>Термины:</strong></p>
-<p>- <strong>SCM</strong> = Source Control Management (система контроля версий)</p>
-<p>- <strong>Branch specifier</strong> = спецификатор ветки (какие ветки собирать)</p>
-<p>- <strong>Environment variable</strong> = переменная окружения</p>
-<p><strong>Как это работает:</strong></p>
-
-<p><strong>Пример настройки:</strong></p>
-
-<p><strong>В Jenkinsfile:</strong></p>
-
-<p><strong>Переменная окружения:</strong></p>
-
-<p><strong>Пример использования:</strong></p>
-
-<p><strong>Почему это важно?</strong></p>
-
-<p><strong>Термины:</strong></p>
-<p>- <strong>SCM</strong> = Source Control Management (система контроля версий)</p>
-<p>- <strong>Branch specifier</strong> = спецификатор ветки (какие ветки собирать)</p>
-<p>- <strong>Environment variable</strong> = переменная окружения</p>
-<p><strong>Как это работает:</strong></p>
-<p>1. В Jenkins настраивается Git репозиторий 2. Указывается, какие ветки собирать (например, `*/main`, `*/develop`, `*`) 3.</p>
-<p>. Jenkins отслеживает изменения в этих ветках 4. При коммите в отслеживаемую ветку → запускается pipeline.</p>
-<p><strong>Пример настройки:</strong></p>
-<p>Jenkins → Pipeline → Branch Sources → Git Repository: https://github.com/user/repo.git Branch Specifier: */main  # Только main ветка</p>
-<p><strong>В Jenkinsfile:</strong></p>
-<p>pipeline { agent any stages { stage('Deploy') { when { branch 'main'  # Деплой только для main ветки } steps { sh 'kubectl apply -f k8s/' } } } }</p>
-<p><strong>Переменная окружения:</strong></p>
-<p>echo "Building branch: ${env.BRANCH_NAME}" // Выведет: Building branch: main</p>
-<p><strong>Пример использования:</strong></p>
-<p>stage('Deploy') { when { branch 'main'  # Только main → деплой в production } } stage('Deploy to Staging') { when { branch 'develop'  # develop → деплой в staging } }</p>
-<p><strong>Почему это важно?</strong></p>
-<p>Разные ветки → разные окружения. Main → production, develop → staging. Jenkins автоматически определяет ветку и деплоит в нужное окружение.</p>
+                    <p><strong>Термины:</strong></p>
+                    <ul>
+                        <li><strong>SCM</strong> = Source Control Management (система контроля версий)</li>
+                        <li><strong>Branch specifier</strong> = спецификатор ветки (какие ветки собирать)</li>
+                        <li><strong>Environment variable</strong> = переменная окружения</li>
+                    </ul>
+                    <p><strong>Как это работает:</strong></p>
+                    <ol>
+                        <li>В Jenkins настраивается Git репозиторий</li>
+                        <li>Указывается, какие ветки собирать (например, <code>*/main</code>, <code>*/develop</code>, <code>*</code>)</li>
+                        <li>Jenkins отслеживает изменения в этих ветках</li>
+                        <li>При коммите в отслеживаемую ветку → запускается pipeline</li>
+                    </ol>
+                    <p><strong>Пример настройки:</strong></p>
+                    <p>Jenkins → Pipeline → Branch Sources → Git<br>Repository: <code>https://github.com/user/repo.git</code><br>Branch Specifier: <code>*/main</code> (только main ветка)</p>
+                    <p><strong>В Jenkinsfile:</strong></p>
+                    <pre><code>pipeline {
+  agent any
+  stages {
+    stage('Deploy') {
+      when { branch 'main' }  // Деплой только для main ветки
+      steps { sh 'kubectl apply -f k8s/' }
+    }
+  }
+}</code></pre>
+                    <p><strong>Переменная окружения:</strong></p>
+                    <p><code>echo "Building branch: ${env.BRANCH_NAME}"</code> — выведет: Building branch: main</p>
+                    <p><strong>Пример использования:</strong></p>
+                    <p>Main → деплой в production, develop → деплой в staging. Jenkins автоматически определяет ветку и деплоит в нужное окружение.</p>
+                    <p><strong>Почему это важно?</strong></p>
+                    <p>Разные ветки → разные окружения. Автоматическое определение ветки упрощает деплой.</p>
                 </div>
             </div>
         </div>
@@ -703,23 +717,7 @@
 <p>1. <strong>Безопасность</strong> → Пароль не в коде, не в Git 2. <strong>Ротация</strong> → Можешь сменить пароль в Jenkins, код не трогать 3. <strong>Доступ</strong> → Только те, у кого есть доступ к Jenkins, видят пароль</p>
 <p><strong>Почему это важно?</strong></p>
 
-<p><strong>Термины:</strong></p>
-<p>- <strong>Credentials</strong> = учётные данные (пароли, ключи)</p>
-<p>- <strong>Credentials Store</strong> = хранилище credentials в Jenkins</p>
-<p>- <strong>Secret management</strong> = управление секретами</p>
-<p><strong>Проблема с credentials в Jenkinsfile:</strong></p>
-<p>// ПЛОХО: credentials в коде pipeline { environment { DOCKER_USER = 'myuser' DOCKER_PASS = 'mypassword123'  // ❌ Видно в Git! } }</p>
-<p><strong>Почему это опасно:</strong></p>
-<p>1. <strong>Видно в Git</strong> → Все, у кого есть доступ к репозиторию, видят пароль 2. <strong>История Git</strong> → Даже если удалишь, останется в истории 3. <strong>Нет ротации</strong> → Чтобы сменить пароль, нужно менять код</p>
-<p><strong>Правильное решение:</strong></p>
-<p>// ХОРОШО: credentials из Jenkins Credentials Store pipeline { stages { stage('Docker Push') { steps { withCredentials([usernamePassword( credentialsId: 'dockerhub',  // ID из Jenkins usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS' )]) { sh 'docker login -u $DOCKER_USER -p $DOCKER_PASS' } } } } }</p>
-<p><strong>Как настроить:</strong></p>
-<p>1. Jenkins → Credentials → Add 2. Тип: Username with password 3. ID: `dockerhub` 4. Username: твой логин 5. Password: твой пароль 6. В Jenkinsfile используй `credentialsId: 'dockerhub'`</p>
-<p><strong>Преимущества:</strong></p>
-<p>1. <strong>Безопасность</strong> → Пароль не в коде, не в Git 2. <strong>Ротация</strong> → Можешь сменить пароль в Jenkins, код не трогать 3. <strong>Доступ</strong> → Только те, у кого есть доступ к Jenkins, видят пароль</p>
-<p><strong>Почему это важно?</strong></p>
-<p>Секреты в коде = катастрофа безопасности. Всегда используй Credentials Store.</p>
-                </div>
+<p></div>
             </div>
         </div>
         
@@ -750,20 +748,7 @@
 
 <p><strong>Почему это важно?</strong></p>
 
-<p><strong>Термины:</strong></p>
-<p>- <strong>Pipeline failure</strong> = падение pipeline (остановка выполнения)</p>
-<p>- <strong>Fail fast</strong> = быстрое падение (остановка при первой ошибке)</p>
-<p>- <strong>Notification</strong> = уведомление (email, Slack)</p>
-<p><strong>Что происходит:</strong></p>
-<p>stage('Test') { steps { sh './gradlew test' // Если тесты упали → команда вернёт код ошибки // Jenkins видит ошибку → останавливает pipeline } }</p>
-<p><strong>Последовательность:</strong></p>
-<p>1. Тесты запускаются 2. Тест падает (например, баг в коде) 3. `./gradlew test` возвращает код ошибки (не 0) 4. Jenkins видит ошибку → останавливает pipeline 5. Следующие стадии (Docker Build, Deploy) НЕ выполняются 6. Build помечается как "Failed" (красный) 7. Отправляется уведомление (email/Slack)</p>
-<p><strong>Пример:</strong></p>
-<p># Тесты прошли ./gradlew test # BUILD SUCCESSFUL # Pipeline продолжается → Docker Build → Deploy</p>
-<p># Тесты упали ./gradlew test # BUILD FAILED # Tests failed: 5 tests, 2 failed # Pipeline останавливается → Docker Build НЕ выполняется → Deploy НЕ выполняется</p>
-<p><strong>Почему это важно?</strong></p>
-<p>Если тесты падают → код с багами. Pipeline останавливается → баги не попадают в продакшен. Это защита от плохого кода.</p>
-                </div>
+<p></div>
             </div>
         </div>
         
@@ -798,24 +783,7 @@
 
 <p><strong>Почему это важно?</strong></p>
 
-<p><strong>Термины:</strong></p>
-<p>- <strong>Dynamic tagging</strong> = динамическое тегирование (тег меняется автоматически)</p>
-<p>- <strong>Build number</strong> = номер сборки (уникальный для каждой сборки)</p>
-<p>- <strong>Traceability</strong> = отслеживаемость (можно найти, какая версия где работает)</p>
-<p><strong>Проблема со статическим тегом:</strong></p>
-<p># Плохо: всегда один тег docker build -t app:latest . docker push app:latest</p>
-<p># Проблема: если что-то сломалось, непонятно, какая версия # Все версии называются "latest" → путаница</p>
-<p><strong>Решение: динамический тег:</strong></p>
-<p>pipeline { environment { VERSION = "${env.BUILD_NUMBER}"  // Уникальный номер сборки DOCKER_IMAGE = "app:${VERSION}" } stages { stage('Docker Build') { steps { sh "docker build -t ${DOCKER_IMAGE} ." // app:1, app:2, app:3, app:4... } } } }</p>
-<p><strong>Преимущества:</strong></p>
-<p>1. <strong>Уникальность</strong> → Каждая сборка = уникальный тег 2. <strong>Отслеживаемость</strong> → Видно, какая версия в продакшене 3. <strong>Откат</strong> → Можешь откатиться к конкретной версии 4. <strong>История</strong> → Видно все версии: app:1, app:2, app:3...</p>
-<p><strong>Пример:</strong></p>
-<p># Сборка 1 docker build -t app:1 # Деплой app:1 в production</p>
-<p># Сборка 2 (новый функционал) docker build -t app:2 # Деплой app:2 в production</p>
-<p># Что-то сломалось → откат kubectl set image deployment/app app=app:1 # Вернулись к версии 1</p>
-<p><strong>Почему это важно?</strong></p>
-<p>В продакшене нужно знать, какая версия работает. Если что-то сломалось → нужно быстро откатиться. Динамические теги = версионирование образов.</p>
-                </div>
+<p></div>
             </div>
         </div>
         

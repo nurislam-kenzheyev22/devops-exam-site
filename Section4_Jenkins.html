@@ -664,7 +664,8 @@
 <p>- <strong>Branch specifier</strong> = спецификатор ветки (какие ветки собирать)</p>
 <p>- <strong>Environment variable</strong> = переменная окружения</p>
 <p><strong>Как это работает:</strong></p>
-<p>1. В Jenkins настраивается Git репозиторий 2. Указывается, какие ветки собирать (например, `*/main`, `*/develop`, `*`) 3.. Jenkins отслеживает изменения в этих ветках 4. При коммите в отслеживаемую ветку → запускается pipeline.</p>
+<p>1. В Jenkins настраивается Git репозиторий 2. Указывается, какие ветки собирать (например, `*/main`, `*/develop`, `*`) 3.</p>
+<p>. Jenkins отслеживает изменения в этих ветках 4. При коммите в отслеживаемую ветку → запускается pipeline.</p>
 <p><strong>Пример настройки:</strong></p>
 <p>Jenkins → Pipeline → Branch Sources → Git Repository: https://github.com/user/repo.git Branch Specifier: */main  # Только main ветка</p>
 <p><strong>В Jenkinsfile:</strong></p>

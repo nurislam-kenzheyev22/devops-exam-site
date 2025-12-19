@@ -498,21 +498,41 @@
 <p>- <strong>Continuous Integration</strong> = непрерывная интеграция (автоматическая сборка и тесты)</p>
 <p>- <strong>Continuous Delivery</strong> = непрерывная доставка (автоматический деплой до продакшена, но запуск вручную)</p>
 <p>- <strong>Continuous Deployment</strong> = непрерывный деплой (полностью автоматический деплой в продакшен)</p>
-<p><strong>CI (Continuous Integration):</strong></p>
+                    <p><strong>CI (Continuous Integration):</strong></p>
+                    <p>Коммит кода → автоматическая сборка (build) → автоматические тесты (test) → результат: код готов к деплою (но не деплоится автоматически).</p>
+                    <p><strong>CD - Continuous Delivery:</strong></p>
+                    <p>CI прошёл успешно → автоматический деплой в staging (тестовое окружение) → ручной запуск деплоя в production (человек нажимает кнопку).</p>
+                    <p><strong>CD - Continuous Deployment:</strong></p>
+                    <p>CI прошёл успешно → автоматический деплой в staging → автоматический деплой в production (без участия человека).</p>
+                    <p><strong>Сравнение:</strong></p>
+                    <table>
+                    <tr>
+                    <th>Тип</th>
+                    <th>Деплой в production</th>
+                    <th>Когда использовать</th>
+                    </tr>
+                    <tr>
+                    <td><strong>CI only</strong></td>
+                    <td>Вручную</td>
+                    <td>Маленькие проекты</td>
+                    </tr>
+                    <tr>
+                    <td><strong>CI + CD (Delivery)</strong></td>
+                    <td>Вручную (после автоматического деплоя в staging)</td>
+                    <td>Большинство компаний (безопаснее)</td>
+                    </tr>
+                    <tr>
+                    <td><strong>CI + CD (Deployment)</strong></td>
+                    <td>Автоматически</td>
+                    <td>Большие компании с хорошими тестами</td>
+                    </tr>
+                    </table>
+                    <p><strong>Пример:</strong></p>
+                    <p>CI = качество кода. CD = скорость доставки. Вместе = быстрые, надёжные релизы.</p>
+                    <p><strong>Почему это важно?</strong></p>
+                    <p>CI проверяет код, CD ускоряет доставку. Вместе они обеспечивают быстрые и надёжные релизы.</p>
 
-<p><strong>CD - Continuous Delivery:</strong></p>
-
-<p><strong>CD - Continuous Deployment:</strong></p>
-
-<p><strong>Сравнение:</strong></p>
-<p>| Тип | Деплой в production | Когда использовать | |-----|---------------------|-------------------| | <strong>CI only</strong> | Вручную | Маленькие проекты | | <strong>CI + CD (Delivery)</strong> | Вручную (после автоматического деплоя в staging) | Большинство компаний (безопаснее) | | <strong>CI + CD (Deployment)</strong> | Автоматически | Большие компании с хорошими тестами |</p>
-<p><strong>Пример:</strong></p>
-
-
-
-<p><strong>Почему это важно?</strong></p>
-
-<p></div>
+</div>
             </div>
         </div>
         
@@ -705,19 +725,49 @@
 <p>- <strong>Credentials</strong> = учётные данные (пароли, ключи)</p>
 <p>- <strong>Credentials Store</strong> = хранилище credentials в Jenkins</p>
 <p>- <strong>Secret management</strong> = управление секретами</p>
-<p><strong>Проблема с credentials в Jenkinsfile:</strong></p>
+                    <p><strong>Проблема с credentials в Jenkinsfile:</strong></p>
+                    <pre><code>// ПЛОХО: credentials в коде
+pipeline {
+  environment {
+    DOCKER_USER = 'myuser'
+    DOCKER_PASS = 'mypassword123'  // ❌ Видно в Git!
+  }
+}</code></pre>
+                    <p><strong>Почему это опасно:</strong></p>
+                    <ul>
+                        <li><strong>Видно в Git</strong> → Все, у кого есть доступ к репозиторию, видят пароль</li>
+                        <li><strong>История Git</strong> → Даже если удалишь, останется в истории</li>
+                        <li><strong>Нет ротации</strong> → Чтобы сменить пароль, нужно менять код</li>
+                    </ul>
+                    <p><strong>Правильное решение:</strong></p>
+                    <pre><code>// ХОРОШО: credentials из Jenkins Credentials Store
+pipeline {
+  stages {
+    stage('Docker Push') {
+      steps {
+        withCredentials([usernamePassword(
+          credentialsId: 'dockerhub',  // ID из Jenkins
+          usernameVariable: 'DOCKER_USER',
+          passwordVariable: 'DOCKER_PASS'
+        )]) {
+          sh 'docker login -u $DOCKER_USER -p $DOCKER_PASS'
+        }
+      }
+    }
+  }
+}</code></pre>
+                    <p><strong>Как настроить:</strong></p>
+                    <p>Jenkins → Credentials → Add → Тип: Username with password → ID: <code>dockerhub</code> → В Jenkinsfile используй <code>credentialsId: 'dockerhub'</code></p>
+                    <p><strong>Преимущества:</strong></p>
+                    <ul>
+                        <li><strong>Безопасность</strong> → Пароль не в коде, не в Git</li>
+                        <li><strong>Ротация</strong> → Можешь сменить пароль в Jenkins, код не трогать</li>
+                        <li><strong>Доступ</strong> → Только те, у кого есть доступ к Jenkins, видят пароль</li>
+                    </ul>
+                    <p><strong>Почему это важно?</strong></p>
+                    <p>Секреты в коде = катастрофа безопасности. Всегда используй Credentials Store.</p>
 
-<p><strong>Почему это опасно:</strong></p>
-<p>1. <strong>Видно в Git</strong> → Все, у кого есть доступ к репозиторию, видят пароль 2. <strong>История Git</strong> → Даже если удалишь, останется в истории 3. <strong>Нет ротации</strong> → Чтобы сменить пароль, нужно менять код</p>
-<p><strong>Правильное решение:</strong></p>
-
-<p><strong>Как настроить:</strong></p>
-
-<p><strong>Преимущества:</strong></p>
-<p>1. <strong>Безопасность</strong> → Пароль не в коде, не в Git 2. <strong>Ротация</strong> → Можешь сменить пароль в Jenkins, код не трогать 3. <strong>Доступ</strong> → Только те, у кого есть доступ к Jenkins, видят пароль</p>
-<p><strong>Почему это важно?</strong></p>
-
-<p></div>
+</div>
             </div>
         </div>
         
@@ -739,16 +789,25 @@
 <p>- <strong>Pipeline failure</strong> = падение pipeline (остановка выполнения)</p>
 <p>- <strong>Fail fast</strong> = быстрое падение (остановка при первой ошибке)</p>
 <p>- <strong>Notification</strong> = уведомление (email, Slack)</p>
-<p><strong>Что происходит:</strong></p>
+                    <p><strong>Что происходит:</strong></p>
+                    <p>Тесты запускаются → тест падает (например, баг в коде) → <code>./gradlew test</code> возвращает код ошибки → Jenkins видит ошибку → останавливает pipeline → следующие стадии (Docker Build, Deploy) НЕ выполняются → build помечается как "Failed" → отправляется уведомление.</p>
+                    <p><strong>Последовательность:</strong></p>
+                    <ol>
+                        <li>Тесты запускаются</li>
+                        <li>Тест падает (баг в коде)</li>
+                        <li><code>./gradlew test</code> возвращает код ошибки (не 0)</li>
+                        <li>Jenkins видит ошибку → останавливает pipeline</li>
+                        <li>Следующие стадии НЕ выполняются</li>
+                        <li>Build помечается как "Failed"</li>
+                        <li>Отправляется уведомление (email/Slack)</li>
+                    </ol>
+                    <p><strong>Пример:</strong></p>
+                    <p>Тесты прошли: <code>./gradlew test</code> → BUILD SUCCESSFUL → Pipeline продолжается.</p>
+                    <p>Тесты упали: <code>./gradlew test</code> → BUILD FAILED → Pipeline останавливается → Docker Build НЕ выполняется.</p>
+                    <p><strong>Почему это важно?</strong></p>
+                    <p>Если тесты падают → код с багами. Pipeline останавливается → баги не попадают в продакшен. Это защита от плохого кода.</p>
 
-<p><strong>Последовательность:</strong></p>
-
-<p><strong>Пример:</strong></p>
-
-
-<p><strong>Почему это важно?</strong></p>
-
-<p></div>
+</div>
             </div>
         </div>
         
@@ -770,20 +829,37 @@
 <p>- <strong>Dynamic tagging</strong> = динамическое тегирование (тег меняется автоматически)</p>
 <p>- <strong>Build number</strong> = номер сборки (уникальный для каждой сборки)</p>
 <p>- <strong>Traceability</strong> = отслеживаемость (можно найти, какая версия где работает)</p>
-<p><strong>Проблема со статическим тегом:</strong></p>
+                    <p><strong>Проблема со статическим тегом:</strong></p>
+                    <p>Всегда один тег <code>app:latest</code> → если что-то сломалось, непонятно, какая версия → все версии называются "latest" → путаница.</p>
+                    <p><strong>Решение: динамический тег:</strong></p>
+                    <pre><code>pipeline {
+  environment {
+    VERSION = "${env.BUILD_NUMBER}"  // Уникальный номер сборки
+    DOCKER_IMAGE = "app:${VERSION}"
+  }
+  stages {
+    stage('Docker Build') {
+      steps {
+        sh "docker build -t ${DOCKER_IMAGE} ."  // app:1, app:2, app:3...
+      }
+    }
+  }
+}</code></pre>
+                    <p><strong>Преимущества:</strong></p>
+                    <ul>
+                        <li><strong>Уникальность</strong> → Каждая сборка = уникальный тег</li>
+                        <li><strong>Отслеживаемость</strong> → Видно, какая версия в продакшене</li>
+                        <li><strong>Откат</strong> → Можешь откатиться к конкретной версии</li>
+                        <li><strong>История</strong> → Видно все версии: app:1, app:2, app:3...</li>
+                    </ul>
+                    <p><strong>Пример:</strong></p>
+                    <p>Сборка 1: <code>docker build -t app:1</code> → деплой app:1 в production.</p>
+                    <p>Сборка 2: <code>docker build -t app:2</code> → деплой app:2 в production.</p>
+                    <p>Что-то сломалось → откат: <code>kubectl set image deployment/app app=app:1</code> → вернулись к версии 1.</p>
+                    <p><strong>Почему это важно?</strong></p>
+                    <p>В продакшене нужно знать, какая версия работает. Если что-то сломалось → нужно быстро откатиться. Динамические теги = версионирование образов.</p>
 
-
-<p><strong>Решение: динамический тег:</strong></p>
-
-<p><strong>Преимущества:</strong></p>
-<p>1. <strong>Уникальность</strong> → Каждая сборка = уникальный тег 2. <strong>Отслеживаемость</strong> → Видно, какая версия в продакшене 3. <strong>Откат</strong> → Можешь откатиться к конкретной версии 4. <strong>История</strong> → Видно все версии: app:1, app:2, app:3...</p>
-<p><strong>Пример:</strong></p>
-
-
-
-<p><strong>Почему это важно?</strong></p>
-
-<p></div>
+</div>
             </div>
         </div>
         

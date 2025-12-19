@@ -456,7 +456,7 @@
 <p>- <strong>Package management</strong> = система управления пакетами (apt, yum — легко устанавливать программы)</p>
 <p>- <strong>Industry standard</strong> = стандарт индустрии (все используют)</p>
 <p><strong>Пример:</strong></p>
-<p>Вместо Windows Server (платный, ~$500/год) используем Ubuntu Server (бесплатный). Команда `apt install docker` устанавливает Docker за секунды, а в Windows нужно скачивать установщик вручную.</p>
+
 <p><strong>Термины:</strong></p>
 <p>- <strong>Open-source</strong> = открытый исходный код (можно смотреть и изменять код)</p>
 <p>- <strong>Package management</strong> = система управления пакетами (apt, yum — легко устанавливать программы)</p>
@@ -500,14 +500,14 @@
 <p>- <strong>Пароль "password123"</strong> → хакер может угадать за минуты</p>
 <p>- <strong>SSH ключ (2048 бит)</strong> → это строка из 400+ символов, угадать невозможно даже за миллионы лет</p>
 <p><strong>Почему это важно в DevOps?</strong></p>
-<p>Серверы в интернете постоянно атакуют боты, которые пытаются подобрать пароли. С ключами они не смогут войти, даже если знают твой логин.</p>
+
 <p><strong>Термины:</strong></p>
 <p>- <strong>Cryptographic key pair</strong> = криптографическая пара ключей (публичный + приватный)</p>
 <p>- <strong>Brute-force attack</strong> = атака перебором (попытка угадать пароль)</p>
 <p>- <strong>Public key</strong> = публичный ключ (можно показывать всем)</p>
 <p>- <strong>Private key</strong> = приватный ключ (секретный, только у тебя)</p>
 <p><strong>Как работает:</strong></p>
-<p>SSH key-based authentication uses cryptographic key pairs (public/private), making it nearly impossible to brute-force. Keys are long, randomly generated strings that cannot be guessed. Passwords can be weak, reused, or cracked through brute-force attacks.</p>
+
 <p><strong>Пример:</strong></p>
 <p>- <strong>Пароль "password123"</strong> → хакер может угадать за минуты</p>
 <p>- <strong>SSH ключ (2048 бит)</strong> → это строка из 400+ символов, угадать невозможно даже за миллионы лет</p>
@@ -581,10 +581,10 @@
 </tr>
 </table>
 <p><strong>Пример:</strong></p>
-<p># Root пользователь (опасно!) root@server:~# rm -rf /  # Удалит всю систему, никаких вопросов</p>
-<p># Sudo пользователь (безопасно) student@server:~$ sudo apt install docker  # Спросит пароль, залогирует действие student@server:~$ rm -rf /  # Не сработает, нет прав</p>
+
+
 <p><strong>Почему это важно?</strong></p>
-<p>Если хакер взломает твой аккаунт:</p>
+
 <p>- <strong>Root</strong> → может удалить всё</p>
 <p>- <strong>Sudo</strong> → может делать только то, что разрешено, и всё логируется</p>
 <p><strong>Термины:</strong></p>
@@ -710,14 +710,14 @@ student@server:~$ rm -rf /  # Не сработает, нет прав</code></p
 <p>- <strong>Defense-in-depth</strong> = многоуровневая защита (несколько слоёв безопасности)</p>
 <p>- <strong>Unauthorized access</strong> = несанкционированный доступ</p>
 <p><strong>Как работает:</strong></p>
-<p>Представь сервер как дом:</p>
+
 <p>- <strong>Без firewall</strong> = все двери открыты, кто угодно может войти</p>
 <p>- <strong>С firewall</strong> = только нужные двери открыты (SSH, HTTP, HTTPS), остальные закрыты</p>
 <p><strong>Пример:</strong></p>
-<p># Без firewall Порт 22 (SSH) - открыт ✅ Порт 80 (HTTP) - открыт ✅ Порт 3306 (MySQL) - открыт ❌ (опасно! не нужен извне) Порт 5432 (PostgreSQL) - открыт ❌ (опасно!)</p>
-<p># С firewall (ufw) sudo ufw allow 22/tcp    # Только SSH sudo ufw allow 80/tcp    # Только HTTP sudo ufw allow 443/tcp   # Только HTTPS sudo ufw enable          # Всё остальное заблокировано</p>
+
+
 <p><strong>Почему это важно?</strong></p>
-<p>В интернете тысячи ботов сканируют серверы, ищут открытые порты. Если у тебя открыт порт базы данных, хакер может попытаться взломать её. Firewall закрывает всё лишнее.</p>
+
 <p><strong>Термины:</strong></p>
 <p>- <strong>Firewall</strong> = брандмауэр (стена между твоим сервером и интернетом)</p>
 <p>- <strong>Port</strong> = порт (дверь для подключения к серверу)</p>
@@ -731,7 +731,7 @@ student@server:~$ rm -rf /  # Не сработает, нет прав</code></p
 <p># Без firewall Порт 22 (SSH) - открыт ✅ Порт 80 (HTTP) - открыт ✅ Порт 3306 (MySQL) - открыт ❌ (опасно! не нужен извне) Порт 5432 (PostgreSQL) - открыт ❌ (опасно!)</p>
 <p># С firewall (ufw) sudo ufw allow 22/tcp    # Только SSH sudo ufw allow 80/tcp    # Только HTTP sudo ufw allow 443/tcp   # Только HTTPS sudo ufw enable          # Всё остальное заблокировано</p>
 <p><strong>Почему это важно?</strong></p>
-<p>В интернете тысячи ботов сканируют серверы, ищут открытые порты. Если у тебя открыт порт базы данных, хакер может попытаться взломать её. Firewall закрывает всё лишнее.</p>
+
                     <p><strong>Термины:</strong></p>
                     <ul>
                         <li><strong>Firewall</strong> = брандмауэр (стена между твоим сервером и интернетом)</li>
@@ -810,14 +810,14 @@ sudo ufw enable          # Всё остальное заблокировано<
 </tr>
 </table>
 <p><strong>Пример команды:</strong></p>
-<p>sudo ufw allow 22/tcp    # SSH - чтобы подключиться к серверу sudo ufw allow 80/tcp    # HTTP - чтобы сайт работал sudo ufw allow 443/tcp   # HTTPS - чтобы сайт был безопасным sudo ufw enable          # Включить firewall</p>
+
 <p><strong>Почему только эти?</strong></p>
 <p>- <strong>SSH (22)</strong> → без него не сможешь управлять сервером</p>
 <p>- <strong>HTTP (80)</strong> → без него сайт не откроется</p>
 <p>- <strong>HTTPS (443)</strong> → без него нет шифрования (небезопасно)</p>
 <p>- <strong>Остальные порты</strong> → закрыты, потому что не нужны извне</p>
 <p><strong>Почему не открываем порт базы данных (5432)?</strong></p>
-<p>База данных должна быть доступна только изнутри сервера (от приложения), а не из интернета. Если открыть — хакеры попытаются взломать.</p>
+
 <p><strong>Термины:</strong></p>
 <p>- <strong>Port 22</strong> = SSH (удалённое управление сервером)</p>
 <p>- <strong>Port 80</strong> = HTTP (обычный веб-трафик)</p>
@@ -970,7 +970,7 @@ This separation follows the principle of organization and makes it easier to loc
 <p>- <strong>Separation of concerns</strong> = разделение по назначению</p>
 <p>- <strong>Manifests</strong> = манифесты (файлы конфигурации)</p>
 <p><strong>Структура:</strong></p>
-<p>/opt/devops-project/ ├── app/          # Исходный код приложения ├── docker/       # Docker файлы (Dockerfile, docker-compose) ├── k8s/          # Kubernetes манифесты (deployment, service) ├── ansible/      # Ansible плейбуки и роли └── scripts/      # Скрипты (установка, автоматизация)</p>
+
 <p><strong>Зачем так?</strong></p>
 <table>
 <tr>
@@ -1005,11 +1005,11 @@ This separation follows the principle of organization and makes it easier to loc
 </tr>
 </table>
 <p><strong>Пример:</strong></p>
-<p># Хочу найти Dockerfile cd /opt/devops-project/docker  # Там точно есть</p>
-<p># Хочу найти Kubernetes deployment cd /opt/devops-project/k8s     # Все манифесты здесь</p>
-<p># Хочу запустить скрипт установки cd /opt/devops-project/scripts # Все скрипты здесь</p>
+
+
+
 <p><strong>Почему это важно?</strong></p>
-<p>Когда проект большой, без структуры всё перемешается. Представь, что у тебя 100 файлов в одной папке — найти нужный будет сложно. Структура = порядок.</p>
+
 <p><strong>Термины:</strong></p>
 <p>- <strong>Directory structure</strong> = структура папок</p>
 <p>- <strong>Separation of concerns</strong> = разделение по назначению</p>
@@ -1054,7 +1054,7 @@ This separation follows the principle of organization and makes it easier to loc
 <p># Хочу найти Kubernetes deployment cd /opt/devops-project/k8s     # Все манифесты здесь</p>
 <p># Хочу запустить скрипт установки cd /opt/devops-project/scripts # Все скрипты здесь</p>
 <p><strong>Почему это важно?</strong></p>
-<p>Когда проект большой, без структуры всё перемешается. Представь, что у тебя 100 файлов в одной папке — найти нужный будет сложно. Структура = порядок.</p>
+
                     <p><strong>Термины:</strong></p>
                     <ul>
                         <li><strong>Directory structure</strong> = структура папок</li>
@@ -1127,7 +1127,7 @@ cd /opt/devops-project/scripts # Все скрипты здесь</code></pre>
                     <h3>Answer (English):</h3>
                     <p>Git solves track changes problems: tracking changes, collaboration, go back capabilities, branching for parallel work, and maintaining a complete history. It enables teams to work together, experiment safely, and revert to previous versions if something breaks.</p>
                 </div>
-                <div class="russian-explanation">
+                <p><div class="russian-explanation">
                     <h3>Объяснение (Русский):</h3>
                     <p><strong>Какую проблему решает Git?</strong></p>
 <p><strong>Термины:</strong></p>
@@ -1136,14 +1136,20 @@ cd /opt/devops-project/scripts # Все скрипты здесь</code></pre>
 <p>- <strong>Collaboration</strong> = совместная работа</p>
 <p>- <strong>History</strong> = история изменений</p>
 <p><strong>Проблемы БЕЗ Git:</strong></p>
-<p>1. <strong>Несколько версий файла</strong> → `app_v1.java`, `app_v2.java`, `app_final.java` — путаница 2. <strong>Кто что изменил?</strong> → Непонятно, кто сломал код 3. <strong>Откатить изменения?</strong> → Невозможно, если не сохранил копию 4. <strong>Работа в команде?</strong> → Конфликты, кто-то перезапишет чужой код</p>
+<p>1</p>
+<p>. <strong>Несколько версий файла</strong> → `app_v1.java`, `app_v2.java`, `app_final.java` — путаница 2.</p>
+<p><strong>Кто что изменил?</strong> → Непонятно, кто сломал код 3. <strong>Откатить изменения?</strong> → Невозможно, если не сохранил копию 4</p>
+<p>. <strong>Работа в команде?</strong> → Конфликты, кто-то перезапишет чужой код</p>
 <p><strong>Что решает Git:</strong></p>
-<p>1. <strong>Одна версия</strong> → Git хранит все версии, можно переключаться 2. <strong>История изменений</strong> → Видно, кто, когда и что изменил 3. <strong>Откат</strong> → `git revert` вернёт старую версию 4. <strong>Ветки</strong> → Каждый работает в своей ветке, потом объединяем</p>
+<p>1.</p>
+<p><strong>Одна версия</strong> → Git хранит все версии, можно переключаться 2. <strong>История изменений</strong> → Видно, кто, когда и что изменил 3</p>
+<p>. <strong>Откат</strong> → `git revert` вернёт старую версию 4.</p>
+<p><strong>Ветки</strong> → Каждый работает в своей ветке, потом объединяем</p>
 <p><strong>Пример:</strong></p>
-<p># Без Git (плохо) app.java          # Текущая версия app_backup.java   # Старая версия (на всякий случай) app_old.java      # Ещё старше (не знаю, зачем)</p>
-<p># С Git (хорошо) git log           # Вся история изменений git checkout v1.0 # Вернуться к версии 1.0 git diff          # Посмотреть, что изменилось</p>
+
+
 <p><strong>Почему это важно в DevOps?</strong></p>
-<p>Если деплой сломался, нужно быстро откатиться. С Git это одна команда: `git revert` или `git checkout предыдущая_версия`. Без Git пришлось бы искать старую копию файла.</p>
+
 <p><strong>Термины:</strong></p>
 <p>- <strong>Version control</strong> = контроль версий (отслеживание изменений)</p>
 <p>- <strong>Rollback</strong> = откат (вернуться к старой версии)</p>
@@ -1244,18 +1250,18 @@ git diff          # Посмотреть, что изменилось</code></pr
 </tr>
 </table>
 <p><strong>Пример:</strong></p>
-<p># Разработчик 1 работает над API git checkout -b feature/api # Пишет код, тестирует git commit -m "feat: add REST API" git push origin feature/api</p>
-<p># Разработчик 2 работает над авторизацией git checkout -b feature/auth # Пишет код, тестирует git commit -m "feat: add authentication" git push origin feature/auth</p>
-<p># Оба работают параллельно, не мешая друг другу! # Когда готово → merge в develop → тестирование → merge в main</p>
+
+
+
 <p><strong>Почему это важно?</strong></p>
-<p>Без веток все работают в одном файле → конфликты, кто-то сломает код другого. С ветками каждый работает изолированно, потом безопасно объединяем.</p>
+
 <p><strong>Термины:</strong></p>
 <p>- <strong>Branch</strong> = ветка (отдельная линия разработки)</p>
 <p>- <strong>Main branch</strong> = главная ветка (стабильный код)</p>
 <p>- <strong>Feature branch</strong> = ветка для новой функции</p>
 <p>- <strong>Merge</strong> = слияние (объединить ветки)</p>
 <p><strong>Стратегия веток:</strong></p>
-<p>Branching strategies organize code development and prevent conflicts. `main` contains stable, production-ready code. `develop` is for integration and testing. `feature/*` branches allow isolated development without affecting main code. This enables parallel work, safe experimentation, and controlled releases.</p>
+
 <p><strong>Зачем так?</strong></p>
 <table>
 <tr>
@@ -1372,17 +1378,17 @@ git push origin feature/auth
 <p><strong>Когда возникает конфликт?</strong></p>
 <p>Когда одна и та же строка кода изменена в двух разных ветках.</p>
 <p><strong>Пример конфликта:</strong></p>
-<p>// В ветке main public String getMessage() { return "Hello World"; }</p>
-<p>// В ветке feature/api (тот же файл, та же строка) public String getMessage() { return "Hello API"; }</p>
-<p>// При merge Git не знает, что выбрать → конфликт!</p>
+
+
+
 <p><strong>Как выглядит конфликт в файле:</strong></p>
 <p>public String getMessage() { <<<<<<< HEAD return "Hello World";  // Это из main ======= return "Hello API";    // Это из feature/api >>>>>>> feature/api }</p>
 <p><strong>Как решить:</strong></p>
 <p>1. Открыть файл с конфликтом 2. Посмотреть обе версии 3. Выбрать нужную (или объединить) 4. Удалить маркеры (`<<<<<<<`, `=======`, `>>>>>>>`) 5. Сохранить файл 6. `git add файл` 7. `git commit -m "merge: resolve conflict"`</p>
 <p><strong>Пример решения:</strong></p>
-<p>// Решение: объединить обе версии public String getMessage() { return "Hello World API";  // Комбинация обеих }</p>
+
 <p><strong>Почему это важно?</strong></p>
-<p>Конфликты неизбежны при работе в команде. Нужно уметь их решать, иначе код не объединится.</p>
+
 <p><strong>Термины:</strong></p>
 <p>- <strong>Merge conflict</strong> = конфликт слияния (Git не может автоматически объединить изменения)</p>
 <p>- <strong>Conflict markers</strong> = маркеры конфликта (`<<<<<<<`, `=======`, `>>>>>>>`)</p>
@@ -1472,20 +1478,20 @@ public String getMessage() {
 <p><strong>Что такое тег?</strong></p>
 <p>Это метка на определённом коммите: "Вот это версия 1.0.0".</p>
 <p><strong>Пример:</strong></p>
-<p>git tag -a v1.0.0 -m "Release version 1.0.0" git push origin v1.0.0</p>
+
 <p><strong>Зачем в CI/CD?</strong></p>
 <p>1. <strong>Автоматический деплой</strong> → Когда создаёшь тег v1.0.0, Jenkins автоматически деплоит эту версию 2. <strong>Версионирование</strong> → Видно, какая версия в продакшене 3. <strong>Откат</strong> → Если v1.1.0 сломалась, откатываемся к v1.0.0 4. <strong>История</strong> → Видно все релизы: v1.0.0, v1.1.0, v2.0.0</p>
 <p><strong>Пример в Jenkins:</strong></p>
-<p>// Jenkinsfile stage('Deploy') { when { tag 'v*'  // Запускается только при создании тега v* } steps { sh 'kubectl set image deployment/app app=myapp:${env.TAG_NAME}' } }</p>
+
 <p><strong>Почему это важно?</strong></p>
-<p>Без тегов непонятно, какая версия где работает. С тегами: "В продакшене v1.0.0, деплоим v1.1.0" — всё ясно.</p>
+
 <p><strong>Термины:</strong></p>
 <p>- <strong>Tag</strong> = тег (метка версии, например v1.0.0)</p>
 <p>- <strong>Immutable</strong> = неизменяемый (тег всегда указывает на один коммит)</p>
 <p>- <strong>Trigger</strong> = триггер (запуск pipeline при создании тега)</p>
 <p>- <strong>Rollback</strong> = откат к предыдущей версии</p>
 <p><strong>Что такое тег?</strong></p>
-<p>Git tags mark specific commits as releases (e.g., v1.0.0). CI/CD pipelines can trigger on tags, deploy specific versions, enable rollbacks to known good states, and provide version tracking. Tags create immutable reference points for production deployments.</p>
+
 <p><strong>Пример:</strong></p>
 <p>git tag -a v1.0.0 -m "Release version 1.0.0" git push origin v1.0.0</p>
 <p><strong>Зачем в CI/CD?</strong></p>
@@ -1602,17 +1608,17 @@ stage('Deploy') {
 </tr>
 </table>
 <p><strong>Пример .gitignore:</strong></p>
-<p># Секреты .env .env.local *.key *.pem</p>
-<p># Build артефакты target/ build/ *.jar *.war</p>
-<p># Логи *.log logs/</p>
-<p># IDE .idea/ .vscode/</p>
+
+
+
+
 <p><strong>Что делать вместо этого?</strong></p>
 <p>1. <strong>Секреты</strong> → Kubernetes Secrets, Ansible Vault, Jenkins Credentials 2. <strong>Переменные окружения</strong> → `.env.example` (без секретов) в Git, реальный `.env` на сервере 3. <strong>API ключи</strong> → Хранить в секретах, не в коде</p>
 <p><strong>Пример:</strong></p>
-<p># ❌ ПЛОХО (в коде) String apiKey = "abc123xyz";  # Хакер увидит в Git</p>
-<p># ✅ ХОРОШО (из переменной окружения) String apiKey = System.getenv("API_KEY");  # Секрет на сервере</p>
+
+
 <p><strong>Почему это критично?</strong></p>
-<p>Если секрет попадёт в Git, его нельзя удалить (история останется). Хакеры сканируют GitHub и ищут секреты. Один раз закоммитил пароль → все его видят навсегда.</p>
+
 <p><strong>Термины:</strong></p>
 <p>- <strong>Secrets</strong> = секреты (пароли, ключи)</p>
 <p>- <strong>Credentials</strong> = учётные данные (логин/пароль)</p>

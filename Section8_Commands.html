@@ -468,7 +468,7 @@
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">id</div>
-                    <p>или</p>
+                    <p></p>
                     <div class="command-block">whoami && groups</div>
                 </div>
                 <div class="russian-explanation">
@@ -497,7 +497,7 @@ student sudo</code></pre>
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">ssh-keygen -t ed25519 -C "your_email@example.com"</div>
-                    <p>или (для RSA):</p>
+                    <p></p>
                     <div class="command-block">ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</div>
                 </div>
                 <div class="russian-explanation">
@@ -528,7 +528,7 @@ student sudo</code></pre>
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">sudo ufw status verbose</div>
-                    <p>или просто:</p>
+                    <p></p>
                     <div class="command-block">sudo ufw status</div>
                 </div>
                 <div class="russian-explanation">
@@ -564,7 +564,7 @@ To                         Action      From
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">git checkout -b feature/api</div>
-                    <p>или (Git 2.23+):</p>
+                    <p></p>
                     <div class="command-block">git switch -c feature/api</div>
                 </div>
                 <div class="russian-explanation">
@@ -590,7 +590,7 @@ To                         Action      From
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">git clone https://github.com/user/repo.git</div>
-                    <p>или с SSH:</p>
+                    <p></p>
                     <div class="command-block">git clone git@github.com:user/repo.git</div>
                     <p>в конкретную папку:</p>
                     <div class="command-block">git clone https://github.com/user/repo.git my-project</div>
@@ -621,7 +621,7 @@ To                         Action      From
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">./gradlew clean build</div>
-                    <p>или только build:</p>
+                    <p></p>
                     <div class="command-block">./gradlew build</div>
                 </div>
                 <div class="russian-explanation">
@@ -675,7 +675,7 @@ To                         Action      From
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">ls -la build/libs/</div>
-                    <p>или найти JAR:</p>
+                    <p></p>
                     <div class="command-block">find build/libs -name "*.jar"</div>
                 </div>
                 <div class="russian-explanation">
@@ -705,7 +705,7 @@ To                         Action      From
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">docker build -t myapp:1.0 .</div>
-                    <p>с указанием Dockerfile:</p>
+                    <p></p>
                     <div class="command-block">docker build -f Dockerfile_Kenzheyev_Nurislam -t myapp:1.0 .</div>
                 </div>
                 <div class="russian-explanation">
@@ -732,7 +732,7 @@ To                         Action      From
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">docker images</div>
-                    <p>или с фильтром:</p>
+                    <p></p>
                     <div class="command-block">docker images | grep myapp</div>
                 </div>
                 <div class="russian-explanation">
@@ -759,7 +759,7 @@ To                         Action      From
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">docker-compose up</div>
-                    <p>в фоновом режиме:</p>
+                    <p></p>
                     <div class="command-block">docker-compose up -d</div>
                     <p>с пересборкой:</p>
                     <div class="command-block">docker-compose up --build</div>
@@ -788,7 +788,7 @@ To                         Action      From
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">docker-compose down</div>
-                    <p>с удалением volumes:</p>
+                    <p></p>
                     <div class="command-block">docker-compose down -v</div>
                     <p>или для одного контейнера:</p>
                     <div class="command-block">docker stop container_id && docker rm container_id</div>
@@ -816,7 +816,7 @@ To                         Action      From
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">docker logs container_id</div>
-                    <p>следить за логами в реальном времени:</p>
+                    <p>Follow logs in real-time:</p>
                     <div class="command-block">docker logs -f container_id</div>
                     <p>для docker-compose:</p>
                     <div class="command-block">docker-compose logs</div>
@@ -883,7 +883,7 @@ To                         Action      From
                 <div class="answer-section">
                     <h3>Command (Jenkinsfile):</h3>
                     <div class="command-block">sh "docker build -f Dockerfile_Kenzheyev_Nurislam -t ${DOCKER_IMAGE} ."</div>
-                    <p>с переменными:</p>
+                    <p></p>
                     <div class="command-block">sh "docker build -f Dockerfile_Kenzheyev_Nurislam -t ${DOCKER_REGISTRY}/${IMAGE_NAME}:${VERSION} ."</div>
                 </div>
                 <div class="russian-explanation">
@@ -969,7 +969,7 @@ To                         Action      From
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">kubectl apply -f deployment_Kenzheyev_Nurislam.yaml</div>
-                    <p>или несколько файлов:</p>
+                    <p></p>
                     <div class="command-block">kubectl apply -f k8s/</div>
                     <p>создать из файла:</p>
                     <div class="command-block">kubectl create -f deployment_Kenzheyev_Nurislam.yaml</div>
@@ -1001,7 +1001,7 @@ To                         Action      From
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">kubectl get pods</div>
-                    <p>все namespace:</p>
+                    <p></p>
                     <div class="command-block">kubectl get pods --all-namespaces</div>
                     <p>с подробной информацией:</p>
                     <div class="command-block">kubectl get pods -o wide</div>
@@ -1030,7 +1030,7 @@ To                         Action      From
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">kubectl describe pod pod-name</div>
-                    <p>или по label:</p>
+                    <p></p>
                     <div class="command-block">kubectl describe pod -l app=todo</div>
                 </div>
                 <div class="russian-explanation">
@@ -1060,7 +1060,7 @@ To                         Action      From
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">kubectl expose deployment todo-app --type=NodePort --port=8080</div>
-                    <p>или через манифест:</p>
+                    <p></p>
                     <div class="command-block">kubectl apply -f service_Kenzheyev_Nurislam.yaml</div>
                 </div>
                 <div class="russian-explanation">
@@ -1088,7 +1088,7 @@ To                         Action      From
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">kubectl rollout undo deployment/todo-app</div>
-                    <p>к конкретной ревизии:</p>
+                    <p></p>
                     <div class="command-block">kubectl rollout undo deployment/todo-app --to-revision=2</div>
                     <p>посмотреть историю:</p>
                     <div class="command-block">kubectl rollout history deployment/todo-app</div>
@@ -1117,7 +1117,7 @@ To                         Action      From
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">kubectl rollout status deployment/todo-app</div>
-                    <p>или общая информация:</p>
+                    <p></p>
                     <div class="command-block">kubectl get deployment todo-app</div>
                 </div>
                 <div class="russian-explanation">
@@ -1152,7 +1152,7 @@ To                         Action      From
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">ansible-playbook playbook_Kenzheyev_Nurislam.yml</div>
-                    <p>с указанием server list:</p>
+                    <p></p>
                     <div class="command-block">ansible-playbook -i inventory_Kenzheyev_Nurislam.ini playbook_Kenzheyev_Nurislam.yml</div>
                     <p>с проверкой (dry-run):</p>
                     <div class="command-block">ansible-playbook --check playbook_Kenzheyev_Nurislam.yml</div>
@@ -1182,7 +1182,7 @@ To                         Action      From
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">ansible-playbook --syntax-check playbook_Kenzheyev_Nurislam.yml</div>
-                    <p>или через ansible-lint:</p>
+                    <p></p>
                     <div class="command-block">ansible-lint playbook_Kenzheyev_Nurislam.yml</div>
                 </div>
                 <div class="russian-explanation">
@@ -1214,7 +1214,7 @@ To                         Action      From
     name: docker.io
     state: present
     update_cache: yes</div>
-                    <p>или через модуль docker:</p>
+                    <p></p>
                     <div class="command-block">- name: Install Docker
   package:
     name: docker.io
@@ -1246,7 +1246,7 @@ To                         Action      From
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">ansible-vault encrypt group_vars/vault.yml</div>
-                    <p>создать новый зашифрованный файл:</p>
+                    <p>Create new encrypted file:</p>
                     <div class="command-block">ansible-vault create group_vars/vault.yml</div>
                     <p>расшифровать для редактирования:</p>
                     <div class="command-block">ansible-vault edit group_vars/vault.yml</div>
@@ -1277,7 +1277,7 @@ To                         Action      From
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">ansible-playbook -i inventory_Kenzheyev_Nurislam.ini --limit devops-server playbook_Kenzheyev_Nurislam.yml</div>
-                    <p>или несколько групп:</p>
+                    <p></p>
                     <div class="command-block">ansible-playbook --limit "web-servers:db-servers" playbook.yml</div>
                 </div>
                 <div class="russian-explanation">
@@ -1310,7 +1310,7 @@ server2 ansible_host=192.168.1.11</code></pre>
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">top</div>
-                    <p>или более удобный:</p>
+                    <p></p>
                     <div class="command-block">htop</div>
                     <p>краткая информация:</p>
                     <div class="command-block">free -h && df -h</div>
@@ -1336,7 +1336,7 @@ server2 ansible_host=192.168.1.11</code></pre>
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">tail -f /var/log/app.log</div>
-                    <p>последние 100 строк:</p>
+                    <p></p>
                     <div class="command-block">tail -n 100 /var/log/app.log</div>
                     <p>поиск ошибок:</p>
                     <div class="command-block">grep -i error /var/log/app.log</div>
@@ -1369,7 +1369,7 @@ server2 ansible_host=192.168.1.11</code></pre>
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">curl http://localhost:8080/actuator/health</div>
-                    <p>с подробным выводом:</p>
+                    <p></p>
                     <div class="command-block">curl -v http://localhost:8080/actuator/health</div>
                     <p>или через wget:</p>
                     <div class="command-block">wget -qO- http://localhost:8080/actuator/health</div>
@@ -1399,7 +1399,7 @@ server2 ansible_host=192.168.1.11</code></pre>
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">kubectl delete -f deployment_Kenzheyev_Nurislam.yaml</div>
-                    <p>удалить все ресурсы из namespace:</p>
+                    <p>Delete all resources from namespace:</p>
                     <div class="command-block">kubectl delete all --all -n namespace</div>
                     <p>удалить конкретный ресурс:</p>
                     <div class="command-block">kubectl delete deployment todo-app</div>
@@ -1429,7 +1429,7 @@ server2 ansible_host=192.168.1.11</code></pre>
                 <div class="answer-section">
                     <h3>Command:</h3>
                     <div class="command-block">kubectl logs pod-name</div>
-                    <p>следить за логами:</p>
+                    <p></p>
                     <div class="command-block">kubectl logs -f pod-name</div>
                     <p>для deployment:</p>
                     <div class="command-block">kubectl logs -f deployment/todo-app</div>
